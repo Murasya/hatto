@@ -1,0 +1,130 @@
+<ons-page>
+  <ons-toolbar>
+    <div class="left"><ons-back-button></ons-back-button></div>
+    <div class="center">保存</div>
+  </ons-toolbar>
+  <p id="main"></p>
+  <div id="tag">
+    <p>タグ</p>
+    <ons-input id="tagText" modifier="underbar" placeholder="タグを入力"></ons-input>
+    <p>メモ</p>
+    <ons-input id="memoText" modifier="underbar"></ons-input>
+    <p>シェア</p>
+    <fieldset>
+      <input id="item-1" class="radio-inline__input" type="radio" name="accessible-radio" value="true" checked="checked"/>
+      <label class="radio-inline__label" for="item-1">
+          する
+      </label>
+      <input id="item-2" class="radio-inline__input" type="radio" name="accessible-radio" value="false"/>
+      <label class="radio-inline__label" for="item-2">
+          しない
+      </label>
+    </fieldset>
+  </div>
+  <input type="button" class="btn" id="fin" value="完了">
+  <div class="back">
+    <a onclick="document.querySelector('#myNavigator').popPage();"><img src="./images/BACK.png" width="30px"></a>
+  </div>
+  <script>
+    // 入力データ：memo, uid, tags, questions, answers, (idがあればアップデートとみなす)
+    ons.getScriptPage().onInit = function() {
+      console.log(this.data);
+      var memo = this.data.memo;
+      var id = this.data.id;
+      var pub;
+      var tag = [];
+      var uid = this.data.uid;
+      var now;
+      const answers = this.data.answers;
+      const questions = this.data.questions;
+      // tagが存在していれば表示
+      if(this.data.tags) {
+        var text = "";
+        this.data.tags.forEach(t => {
+          text += t + ' ';
+        });
+        document.getElementById("tagText").value = text;
+      }
+      // memoが存在していれば表示
+      if(this.data.memo) {
+        document.getElementById("memoText").value = memo;
+      }
+      var share = document.getElementsByName("accessible-radio");
+      if(document.getElementById("pub") == true){
+        share[0].checked = true;
+        share[1].checked = false;
+      } else {
+        share[0].checked = false;
+        share[1].checked = true;
+      }
+      var uid;
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          // User is signed in.
+          uid = user.uid;
+        } else {
+          // User is signed out.
+          ons.notification.toast('ログインしていないため保存できません!', { timeout: 1000, animation: 'fall' })
+        }
+      });
+
+      document.getElementById("fin").onclick = function() {
+        var text = document.getElementById("tagText").value;
+        if(text) {
+          text.split(" ").forEach(e => {
+            e.trim();
+            if(e !== "") {
+              tag.push(e.trim());
+            }
+          })
+        }
+        memo = document.getElementById("memoText").value
+        var share = document.getElementsByName("accessible-radio");
+        for ( var a="", i=share.length; i--; ) {
+          if ( share[0].checked ) {
+            pub = true;
+            break ;
+          } else if( share[1].checked ) {
+            pub = false;
+            break;
+          }
+        }
+        var db = firebase.firestore();
+        if(id){
+          db.collection("questionAndAnswer").doc(id).update({
+            uid: uid,
+            questions: questions,
+            answers: answers,
+            memo: memo,
+            public: pub,
+            tags: tag,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp() 
+          })
+          .then(function() {
+            console.log("Document succesfully updated.");
+          })
+          .catch(function(error) {
+            console.log("Error updating document: ", error);
+          });
+        } else {
+          db.collection("questionAndAnswer").add({
+            uid: uid,
+            questions: questions,
+            answers: answers,
+            memo: memo,
+            public: pub,
+            tags: tag,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp() 
+          })
+          .then(function(docRef) {
+            console.log("Document written with ID: ", docRef.id);
+          })
+          .catch(function(error) {
+            console.log("Error adding document: ", error);
+          });
+        }
+        document.getElementById("myNavigator").resetToPage('index.html');
+      }
+    }
+  </script>
+</ons-page>

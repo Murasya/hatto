@@ -1,0 +1,23 @@
+<ons-page>
+  <ons-toolbar>
+    <div class="left"><ons-back-button></ons-back-button></div>
+  </ons-toolbar>
+  <p id="q">取り組みたいこと</p>
+  <input type="text" class="inputText" id="tackle"></input><br>
+  <button class="btn" onclick="next()">Next</button><br>
+  <div class="back">
+    <a onclick="document.querySelector('#myNavigator').popPage();"><img src="./images/BACK.png" width="30px"></a>
+  </div>
+  <script>
+    function next() {
+      var text = document.getElementById("tackle").value;
+      document.querySelector('#myNavigator').pushPage('question.html', {
+        data: {
+          title: '分析',
+          q: "取り組みたいこと",
+          a: text
+        }
+      });
+    }
+  </script>
+</ons-page>

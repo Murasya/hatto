@@ -1,0 +1,50 @@
+<ons-page>
+  <ons-toolbar>
+    <div class="left"><ons-back-button></ons-back-button></div>
+  </ons-toolbar>
+  <p id="main"></p>
+  <div id="chat"></div>
+  <ons-input id="ansText" modifier="underbar"></ons-input><br>
+  <input type="button" class="btn" id="ansButton" value="Next"><br>
+  <a id="finButton" hidden><img src="./images/hattositta.png" width="50px"></a><br>
+  <div class="back">
+    <a onclick="document.querySelector('#myNavigator').popPage();"><img src="./images/BACK.png" width="30px"></a>
+  </div>
+  <script>
+    ons.getScriptPage().onInit = function() {
+      var questions = [];
+      var answers = [];
+      document.getElementById("main").textContent = this.data.a;
+      questions.push(this.data.q);
+      answers.push(this.data.a);
+      var qString = "なぜ取り組みたい？";
+      var q = document.createElement('p');
+      q.textContent = qString;
+      document.getElementById("chat").appendChild(q);
+      this.querySelector('#ansButton').onclick = function() {
+        questions.push(qString);
+        answers.push(document.getElementById("ansText").value);
+        var a = document.createElement('p');
+        a.textContent = document.getElementById("ansText").value;
+        document.getElementById("chat").appendChild(a);
+        var q = document.createElement('p');
+        if(answers.length >= 6) {
+          document.getElementById("finButton").hidden = false;
+        }
+        qString = "それはどうして？";
+        q.textContent = qString;
+        document.getElementById("chat").appendChild(q);
+        document.getElementById("ansText").value = "";
+      }
+      this.querySelector('#finButton').onclick = function() {
+        document.querySelector('#myNavigator').pushPage('resultEdit.html', {
+          data: {
+            title: '分析',
+            questions: questions,
+            answers: answers
+          }
+        });
+      }
+    }
+  </script>
+</ons-page>

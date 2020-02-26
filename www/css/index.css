@@ -1,0 +1,30 @@
+/* This is a CSS file */
+
+html {
+  background-color: rgb(255, 81, 0);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  text-align: center;
+  margin-top: 30%;
+  margin-bottom: 20%;
+}
+
+button {
+  color: white;
+  background-color: gray;
+  border-radius: 5px;
+  width: 100px;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+#logo {
+  width: 128px;
+}

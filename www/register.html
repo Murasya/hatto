@@ -1,0 +1,41 @@
+<ons-page>
+  <ons-toolbar>
+    <div class="left"><ons-back-button></ons-back-button></div>
+    <div class="center">新規登録</div>
+  </ons-toolbar>
+  <p>User name</p>
+  <ons-input type="text" id="userName_register" placeholder="ユーザ名" modifier="underbar"></ons-input>
+  <p>E-mail</p>
+  <ons-input type="email" id="email_register" placeholder="メールアドレス" modifier="underbar"></ons-input>
+  <p>Password</p>
+  <ons-input type="password" id="password_register" placeholder="パスワード" modifier="underbar"></ons-input><br>
+  <input type="button" value="登録" class="btn" id="register">
+  <div class="back">
+    <a onclick="document.querySelector('#myNavigator').popPage();"><img src="./images/BACK.png" width="30px"></a>
+  </div>
+  <script>
+    ons.getScriptPage().onShow = function () {
+      document.getElementById("register").onclick = function() {
+        const email = document.getElementById("email_register").value;
+        const password = document.getElementById("password_register").value;
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+          .then(function() {
+            document.querySelector('#myNavigator').popPage();
+            ons.notification.toast('アカウント登録成功', { timeout: 1000, animation: 'fall'});
+          })
+          .catch(function(error) {
+            ons.notification.toast(error.message, { timeout: 1000, animation: 'fall'});
+          });
+      }
+      var user = firebase.auth().currentUser;
+
+      user.updateProfile({
+        displayName: document.getElementById("userName_register"),
+      }).then(function() {
+        // Update successful.
+      }).catch(function(error) {
+        // An error happened.
+      });
+    }
+  </script>
+</ons-page>

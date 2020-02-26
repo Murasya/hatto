@@ -1,0 +1,19 @@
+<ons-page>
+  <ons-bottom-toolbar>
+    <div class="left" style="text-align: left;"><ons-back-button></ons-back-button></div>
+    <div class="center">記録一覧</div>
+  </ons-bottom-toolbar>
+  <ons-search-input id="tagInput_tss" onchange="init()" placeholder="タグの検索"></ons-search-input>
+  <ons-button id="searchButton_tss">検索</ons-button>
+  <ons-list id="list_tss"></ons-list>
+  <script>
+    ons.getScriptPage().onInit = function() {
+      document.getElementById("searchButton_tss").onclick = init();
+    }
+
+    function init() {
+      var tagName = document.getElementById("tagInput_tss").value;
+      document.getElementById("myNavigator").pushPage('tagIndex.html', {data: {tagName: tagName}});
+    }
+  </script>
+</ons-page>

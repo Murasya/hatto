@@ -1,0 +1,14 @@
+html {
+    background-color: lightgray;
+}
+
+#signIn,#register {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 10%;
+}

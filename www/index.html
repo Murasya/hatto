@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <script src="components/loader.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+  <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+  <link rel="stylesheet" href="components/loader.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/index.css">
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
+  <script src="js/app.js"></script>
+</head>
+<body>
+  <ons-navigator swapable id="myNavigator" page="index.html"></ons-navigator>
+
+  <template id="index.html">
+    <ons-page id="index">
+      <ons-bottom-toolbar>
+        <div class="center">Home</div>
+      </ons-bottom-toolbar>
+      <div class="background" style="background-color: rgb(255, 81, 0);"></div>
+      <div id="showLoading_index"></div>
+      <div id="contents_index" hidden>
+        <div class="logo">
+          <img id="logo" src="./images/HATTOlogo.png" alt="ロゴ">
+        </div>
+        <div class="container">
+          <button id="login">ログイン</button>
+          <button id="logout">ログアウト</button>
+          <button id="analyze">分析する</button>
+          <button id="showRecode">自分の記録を見る</button>
+          <button id="showAll">みんなの記録を見る</button>
+        </div>
+      </div>
+      <script>
+        ons.getScriptPage().onInit = function() {
+          firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+              // User is signed in.
+              var displayName = user.displayName;
+              var email = user.email;
+              var emailVerified = user.emailVerified;
+              var photoURL = user.photoURL;
+              var isAnonymous = user.isAnonymous;
+              var uid = user.uid;
+              var providerData = user.providerData;
+              document.getElementById("login").hidden = true;
+              document.getElementById("logout").hidden = false;
+              // ...
+            } else {
+              // User is signed out.
+              // ...
+              document.getElementById("login").hidden = false;
+              document.getElementById("logout").hidden = true;
+            }
+          });
+          document.getElementById("logout").onclick = function() {
+            firebase.auth().signOut();
+            localStorage.removeItem("uid");
+          }
+          document.getElementById("showRecode").onclick = function() {
+            document.getElementById("myNavigator").pushPage('myRecode.html');
+          }
+          document.getElementById("showAll").onclick = function() {
+            document.getElementById("myNavigator").pushPage('tagSearchShare.html');
+          }
+        }
+        ons.getScriptPage().onShow = function() {
+          document.getElementById("showLoading_index").hidden = true;
+          document.getElementById("contents_index").hidden = false;
+        }
+      </script>
+    </ons-page>
+  </template>
+</body>
+</html>

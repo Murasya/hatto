@@ -1,0 +1,70 @@
+<ons-page>
+  <ons-bottom-toolbar>
+    <div class="left" style="text-align: left;"><ons-back-button></ons-back-button></div>
+    <div class="center">記録一覧</div>
+  </ons-bottom-toolbar>
+  <div id="showLoading"></div>
+  <div id="contents" hidden>
+    <input type="button" class="btn" value="#で検索" id="tagSearchButton" onclick="location.href='./tagSearch.html'">
+    <ons-list id="list">
+
+    </ons-list>
+    <div class="back">
+      <a onclick="document.querySelector('#myNavigator').popPage();"><img src="./images/BACK.png" width="30px"></a>
+    </div>
+  </div>
+  
+  <script>
+    ons.getScriptPage().onShow = function() {
+      document.getElementById("showLoading").hidden = true;
+      document.getElementById("contents").hidden = false;
+      document.getElementById("tagSearchButton").onclick = function() {
+        document.getElementById("myNavigator").pushPage('tagSearch.html');
+      }
+    };
+    ons.getScriptPage().onInit = function() {
+      firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+        var displayName = user.displayName;
+        var email = user.email;
+        var emailVerified = user.emailVerified;
+        var photoURL = user.photoURL;
+        var isAnonymous = user.isAnonymous;
+        var uid = user.uid;
+        var providerData = user.providerData;
+        var db = firebase.firestore();
+        db.collection('questionAndAnswer').where("uid", "==", uid)
+          .get()
+          .then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+              // doc.data() is never undefined for query doc snapshots
+              console.log(doc.id, " => ", doc.data());
+              var btn = document.createElement("ons-list-item");
+              btn.setAttribute("tappable");
+              btn.textContent = doc.data().answers[0];
+              btn.onclick = function() {
+                document.getElementById("myNavigator").pushPage('result.html', {
+                  data: {
+                    id: doc.id,
+                    questions: doc.data().questions,
+                    answers: doc.data().answers,
+                    main: doc.data().answers[0],
+                    public: doc.data().public,
+                    memo: doc.data().memo,
+                    tags: doc.data().tags
+                  }
+                });
+              };
+              document.getElementById("list").appendChild(btn);
+            });
+          })
+          .catch(function(error) {
+            console.log("Error getting documents: ", error);
+          });
+      } else {
+      }
+    });
+    }
+  </script>
+</ons-page>

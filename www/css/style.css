@@ -1,0 +1,27 @@
+html {
+  background-color: lightgray;
+}
+
+body {
+  padding-left: 5%;
+  padding-right: 5%;
+  text-align: center;
+}
+.btn {
+  border-radius: 5px;
+}
+.back {
+  position: fixed;
+  bottom: 5%;
+  left: 10%;
+  text-align: left;
+}
+.red {
+  color: red;
+}
+.list_btn {
+  background-color: white;
+  color: black;
+  width: 80%;
+  margin-top: 10px;
+}
