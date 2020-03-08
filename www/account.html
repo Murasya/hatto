@@ -1,18 +1,15 @@
-<ons-page>
+<ons-page id="Account">
   <ons-toolbar>
     <div class="left"><ons-back-button></ons-back-button></div>
     <div class="center">アカウント</div>
   </ons-toolbar>
   <div id="signIn">
-    <p>E-mail</p>
-    <ons-input type="email" id="email" placeholder="メールアドレス" modifier="underbar"></ons-input>
-    <p>Password</p>
-    <ons-input type="password" id="password" placeholder="パスワード" modifier="underbar"></ons-input><br>
-    <input type="button" value="ログイン" class="btn" id="login_account"><br>
+    <p style="text-align: left; margin-top: 22.1%; margin-left: 15%;">メールアドレス</p>
+    <input type="email" id="email">
+    <p style="text-align: left;margin-left: 15%;">パスワード</p>
+    <input type="password" id="password">
+    <input type="button" value="GO!" class="btn" id="login_account">
     <input type="button" value="新規登録" class="btn" id="new_account">
-  </div>
-  <div class="back">
-    <a onclick="document.querySelector('#myNavigator').popPage();"><img src="./images/BACK.png" width="30px"></a>
   </div>
   <script>
     ons.getScriptPage().onShow = function() {

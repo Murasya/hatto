@@ -10,7 +10,6 @@
   <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
   <link rel="stylesheet" href="components/loader.css">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/index.css">
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
 
@@ -19,6 +18,8 @@
   <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
+  <!-- Vue.js-->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script src="js/app.js"></script>
 </head>
 <body>
@@ -26,15 +27,13 @@
 
   <template id="index.html">
     <ons-page id="index">
-      <ons-bottom-toolbar>
+      <ons-toolbar>
         <div class="center">Home</div>
-      </ons-bottom-toolbar>
-      <div class="background" style="background-color: rgb(255, 81, 0);"></div>
+      </ons-toolbar>
+      <div class="background" style="background-color: #E8610C;"></div>
       <div id="showLoading_index"></div>
       <div id="contents_index" hidden>
-        <div class="logo">
-          <img id="logo" src="./images/HATTOlogo.png" alt="ロゴ">
-        </div>
+        <img id="logo_i" src="./images/HATTO!_logo2.png" alt="ロゴ">
         <div class="container">
           <button id="login">ログイン</button>
           <button id="logout">ログアウト</button>
@@ -57,14 +56,23 @@
               var providerData = user.providerData;
               document.getElementById("login").hidden = true;
               document.getElementById("logout").hidden = false;
+              document.getElementById("analyze").hidden = false;
+              document.getElementById("showRecode").hidden = false;
+              document.getElementById("showAll").hidden = false;
               // ...
             } else {
               // User is signed out.
               // ...
               document.getElementById("login").hidden = false;
               document.getElementById("logout").hidden = true;
+              document.getElementById("analyze").hidden = true;
+              document.getElementById("showRecode").hidden = true;
+              document.getElementById("showAll").hidden = true;
             }
           });
+          document.getElementById("login").onclick = function() {
+            document.getElementById("myNavigator").pushPage('account.html', {data: {title: 'アカウント'}})
+          }
           document.getElementById("logout").onclick = function() {
             firebase.auth().signOut();
             localStorage.removeItem("uid");

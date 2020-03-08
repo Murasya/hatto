@@ -25,3 +25,60 @@ body {
   width: 80%;
   margin-top: 10px;
 }
+
+button {
+  width: 225.31px;
+  height: 42.6px;
+  text-align: center;
+  background-color: #A6A7A7;
+  border-radius: 10.07px;
+  color: #FFFFFF;
+  margin: 0 auto 1.9%;
+}
+
+.container {
+  flex-direction: column;
+}
+
+#logo_i {
+  text-align: center;
+  margin-top: 27.8%;
+  margin-bottom: 8.4%;
+  width: 277.34px;
+}
+
+#login, #logout,#analyze {
+  font-size: 25.14px;
+}
+
+#showRecode, #showAll {
+  font-size: 21.43px;
+}
+
+#email, #password {
+  margin: 0 15% 0;
+  width: 70%;
+  height: 10%;
+  border-radius: 9.16px;
+  border-color: #A6A7A7;
+  border-width: 2.39px;
+}
+
+#login_account {
+  width: 72.98px;
+  height: 44.9px;
+  background-color: #E8610C;
+  color: #FFFFFF;
+  font-size: 26.27px;
+  display: block;
+  margin: 50.74px auto 99.71px;
+}
+
+#new_account {
+  width: 117.18px;
+  height: 33.89px;
+  background-color: #A6A7A7;
+  color: #FFFFFF;
+  border-radius: 6.47px;
+  font-size: 18.43px;
+}

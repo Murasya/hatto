@@ -3,15 +3,18 @@
     <div class="left"><ons-back-button></ons-back-button></div>
     <div class="center">新規登録</div>
   </ons-toolbar>
-  <p>User name</p>
-  <ons-input type="text" id="userName_register" placeholder="ユーザ名" modifier="underbar"></ons-input>
-  <p>E-mail</p>
-  <ons-input type="email" id="email_register" placeholder="メールアドレス" modifier="underbar"></ons-input>
-  <p>Password</p>
-  <ons-input type="password" id="password_register" placeholder="パスワード" modifier="underbar"></ons-input><br>
-  <input type="button" value="登録" class="btn" id="register">
-  <div class="back">
-    <a onclick="document.querySelector('#myNavigator').popPage();"><img src="./images/BACK.png" width="30px"></a>
+  <div class="container">
+    <p style="margin: 0 auto 0 15%; font-size: 18px; text-align: left;">ユーザーネーム</p>
+    <input type="text" id="userName_register">
+    <p style="margin: 0 auto 0 15%; font-size: 18px; text-align: left;">メールアドレス</p>
+    <input type="email" id="email_register">
+    <p style="margin: 0 auto 0 15%; font-size: 18px; text-align: left;">パスワード</p>
+    <input type="password" id="password_register">
+    <p  style="margin: 0 auto 0 15%; font-size: 18px; text-align: left;">生年月日</p>
+    <input type="date" id="date_register">
+    <input type="radio" id="man_register" value="man" name="gender"><label for="man_register">男性</label>
+    <input type="radio" id="woman_register" value="woman" name="gender"><label for="woman_register">女性</label>
+    <input type="button" value="登録" class="btn" id="register">
   </div>
   <script>
     ons.getScriptPage().onShow = function () {
@@ -26,16 +29,16 @@
           .catch(function(error) {
             ons.notification.toast(error.message, { timeout: 1000, animation: 'fall'});
           });
+          var user = firebase.auth().currentUser;
+          user.updateProfile({
+            displayName: document.getElementById("userName_register"),
+          }).then(function() {
+            // Update successful.
+          }).catch(function(error) {
+            // An error happened.
+          });
       }
-      var user = firebase.auth().currentUser;
-
-      user.updateProfile({
-        displayName: document.getElementById("userName_register"),
-      }).then(function() {
-        // Update successful.
-      }).catch(function(error) {
-        // An error happened.
-      });
+      
     }
   </script>
 </ons-page>
