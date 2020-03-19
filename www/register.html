@@ -3,42 +3,40 @@
     <div class="left"><ons-back-button></ons-back-button></div>
     <div class="center">新規登録</div>
   </ons-toolbar>
-  <div class="container">
-    <p style="margin: 0 auto 0 15%; font-size: 18px; text-align: left;">ユーザーネーム</p>
-    <input type="text" id="userName_register">
+  <div id="register">
+    <!--<p style="margin: 0 auto 0 15%; font-size: 18px; text-align: left;">ユーザーネーム</p>
+    <input type="text" id="userName_register">-->
     <p style="margin: 0 auto 0 15%; font-size: 18px; text-align: left;">メールアドレス</p>
-    <input type="email" id="email_register">
+    <input type="email" id="email_register" v-model="email">
     <p style="margin: 0 auto 0 15%; font-size: 18px; text-align: left;">パスワード</p>
-    <input type="password" id="password_register">
-    <p  style="margin: 0 auto 0 15%; font-size: 18px; text-align: left;">生年月日</p>
+    <input type="password" id="password_register" v-model="password">
+    <!-- <p  style="margin: 0 auto 0 15%; font-size: 18px; text-align: left;">生年月日</p>
     <input type="date" id="date_register">
     <input type="radio" id="man_register" value="man" name="gender"><label for="man_register">男性</label>
-    <input type="radio" id="woman_register" value="woman" name="gender"><label for="woman_register">女性</label>
-    <input type="button" value="登録" class="btn" id="register">
+    <input type="radio" id="woman_register" value="woman" name="gender"><label for="woman_register">女性</label> -->
+    <input type="button" value="登録" class="btn" id="register" @click="onRegister">
   </div>
   <script>
-    ons.getScriptPage().onShow = function () {
-      document.getElementById("register").onclick = function() {
-        const email = document.getElementById("email_register").value;
-        const password = document.getElementById("password_register").value;
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-          .then(function() {
-            document.querySelector('#myNavigator').popPage();
-            ons.notification.toast('アカウント登録成功', { timeout: 1000, animation: 'fall'});
-          })
-          .catch(function(error) {
-            ons.notification.toast(error.message, { timeout: 1000, animation: 'fall'});
-          });
-          var user = firebase.auth().currentUser;
-          user.updateProfile({
-            displayName: document.getElementById("userName_register"),
-          }).then(function() {
-            // Update successful.
-          }).catch(function(error) {
-            // An error happened.
-          });
-      }
-      
+    ons.getScriptPage().onInit = function () {
+      var vm_r = new Vue({
+        el: '#register',
+        data: {
+          email: "",
+          password: ""
+        },
+        methods: {
+          onRegister: function() {
+            firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+              .then(function() {
+                document.querySelector('#myNavigator').resetToPage("index.html");
+                ons.notification.toast('アカウント登録成功', { timeout: 1000, animation: 'fall'});
+              })
+              .catch(function(error) {
+                ons.notification.toast(error.message, { timeout: 1000, animation: 'fall'});
+              }) 
+          }
+        }
+      });
     }
   </script>
 </ons-page>
