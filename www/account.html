@@ -1,40 +1,39 @@
-<ons-page id="Account">
+<ons-page id="account">
   <ons-toolbar>
     <div class="left"><ons-back-button></ons-back-button></div>
     <div class="center">アカウント</div>
   </ons-toolbar>
   <div id="signIn">
     <p style="text-align: left; margin-top: 22.1%; margin-left: 15%;">メールアドレス</p>
-    <input type="email" id="email">
+    <input type="email" id="email" v-model="email">
     <p style="text-align: left;margin-left: 15%;">パスワード</p>
-    <input type="password" id="password">
-    <input type="button" value="GO!" class="btn" id="login_account">
-    <input type="button" value="新規登録" class="btn" id="new_account">
+    <input type="password" id="password" v-model="password">
+    <input type="button" value="GO!" class="btn" id="login_account" @click="onLoginAccount">
+    <input type="button" value="新規登録" class="btn" id="new_account" @click="onNewAccount">
   </div>
   <script>
-    ons.getScriptPage().onShow = function() {
-      document.getElementById("login_account").onclick = function() {
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-        firebase.auth().signInWithEmailAndPassword(email, password)
-          .then(function() {
-            firebase.auth().onAuthStateChanged(function(user) {
-              if (user) {
-                var uid = user.uid;
-                localStorage.setItem("uid", uid);
-              } else {
-              }
-            });
-            ons.notification.toast('ログイン成功', { timeout: 1000, animation: 'fall'})
-            document.querySelector('#myNavigator').popPage();
-          })
-          .catch(function(error) {
-            alert(error.message);
-          });
-      }
-      document.getElementById("new_account").onclick = function() {
-        document.querySelector('#myNavigator').pushPage("register.html");
-      }
+    ons.getScriptPage().onInit = function() {
+      var vm_a = new Vue({
+        el: '#signIn',
+        data: {
+          email: "",
+          password: ""
+        },
+        methods: {
+          onLoginAccount: function() {
+            firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+              .then(function () {
+                ons.notification.toast('ログイン成功', { timeout: 1000, animation: 'fall'});
+                document.querySelector('#myNavigator').popPage();
+              }).catch(function(error) {
+                alert(error.message);
+              });
+          },
+          onNewAccount: function() {
+            document.querySelector('#myNavigator').pushPage("register.html");
+          }
+        }
+      });
     }
   </script>
 </ons-page>
