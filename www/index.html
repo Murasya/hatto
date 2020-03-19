@@ -31,62 +31,49 @@
         <div class="center">Home</div>
       </ons-toolbar>
       <div class="background" style="background-color: #E8610C;"></div>
-      <div id="showLoading_index"></div>
-      <div id="contents_index" hidden>
+      <div id="contents_index">
         <img id="logo_i" src="./images/HATTO!_logo2.png" alt="ロゴ">
         <div class="container">
-          <button id="login">ログイン</button>
-          <button id="logout">ログアウト</button>
-          <button id="analyze">分析する</button>
-          <button id="showRecode">自分の記録を見る</button>
-          <button id="showAll">みんなの記録を見る</button>
+          <div v-if="currentUser== null">
+            <button id="login" @click="loginButtonClick">ログイン</button>
+          </div>
+          <div v-else>
+            <button id="logout" @click="logoutButtonClick">ログアウト</button>
+            <button id="analyze" @click="analyzeButtonClick">分析する</button>
+            <button id="showRecode" @click="showRecodeButtonClick">記録を見る</button>
+          </div>
         </div>
       </div>
       <script>
         ons.getScriptPage().onInit = function() {
-          firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-              // User is signed in.
-              var displayName = user.displayName;
-              var email = user.email;
-              var emailVerified = user.emailVerified;
-              var photoURL = user.photoURL;
-              var isAnonymous = user.isAnonymous;
-              var uid = user.uid;
-              var providerData = user.providerData;
-              document.getElementById("login").hidden = true;
-              document.getElementById("logout").hidden = false;
-              document.getElementById("analyze").hidden = false;
-              document.getElementById("showRecode").hidden = false;
-              document.getElementById("showAll").hidden = false;
-              // ...
-            } else {
-              // User is signed out.
-              // ...
-              document.getElementById("login").hidden = false;
-              document.getElementById("logout").hidden = true;
-              document.getElementById("analyze").hidden = true;
-              document.getElementById("showRecode").hidden = true;
-              document.getElementById("showAll").hidden = true;
+          var vm_i = new Vue({
+            el: '#index',
+            data: {
+              currentUser: null
+            },
+            methods: {
+              loginButtonClick: function () {
+                document.getElementById("myNavigator").pushPage('account.html', {data: {title: 'アカウント'}})
+              },
+              logoutButtonClick: function () {
+                firebase.auth().signOut();
+              },
+              analyzeButtonClick: function () {
+                document.getElementById("myNavigator").pushPage('analyze.html');
+              },
+              showRecodeButtonClick: function() {
+                document.getElementById("myNavigator").pushPage('myRecode.html');
+              }
             }
           });
-          document.getElementById("login").onclick = function() {
-            document.getElementById("myNavigator").pushPage('account.html', {data: {title: 'アカウント'}})
-          }
-          document.getElementById("logout").onclick = function() {
-            firebase.auth().signOut();
-            localStorage.removeItem("uid");
-          }
-          document.getElementById("showRecode").onclick = function() {
-            document.getElementById("myNavigator").pushPage('myRecode.html');
-          }
-          document.getElementById("showAll").onclick = function() {
-            document.getElementById("myNavigator").pushPage('tagSearchShare.html');
-          }
-        }
-        ons.getScriptPage().onShow = function() {
-          document.getElementById("showLoading_index").hidden = true;
-          document.getElementById("contents_index").hidden = false;
+          firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+              console.log(user.uid)
+            } else {
+              console.log("not LogedIn")
+            }
+            vm_i.currentUser = user
+          });
         }
       </script>
     </ons-page>
