@@ -2,22 +2,42 @@
   <ons-toolbar>
     <div class="left"><ons-back-button></ons-back-button></div>
   </ons-toolbar>
-  <p id="q">取り組みたいこと</p>
-  <input type="text" class="inputText" id="tackle"></input><br>
-  <button class="btn" onclick="next()">Next</button><br>
-  <div class="back">
-    <a onclick="document.querySelector('#myNavigator').popPage();"><img src="./images/BACK.png" width="30px"></a>
+  <div id="analyzeVue">
+    <p id="q">取り組みたいことや<br>叶えたいことを書くテン。</p>
+    <input type="text" class="inputText" id="tackle" v-model="theme"></input><br>
+    <button class="btn" @click="nextButtonClick">これを分析！</button><br>
   </div>
   <script>
-    function next() {
-      var text = document.getElementById("tackle").value;
-      document.querySelector('#myNavigator').pushPage('question.html', {
+    ons.getScriptPage().onInit = function () {
+      var qAndA = new QAndA()
+      var vm_a = new Vue({
+        el: '#analyzeVue',
         data: {
-          title: '分析',
-          q: "取り組みたいこと",
-          a: text
+          theme: "",
+        },
+        methods: {
+          nextButtonClick: function() {
+            qAndA.questions.push("取り組みたいこと/叶えたいこと")
+            qAndA.answers.push(this.theme)
+            qAndA.uid = firebase.auth().currentUser.uid
+            document.querySelector('#myNavigator').pushPage('start.html', {
+              data: {
+                qAndA: qAndA
+              }
+            });
+          }
         }
-      });
+      })
     }
+    // function next() {
+    //   var text = document.getElementById("tackle").value;
+    //   document.querySelector('#myNavigator').pushPage('question.html', {
+    //     data: {
+    //       title: '分析',
+    //       q: "取り組みたいこと",
+    //       a: text
+    //     }
+    //   });
+    // }
   </script>
 </ons-page>

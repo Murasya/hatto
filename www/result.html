@@ -13,8 +13,10 @@
     <a onclick="document.querySelector('#myNavigator').popPage();"><img src="./images/BACK.png" width="30px"></a>
   </div>
   <script>
-    // 入力データ：answers, questions, main, memo
+    var myNavigator = document.querySelector('#myNavigator')
     ons.getScriptPage().onInit = function() {
+      var qAndA = myNavigator.topPage.data.qAndA
+      console.log(qAndA)
       var datas = this.data;
       const answers = this.data.answers;
       const questions = this.data.questions;

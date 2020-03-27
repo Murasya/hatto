@@ -1,0 +1,17 @@
+<ons-page id="start">
+  <p>START!</p>
+  <script>
+    var myNavigator = document.querySelector('#myNavigator')
+    ons.getScriptPage().onInit = function() {
+      
+      setTimeout(startQuestion, 800)
+    }
+    function startQuestion() {
+      myNavigator.pushPage('question.html', {
+        data: {
+          qAndA: myNavigator.topPage.data.qAndA
+        }
+      })
+    }
+  </script>
+</ons-page>

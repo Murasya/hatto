@@ -2,49 +2,80 @@
   <ons-toolbar>
     <div class="left"><ons-back-button></ons-back-button></div>
   </ons-toolbar>
-  <p id="main"></p>
+  <div id="questionVue">
+    <p>{{ theme }}</p>
+    <div v-for="item in items">
+      <p>{{ item.num }}</p>
+      <p>{{ item.why }}</p>
+      <p>{{ item.answer }}</p>
+    </div>
+    <div>
+      <p>{{ qa.num }}</p>
+      <p>{{ qa.why }}<input v-if="qa.num >= 2" type="text" v-model="qa.question">？</p>
+      <textarea v-model="qa.answer"></textarea>
+    </div>
+    <button @click="interruptionButtonClick"></button>
+    <button @click="helpButtonClick"></button>
+    <button @click="nextButtonClick"></button>
+    <button v-if="qa.num >= 5" @click="finishButtonClick"></button>
+  </div>
+  <!-- <p id="main"></p>
   <div id="chat"></div>
   <ons-input id="ansText" modifier="underbar"></ons-input><br>
   <input type="button" class="btn" id="ansButton" value="Next"><br>
   <a id="finButton" hidden><img src="./images/hattositta.png" width="50px"></a><br>
   <div class="back">
     <a onclick="document.querySelector('#myNavigator').popPage();"><img src="./images/BACK.png" width="30px"></a>
-  </div>
+  </div> -->
   <script>
+    var myNavigator = document.querySelector('#myNavigator')
     ons.getScriptPage().onInit = function() {
-      var questions = [];
-      var answers = [];
-      document.getElementById("main").textContent = this.data.a;
-      questions.push(this.data.q);
-      answers.push(this.data.a);
-      var qString = "なぜ取り組みたい？";
-      var q = document.createElement('p');
-      q.textContent = qString;
-      document.getElementById("chat").appendChild(q);
-      this.querySelector('#ansButton').onclick = function() {
-        questions.push(qString);
-        answers.push(document.getElementById("ansText").value);
-        var a = document.createElement('p');
-        a.textContent = document.getElementById("ansText").value;
-        document.getElementById("chat").appendChild(a);
-        var q = document.createElement('p');
-        if(answers.length >= 6) {
-          document.getElementById("finButton").hidden = false;
-        }
-        qString = "それはどうして？";
-        q.textContent = qString;
-        document.getElementById("chat").appendChild(q);
-        document.getElementById("ansText").value = "";
-      }
-      this.querySelector('#finButton').onclick = function() {
-        document.querySelector('#myNavigator').pushPage('resultEdit.html', {
-          data: {
-            title: '分析',
-            questions: questions,
-            answers: answers
+      var qAndA = myNavigator.topPage.data.qAndA;
+      var vm_q = new Vue({
+        el: '#questionVue',
+        data: {
+          theme: qAndA.answers[0],
+          items: [],
+          qa: {
+            num: 1,
+            why: "なぜ取り組みたい/叶えたいの",
+            question: "",
+            answer: ""
           }
-        });
-      }
+        },
+        methods: {
+          interruptionButtonClick: function() {
+
+          },
+          helpButtonClick: function() {
+
+          },
+          nextButtonClick: function() {
+            this.qa.why = this.qa.why + this.qa.question + "？"
+            this.items.push(Object.assign({}, this.qa))
+            this.qa.num++;
+            this.qa.why = "なぜ";
+            this.qa.question = "";
+            this.qa.answer = "";
+            console.log(this.items)
+          },
+          finishButtonClick: function() {
+            this.qa.why = this.qa.why + this.qa.question + "？"
+            this.items.push(Object.assign({}, this.qa))
+            this.items.forEach(item => {
+              console.log(item)
+              qAndA.questions.push(item.why)
+              qAndA.answers.push(item.answer)
+            });
+            console.log(qAndA)
+            myNavigator.pushPage('result.html',{
+              data: {
+                qAndA: qAndA
+              }
+            })
+          }
+        }
+      });
     }
   </script>
 </ons-page>
