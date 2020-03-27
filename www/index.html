@@ -27,21 +27,16 @@
 
   <template id="index.html">
     <ons-page id="index">
-      <ons-toolbar>
-        <div class="center">Home</div>
-      </ons-toolbar>
-      <div class="background" style="background-color: #E8610C;"></div>
-      <div id="contents_index">
-        <img id="logo_i" src="./images/HATTO!_logo2.png" alt="ロゴ">
-        <div class="container">
-          <div v-if="currentUser== null">
-            <button id="login" @click="loginButtonClick">ログイン</button>
-          </div>
-          <div v-else>
-            <button id="analyze" @click="analyzeButtonClick">ARCHIVES</button>
-            <button id="showRecode" @click="showRecodeButtonClick">SAVED DATA</button>
-            <button id="logout" @click="logoutButtonClick">SIGN OUT</button>
-          </div>
+      <div class="background" style="background-color: #FFFFFF;"></div>
+      <div class="content">
+        <img id="logo_i" src="./images/サインイン後_home.png" alt="ロゴ">
+        <div v-if="currentUser== null">
+          <button id="login" @click="loginButtonClick">ログイン</button>
+        </div>
+        <div id="buttons_index" v-else>
+          <a id="analyze" @click="analyzeButtonClick">ARCHIVES&nbsp;</a>
+          <a id="showRecode" @click="showRecodeButtonClick">SAVED&nbsp;DATA&nbsp;</a>
+          <a id="logout" @click="logoutButtonClick">SIGN&nbsp;OUT&nbsp;</a>
         </div>
       </div>
       <script>

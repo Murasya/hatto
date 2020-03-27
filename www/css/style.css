@@ -7,52 +7,43 @@ body {
   padding-right: 5%;
   text-align: center;
 }
-.btn {
-  border-radius: 5px;
-}
-.back {
-  position: fixed;
-  bottom: 5%;
-  left: 10%;
-  text-align: left;
-}
-.red {
-  color: red;
-}
-.list_btn {
-  background-color: white;
-  color: black;
-  width: 80%;
-  margin-top: 10px;
-}
 
-button {
-  width: 225.31px;
-  height: 42.6px;
-  text-align: center;
-  background-color: #A6A7A7;
-  border-radius: 10.07px;
-  color: #FFFFFF;
-  margin: 0 auto 1.9%;
-}
-
-.container {
+.content {
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+}
+
+#buttons_index {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 #logo_i {
-  text-align: center;
-  margin-top: 27.8%;
-  margin-bottom: 8.4%;
-  width: 277.34px;
+  align-self: center;
+  margin-bottom: 10%;
+  width: 50%;
 }
 
-#login, #logout,#analyze {
-  font-size: 25.14px;
+#logout {
+  margin-right: 10%;
+  font-size: 13px;
+  font-family: "Futura-CondensedExtraBold", Futura, sans-serif;
+  font-stretch: condensed;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
-#showRecode, #showAll {
-  font-size: 21.43px;
+#analyze, #showRecode {
+  margin-bottom: 2%;
+  margin-right: 10%;
+  font-size: 14px;
+  font-family: "Futura-CondensedExtraBold", Futura, sans-serif;
+  font-stretch: condensed;
+  font-weight: bold;
+  color: #DE4D2B;
+  text-decoration: underline;
 }
 
 #email, #password {

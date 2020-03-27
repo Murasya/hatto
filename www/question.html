@@ -19,14 +19,6 @@
     <button @click="nextButtonClick"></button>
     <button v-if="qa.num >= 5" @click="finishButtonClick"></button>
   </div>
-  <!-- <p id="main"></p>
-  <div id="chat"></div>
-  <ons-input id="ansText" modifier="underbar"></ons-input><br>
-  <input type="button" class="btn" id="ansButton" value="Next"><br>
-  <a id="finButton" hidden><img src="./images/hattositta.png" width="50px"></a><br>
-  <div class="back">
-    <a onclick="document.querySelector('#myNavigator').popPage();"><img src="./images/BACK.png" width="30px"></a>
-  </div> -->
   <script>
     var myNavigator = document.querySelector('#myNavigator')
     ons.getScriptPage().onInit = function() {
