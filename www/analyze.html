@@ -1,12 +1,17 @@
-<ons-page>
-  <ons-toolbar>
-    <div class="left"><ons-back-button></ons-back-button></div>
-  </ons-toolbar>
-  <div id="analyzeVue">
-    <p id="q">取り組みたいことや<br>叶えたいことを書くテン。</p>
-    <input type="text" class="inputText" id="tackle" v-model="theme"></input><br>
-    <button class="btn" @click="nextButtonClick">これを分析！</button><br>
+<ons-page id="analyze">
+  <div class="background"></div>
+  <div class="content">
+    <img class="cartoon" src="./images/分析中_キャラ.png">
+    <div id="analyzeVue">
+      <div class="speech">
+        <img src="images/分析_お題画面_キャラ.png">
+        <span>取り組みたいことや<br>叶えたいことを書くテン。</span>
+      </div>
+      <input type="text" v-model="theme"></input><br>
+      <button @click="nextButtonClick">これを分析！</button><br>
+    </div>
   </div>
+  
   <script>
     ons.getScriptPage().onInit = function () {
       var qAndA = new QAndA()

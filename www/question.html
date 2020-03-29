@@ -14,10 +14,10 @@
       <p>{{ qa.why }}<input v-if="qa.num >= 2" type="text" v-model="qa.question">？</p>
       <textarea v-model="qa.answer"></textarea>
     </div>
-    <button @click="interruptionButtonClick"></button>
-    <button @click="helpButtonClick"></button>
-    <button @click="nextButtonClick"></button>
-    <button v-if="qa.num >= 5" @click="finishButtonClick"></button>
+    <a @click="interruptionButtonClick"><img src="./images/分析_一時保存ボタン.png" alt="中断ボタン" width="30px"></a>
+    <a @click="helpButtonClick"><img src="./images/分析_ヘルプボタン.png" alt="ヘルプボタン" width="30px"></a>
+    <a @click="nextButtonClick"><img src="./images/分析_nextボタン.png" alt="Nextボタン"  width="70px"></a>
+    <a v-if="qa.num >= 5" @click="finishButtonClick"><img src="./images/分析_finish!ボタン.png" alt="finishボタン" width="70px"></a>
   </div>
   <script>
     var myNavigator = document.querySelector('#myNavigator')
