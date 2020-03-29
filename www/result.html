@@ -1,77 +1,50 @@
 <ons-page>
-  <ons-toolbar>
-    <div class="left"><ons-back-button></ons-back-button></div>
-    <div class="center">記録</div>
-  </ons-toolbar>
-  <p id="main"></p>
-  <div id="qanda"></div>
-  <p>メモ</p>
-  <div id="memo"></div>
-  <input type="button" id="save" class="btn" value="追記する" hidden>
-  <input type="button" id="edit" class="btn" value="編集する" hidden>
-  <div class="back">
-    <a onclick="document.querySelector('#myNavigator').popPage();"><img src="./images/BACK.png" width="30px"></a>
+  <div id="resultVue">
+    <p>{{ theme }}</p>
+    <select v-model="category">
+      <option disabled value="">カテゴリ</option>
+    </select>
+    <div v-for="index in answers.length-1">
+      <p>{{ index }}</p>
+      <p>{{ questions[index] }}</p>
+      <p>{{ answers[index] }}</p>
+    </div>
+    <textarea v-model="memo"></textarea>
+    <select v-model="success">
+      <option disabled value="">分析はうまくいった？</option>
+      <option>はい</option>
+      <option>いいえ</option>
+      <option>どちらともいえない</option>
+    </select>
+    <button @click="saveButtonClick">記録する</button>
+    <button>Tweet</button>
   </div>
+
   <script>
     var myNavigator = document.querySelector('#myNavigator')
     ons.getScriptPage().onInit = function() {
       var qAndA = myNavigator.topPage.data.qAndA
       console.log(qAndA)
-      var datas = this.data;
-      const answers = this.data.answers;
-      const questions = this.data.questions;
-
-      document.getElementById("main").textContent = this.data.main;
-      document.getElementById("memo").textContent = this.data.memo;
-
-      if(localStorage.getItem("uid") == this.data.uid) {
-        document.getElementById("save").hidden = false;
-        document.getElementById("edit").hidden = false;
-      }
-
-      for(i=1; ; i++){
-        var adiv = document.createElement('p');
-        adiv.textContent = answers[i];
-        document.getElementById('qanda').appendChild(adiv);
-        if(i>=answers.length-1) {
-          break;
+      var vm = new Vue({
+        el: '#resultVue',
+        data: {
+          theme: qAndA.answers[0],
+          questions: qAndA.questions,
+          answers: qAndA.answers,
+          memo: '',
+          success: '',
+          category: ''
+        },
+        methods: {
+          saveButtonClick: function() {
+            qAndA.memo = this.memo;
+            qAndA.success = this.success;
+            qAndA.category = this.category;
+            setNewData(qAndA)
+            myNavigator.resetToPage('index.html')
+          }
         }
-        var arrow = document.createElement('p');
-        arrow.textContent = "▼";
-        document.getElementById('qanda').appendChild(arrow);
-      }
-    }
-    ons.getScriptPage().onShow = function() {
-      var datas = this.data;
-      const answers = this.data.answers;
-      const questions = this.data.questions;
-      
-      document.getElementById("save").onclick = function() {
-        document.getElementById("myNavigator").pushPage('save.html', {
-          data: {
-            id: datas.id,
-            questions: datas.questions,
-            answers: datas.answers,
-            main: datas.main,
-            public: datas.public,
-            memo: datas.memo,
-            tags: datas.tags
-          }
-        });
-      }
-      document.getElementById("edit").onclick = function() {
-        document.getElementById("myNavigator").pushPage('resultEdit.html', {
-          data: {
-            id: datas.id,
-            questions: datas.questions,
-            answers: datas.answers,
-            main: datas.main,
-            public: datas.public,
-            memo: datas.memo,
-            tags: datas.tags
-          }
-        });
-      }
+      });
     }
   </script>
 </ons-page>
