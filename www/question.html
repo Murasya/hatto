@@ -1,7 +1,4 @@
 <ons-page>
-  <ons-toolbar>
-    <div class="left"><ons-back-button></ons-back-button></div>
-  </ons-toolbar>
   <div id="questionVue">
     <p>{{ theme }}</p>
     <div v-for="item in items">
@@ -18,7 +15,15 @@
     <a @click="helpButtonClick"><img src="./images/分析_ヘルプボタン.png" alt="ヘルプボタン" width="30px"></a>
     <a @click="nextButtonClick"><img src="./images/分析_nextボタン.png" alt="Nextボタン"  width="70px"></a>
     <a v-if="qa.num >= 5" @click="finishButtonClick"><img src="./images/分析_finish!ボタン.png" alt="finishボタン" width="70px"></a>
+    <ons-bottom-toolbar>
+      <div class="toolbar">
+        <a @click="analyzeButtonClick"><img src="images/グループ 498.png"></a>
+        <a @click="homeButtonClick"><img src="images/グループ 497.png"></a>
+        <a @click="showRecodeButtonClick"><img src="images/グループ 496.png"></a>
+      </div>
+    </ons-bottom-toolbar>
   </div>
+  
   <script>
     var myNavigator = document.querySelector('#myNavigator')
     ons.getScriptPage().onInit = function() {
@@ -65,6 +70,15 @@
                 qAndA: qAndA
               }
             })
+          },
+          analyzeButtonClick: function () {
+            document.getElementById("myNavigator").pushPage('analyze.html');
+          },
+          showRecodeButtonClick: function() {
+            document.getElementById("myNavigator").pushPage('myRecode.html');
+          },
+          homeButtonClick: function() {
+            document.getElementById("myNavigator").resetToPage('index.html');
           }
         }
       });

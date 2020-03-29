@@ -9,8 +9,16 @@
       </div>
       <input type="text" v-model="theme"></input><br>
       <button @click="nextButtonClick">これを分析！</button><br>
+      <ons-bottom-toolbar>
+        <div class="toolbar">
+          <a @click="analyzeButtonClick"><img src="images/グループ 498.png"></a>
+          <a @click="homeButtonClick"><img src="images/グループ 497.png"></a>
+          <a @click="showRecodeButtonClick"><img src="images/グループ 496.png"></a>
+        </div>
+      </ons-bottom-toolbar>
     </div>
   </div>
+  
   
   <script>
     ons.getScriptPage().onInit = function () {
@@ -30,9 +38,21 @@
                 qAndA: qAndA
               }
             });
+          },
+          analyzeButtonClick: function () {
+            document.getElementById("myNavigator").pushPage('analyze.html');
+          },
+          showRecodeButtonClick: function() {
+            document.getElementById("myNavigator").pushPage('myRecode.html');
+          },
+          homeButtonClick: function() {
+            document.getElementById("myNavigator").resetToPage('index.html');
           }
         }
-      })
+      });
+    }
+    ons.getScriptPage().onShow = function() {
+      
     }
   </script>
 </ons-page>

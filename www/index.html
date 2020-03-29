@@ -39,6 +39,13 @@
           <a id="logout" @click="logoutButtonClick">SIGN&nbsp;OUT&nbsp;</a>
         </div>
       </div>
+      <ons-bottom-toolbar>
+        <div class="toolbar">
+          <a @click="analyzeButtonClick"><img src="images/グループ 498.png"></a>
+          <a @click="homeButtonClick"><img src="images/グループ 497.png"></a>
+          <a @click="showRecodeButtonClick"><img src="images/グループ 496.png"></a>
+        </div>
+      </ons-bottom-toolbar>
       <script>
         ons.getScriptPage().onInit = function() {
           var vm_i = new Vue({
@@ -58,6 +65,9 @@
               },
               showRecodeButtonClick: function() {
                 document.getElementById("myNavigator").pushPage('myRecode.html');
+              },
+              homeButtonClick: function() {
+                document.getElementById("myNavigator").resetToPage('index.html');
               }
             }
           });
