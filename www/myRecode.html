@@ -1,6 +1,6 @@
 <ons-page>
   <div class="background" style="background-color: #FFF;"></div>
-  <div id="myRecodeVue">
+  <div id="myRecodeVue" v-cloak>
     <div class="tab">
       <button @click="onArchiveButton" :style="tabActive ? activeTab1 : nonActiveTab1">アーカイブ</button>
       <button @click="onSavingButton" :style="tabActive ? nonActiveTab2 : activeTab2">セーブ中</button>
@@ -69,10 +69,10 @@
             });
           },
           analyzeButtonClick: function () {
-            document.getElementById("myNavigator").pushPage('analyze.html');
+            document.getElementById("myNavigator").resetToPage('analyze.html');
           },
           showRecodeButtonClick: function() {
-            document.getElementById("myNavigator").pushPage('myRecode.html');
+            document.getElementById("myNavigator").resetToPage('myRecode.html');
           },
           homeButtonClick: function() {
             document.getElementById("myNavigator").resetToPage('index.html');

@@ -2,7 +2,7 @@
   <div class="background"></div>
   <div class="content">
     <img class="cartoon" src="./images/分析中_キャラ.png">
-    <div id="analyzeVue">
+    <div id="analyzeVue" v-cloak>
       <div class="speech">
         <img src="images/分析_お題画面_キャラ.png">
         <span>取り組みたいことや<br>叶えたいことを書くテン。</span>
@@ -40,10 +40,10 @@
             });
           },
           analyzeButtonClick: function () {
-            document.getElementById("myNavigator").pushPage('analyze.html');
+            document.getElementById("myNavigator").resetToPage('analyze.html');
           },
           showRecodeButtonClick: function() {
-            document.getElementById("myNavigator").pushPage('myRecode.html');
+            document.getElementById("myNavigator").resetToPage('myRecode.html');
           },
           homeButtonClick: function() {
             document.getElementById("myNavigator").resetToPage('index.html');

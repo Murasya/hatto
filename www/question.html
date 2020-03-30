@@ -1,6 +1,6 @@
 <ons-page>
   <div class="background" style="background-color: #E8F6FD;"></div>
-  <div id="questionVue">
+  <div id="questionVue" v-cloak>
     <div class="theme">
       <p>{{ theme }}</p>
     </div>
@@ -77,10 +77,10 @@
             })
           },
           analyzeButtonClick: function () {
-            document.getElementById("myNavigator").pushPage('analyze.html');
+            document.getElementById("myNavigator").resetToPage('analyze.html');
           },
           showRecodeButtonClick: function() {
-            document.getElementById("myNavigator").pushPage('myRecode.html');
+            document.getElementById("myNavigator").resetToPage('myRecode.html');
           },
           homeButtonClick: function() {
             document.getElementById("myNavigator").resetToPage('index.html');
