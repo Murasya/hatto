@@ -63,14 +63,13 @@
         </div>
       </div>
       
-
       <script>
         ons.getScriptPage().onInit = function() {
           var vm_i = new Vue({
             el: '#index',
             data: {
               currentUser: null,
-              data: getIncomplete(),
+              data: [],
               menuFlag: false,
               headH: "0px",
             },
@@ -98,6 +97,7 @@
           firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
               console.log(user.uid)
+              vm_i.data = getIncomplete();
             } else {
               console.log("not LogedIn")
             }

@@ -1,17 +1,84 @@
 <ons-page>
-  <ons-toolbar>
-    <div class="left"><ons-back-button></ons-back-button></div>
-  </ons-toolbar>
-  <button id="own_mr">これまでの分析</button>
-  <button id="hatto_mr">ハッとした！リスト</button>
+  <div class="background" style="background-color: #FFF;"></div>
+  <div id="myRecodeVue">
+    <div class="tab">
+      <button @click="onArchiveButton" :style="tabActive ? activeTab1 : nonActiveTab1">アーカイブ</button>
+      <button @click="onSavingButton" :style="tabActive ? nonActiveTab2 : activeTab2">セーブ中</button>
+    </div>
+    <a v-for="data in arr" class="data" @click="onDataButton(data)">
+      <span>{{ data.timestamp.getFullYear() }}/{{ ('0'+(data.timestamp.getMonth()+1)).slice(-2) }}/{{ data.timestamp.getDate() }}</span>
+      <p>{{ data.answers[0] }}</p>
+      <hr>
+    </a>
+    <div class="toolbar_wrapper">
+      <div class="toolbar">
+        <a @click="analyzeButtonClick"><img src="images/分析ボタン.png"></a>
+        <a @click="homeButtonClick"><img src="images/ホームボタン.png"></a>
+        <a @click="showRecodeButtonClick"><img src="images/自分の記録ボタン.png"></a>
+      </div>
+    </div>
+  </div>
+
   <script>
     ons.getScriptPage().onInit = function() {
-      document.getElementById("onw_mr").onclick = function() {
-        document.getElementById("myNavigator").pushPage('recodeList.html');
-      }
-      document.getElementById("hatto_mr").onclick = function() {
-        document.getElementById("myNavigator").pushPage('hattoIndex.html');
-      }
+      var vm = new Vue({
+        el: '#myRecodeVue',
+        data: {
+          arr: getQuestionAndAnswer(),
+          tabActive: true,
+          activeTab1: {
+            backgroundColor: "#FFF",
+            width: "70px",
+            zIndex: "10",
+          },
+          nonActiveTab1: {
+            backgroundColor: "#626262",
+            width: "132px",
+            zIndex: "9",
+            textAlign: "left",
+          },
+          activeTab2: {
+            backgroundColor: "#FFF",
+            width: "70px",
+            zIndex: "10",
+            left: "81px",
+          },
+          nonActiveTab2: {
+            backgroundColor: "#626262",
+            width: "132px",
+            zIndex: "9",
+            left: "19px",
+            textAlign: "right",
+          }
+        },
+        methods: {
+          onArchiveButton: function() {
+            this.tabActive = true;
+            this.arr = getQuestionAndAnswer();
+          },
+          onSavingButton: function() {
+            this.tabActive = false;
+            this.arr = getIncomplete();
+          },
+          onDataButton: function(data) {
+            document.getElementById("myNavigator").pushPage('result.html', {
+              data: {
+                qAndA: data,
+                recode: true,
+              }
+            });
+          },
+          analyzeButtonClick: function () {
+            document.getElementById("myNavigator").pushPage('analyze.html');
+          },
+          showRecodeButtonClick: function() {
+            document.getElementById("myNavigator").pushPage('myRecode.html');
+          },
+          homeButtonClick: function() {
+            document.getElementById("myNavigator").resetToPage('index.html');
+          }
+        }
+      });
     }
   </script>
 </ons-page>
