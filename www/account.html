@@ -3,13 +3,13 @@
     <div class="left"><ons-back-button></ons-back-button></div>
     <div class="center">アカウント</div>
   </ons-toolbar>
+  <div class="background" style="background-color: #ED6A4C;"><img src="images/サインイン_背景.png" width="100%"></div>
   <div id="signIn">
-    <p style="text-align: left; margin-top: 22.1%; margin-left: 15%;">メールアドレス</p>
-    <input type="email" id="email" v-model="email">
-    <p style="text-align: left;margin-left: 15%;">パスワード</p>
-    <input type="password" id="password" v-model="password">
-    <input type="button" value="GO!" class="btn" id="login_account" @click="onLoginAccount">
-    <input type="button" value="新規登録" class="btn" id="new_account" @click="onNewAccount">
+    <p>SIGN IN</p>
+    <input type="email" id="email" v-model="email" placeholder="メールアドレス">
+    <input type="password" id="password" v-model="password" placeholder="パスワード"><br>
+    <a @click="onLoginAccount"><img src="images/アカウント矢印.png"></a><br>
+    <button @click="onNewAccount">アカウント作成</button>
   </div>
   <script>
     ons.getScriptPage().onInit = function() {

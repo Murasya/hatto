@@ -29,29 +29,50 @@
     <ons-page id="index">
       <div class="background" style="background-color: #FFFFFF;"></div>
       <div class="content">
-        <img id="logo_i" src="./images/サインイン後_home.png" alt="ロゴ">
-        <div v-if="currentUser== null">
-          <button id="login" @click="loginButtonClick">ログイン</button>
+        <header>
+          <div :class="{ menu_btn: true, open_: menuFlag }" @click="naviOpen">
+            <span class="menu_trigger">
+              <span></span><span></span><span></span>
+            </span>
+          </div>
+        </header>
+        <transition>
+          <div class="nav" v-show="menuFlag">
+            <p><img src="images/設定ボタン.png">OPTIONS</p>
+            <p><a @click="logoutButtonClick">SIGN OUT</a></p>
+          </div>
+        </transition>
+        
+        <div id="notSignIn" v-if="currentUser== null">
+          <p><img class="logo" src="./images/サインイン前_home.png" alt="ロゴ"></p>
+          <a id="login" @click="loginButtonClick"><img src="images/サインインボタン.png"></a>
         </div>
-        <div id="buttons_index" v-else>
-          <a id="analyze" @click="analyzeButtonClick">ARCHIVES&nbsp;</a>
-          <a id="showRecode" @click="showRecodeButtonClick">SAVED&nbsp;DATA&nbsp;</a>
-          <a id="logout" @click="logoutButtonClick">SIGN&nbsp;OUT&nbsp;</a>
+        <div id="isSignIn" v-else>
+          <img class="logo" src="./images/サインイン後_home.png" alt="ロゴ">
+          <p>-Recents-</p>
+          <div v-for="item in data">
+            <p>{{ item.answers[0] }}</p>
+          </div>
+        </div>
+        <div class="toolbar_wrapper">
+          <div class="toolbar">
+            <a @click="analyzeButtonClick"><img src="images/分析ボタン.png"></a>
+            <a @click="homeButtonClick"><img src="images/ホームボタン.png"></a>
+            <a @click="showRecodeButtonClick"><img src="images/自分の記録ボタン.png"></a>
+          </div>
         </div>
       </div>
-      <ons-bottom-toolbar>
-        <div class="toolbar">
-          <a @click="analyzeButtonClick"><img src="images/グループ 498.png"></a>
-          <a @click="homeButtonClick"><img src="images/グループ 497.png"></a>
-          <a @click="showRecodeButtonClick"><img src="images/グループ 496.png"></a>
-        </div>
-      </ons-bottom-toolbar>
+      
+
       <script>
         ons.getScriptPage().onInit = function() {
           var vm_i = new Vue({
             el: '#index',
             data: {
-              currentUser: null
+              currentUser: null,
+              data: getIncomplete(),
+              menuFlag: false,
+              headH: "0px",
             },
             methods: {
               loginButtonClick: function () {
@@ -68,8 +89,11 @@
               },
               homeButtonClick: function() {
                 document.getElementById("myNavigator").resetToPage('index.html');
+              },
+              naviOpen: function() {
+                this.menuFlag = !this.menuFlag;
               }
-            }
+            },
           });
           firebase.auth().onAuthStateChanged(function(user) {
             if (user) {

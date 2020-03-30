@@ -1,10 +1,11 @@
 <ons-page>
+  <div class="background" style="background-color: #E8F6FD;"></div>
   <div id="resultVue">
-    <p>{{ theme }}</p>
+    <p class="theme">{{ theme }}</p>
     <select v-model="category">
       <option disabled value="">カテゴリ</option>
     </select>
-    <div v-for="index in answers.length-1">
+    <div v-for="index in answers.length-1" class="items">
       <p>{{ index }}</p>
       <p>{{ questions[index] }}</p>
       <p>{{ answers[index] }}</p>
@@ -15,8 +16,8 @@
       <option>はい</option>
       <option>いいえ</option>
       <option>どちらともいえない</option>
-    </select>
-    <button @click="saveButtonClick">記録する</button>
+    </select><br>
+    <button @click="saveButtonClick">記録する</button><br>
     <button>Tweet</button>
   </div>
 

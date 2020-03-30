@@ -1,27 +1,32 @@
 <ons-page>
+  <div class="background" style="background-color: #E8F6FD;"></div>
   <div id="questionVue">
-    <p>{{ theme }}</p>
-    <div v-for="item in items">
+    <div class="theme">
+      <p>{{ theme }}</p>
+    </div>
+    <div v-for="item in items" class="items">
       <p>{{ item.num }}</p>
       <p>{{ item.why }}</p>
       <p>{{ item.answer }}</p>
     </div>
-    <div>
+    <div class="writting">
       <p>{{ qa.num }}</p>
       <p>{{ qa.why }}<input v-if="qa.num >= 2" type="text" v-model="qa.question">？</p>
       <textarea v-model="qa.answer"></textarea>
     </div>
-    <a @click="interruptionButtonClick"><img src="./images/分析_一時保存ボタン.png" alt="中断ボタン" width="30px"></a>
-    <a @click="helpButtonClick"><img src="./images/分析_ヘルプボタン.png" alt="ヘルプボタン" width="30px"></a>
-    <a @click="nextButtonClick"><img src="./images/分析_nextボタン.png" alt="Nextボタン"  width="70px"></a>
-    <a v-if="qa.num >= 5" @click="finishButtonClick"><img src="./images/分析_finish!ボタン.png" alt="finishボタン" width="70px"></a>
-    <ons-bottom-toolbar>
+    <div class="buttons">
+      <a @click="interruptionButtonClick"><img src="./images/分析_一時保存ボタン.png" alt="中断ボタン" width="30px"></a>
+      <a @click="helpButtonClick"><img src="./images/分析_ヘルプボタン.png" alt="ヘルプボタン" width="30px"></a>
+      <a v-show="qa.num >= 5" @click="finishButtonClick"><img src="./images/分析_finish!ボタン.png" alt="finishボタン" width="70px"></a>
+      <a @click="nextButtonClick"><img src="./images/分析_nextボタン.png" alt="Nextボタン"  width="70px"></a>  
+    </div>
+    <div class="toolbar_wrapper">
       <div class="toolbar">
-        <a @click="analyzeButtonClick"><img src="images/グループ 498.png"></a>
-        <a @click="homeButtonClick"><img src="images/グループ 497.png"></a>
-        <a @click="showRecodeButtonClick"><img src="images/グループ 496.png"></a>
+        <a @click="analyzeButtonClick"><img src="images/分析ボタン.png"></a>
+        <a @click="homeButtonClick"><img src="images/ホームボタン.png"></a>
+        <a @click="showRecodeButtonClick"><img src="images/自分の記録ボタン.png"></a>
       </div>
-    </ons-bottom-toolbar>
+    </div>
   </div>
   
   <script>
@@ -35,7 +40,7 @@
           items: [],
           qa: {
             num: 1,
-            why: "なぜ取り組みたい/叶えたいの",
+            why: "なぜ取り組みたい/叶えたい",
             question: "",
             answer: ""
           }
