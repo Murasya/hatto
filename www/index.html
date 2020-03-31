@@ -56,13 +56,7 @@
           <p>{{ item.answers[0] }}</p>
         </div>
       </div>
-      <div class="toolbar_wrapper">
-        <div class="toolbar">
-          <a @click="analyzeButtonClick"><img src="images/分析ボタン.png"></a>
-          <a @click="homeButtonClick"><img src="images/ホームボタン.png"></a>
-          <a @click="showRecodeButtonClick"><img src="images/自分の記録ボタン.png"></a>
-        </div>
-      </div>
+      <my-toolbar></my-toolbar>
     </div>
     
     <script>
@@ -81,15 +75,6 @@
             },
             logoutButtonClick: function () {
               firebase.auth().signOut();
-            },
-            analyzeButtonClick: function () {
-              document.getElementById("myNavigator").resetToPage('analyze.html');
-            },
-            showRecodeButtonClick: function() {
-              document.getElementById("myNavigator").resetToPage('myRecode.html');
-            },
-            homeButtonClick: function() {
-              document.getElementById("myNavigator").resetToPage('index.html');
             },
             naviOpen: function() {
               this.menuFlag = !this.menuFlag;

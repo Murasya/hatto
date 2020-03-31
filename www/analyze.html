@@ -9,13 +9,7 @@
       </div>
       <input type="text" v-model="theme"></input><br>
       <button @click="nextButtonClick">これを分析！</button><br>
-      <ons-bottom-toolbar>
-        <div class="toolbar">
-          <a @click="analyzeButtonClick"><img src="images/分析ボタン.png"></a>
-          <a @click="homeButtonClick"><img src="images/ホームボタン.png"></a>
-          <a @click="showRecodeButtonClick"><img src="images/自分の記録ボタン.png"></a>
-        </div>
-      </ons-bottom-toolbar>
+      <my-toolbar></my-toolbar>
     </div>
   </div>
   
@@ -39,15 +33,6 @@
               }
             });
           },
-          analyzeButtonClick: function () {
-            document.getElementById("myNavigator").resetToPage('analyze.html');
-          },
-          showRecodeButtonClick: function() {
-            document.getElementById("myNavigator").resetToPage('myRecode.html');
-          },
-          homeButtonClick: function() {
-            document.getElementById("myNavigator").resetToPage('index.html');
-          }
         }
       });
     }

@@ -19,13 +19,7 @@
     </select><br>
     <button v-show="recode == false" @click="saveButtonClick">記録する</button><br>
     <button>Tweet</button>
-    <div class="toolbar_wrapper">
-      <div class="toolbar">
-        <a @click="analyzeButtonClick"><img src="images/分析ボタン.png"></a>
-        <a @click="homeButtonClick"><img src="images/ホームボタン.png"></a>
-        <a @click="showRecodeButtonClick"><img src="images/自分の記録ボタン.png"></a>
-      </div>
-    </div>
+    <my-toolbar></my-toolbar>
   </div>
 
   <script>
@@ -56,15 +50,6 @@
             setNewData(qAndA)
             myNavigator.resetToPage('index.html')
           },
-          analyzeButtonClick: function () {
-            document.getElementById("myNavigator").resetToPage('analyze.html');
-          },
-          showRecodeButtonClick: function() {
-            document.getElementById("myNavigator").resetToPage('myRecode.html');
-          },
-          homeButtonClick: function() {
-            document.getElementById("myNavigator").resetToPage('index.html');
-          }
         }
       });
     }
