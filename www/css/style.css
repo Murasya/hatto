@@ -182,6 +182,25 @@ header {
   font-size: 18.43px;
 }
 
+/* start */
+#start #hoge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+#start img {
+  width: 191px;
+}
+#start p {
+  font-size: 31px;
+  color: #FFF;
+  margin: 52px 0 0 0;
+}
+
 /* analyze */
 #analyze #analyzeVue {
   display: flex;
