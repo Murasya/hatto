@@ -474,13 +474,18 @@ header {
   border: none;
   font-size: 10px;
 }
-#myRecodeVue .data {
+.recode {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.data {
   position: relative;
   display: block;
   width: 90%;
   margin: 12px auto 0;
 }
-#myRecodeVue .data span {
+.data span {
   position: relative;
   top: 0;
   left: 0;
@@ -491,7 +496,7 @@ header {
   background-color: #E8F6FD;
   border-radius: 5px;
 }
-#myRecodeVue .data p {
+.data p {
   position: relative;
   top: -3px;
   font-size: 12px;
@@ -501,7 +506,7 @@ header {
   border-radius: 5px;
 
 }
-#myRecodeVue .data hr {
+.data hr {
   position: relative;
   bottom: 17px;
   margin: 0 21px;

@@ -52,8 +52,12 @@
       <div id="isSignIn" v-else>
         <img class="logo" src="./images/サインイン後_home.png" alt="ロゴ">
         <p>-Recents-</p>
-        <div v-for="item in data">
-          <p>{{ item.answers[0] }}</p>
+        <div class="recode">
+          <a v-for="data in recent" class="data" @click="onDataButton(data)">
+            <span>{{ data.timestamp.getFullYear() }}/{{ ('0'+(data.timestamp.getMonth()+1)).slice(-2) }}/{{ data.timestamp.getDate() }}</span>
+            <p>{{ data.answers[0] }}</p>
+            <hr>
+          </a>
         </div>
       </div>
       <my-toolbar></my-toolbar>
@@ -65,30 +69,45 @@
           el: '#index',
           data: {
             currentUser: null,
-            data: [],
+            recent: [],
             menuFlag: false,
-            headH: "0px",
           },
           methods: {
             loginButtonClick: function () {
-              document.getElementById("myNavigator").pushPage('account.html', {data: {title: 'アカウント'}})
+              document.getElementById("myNavigator").pushPage('account.html', {data: {title: 'アカウント'}});
             },
             logoutButtonClick: function () {
               firebase.auth().signOut();
             },
             naviOpen: function() {
               this.menuFlag = !this.menuFlag;
+            },
+            onDataButton: function(data) {
+              if (data.complete) {
+                document.getElementById("myNavigator").pushPage('result.html', {
+                  data: {
+                    qAndA: data,
+                    recode: true,
+                  }
+                });
+              } else {
+                document.getElementById("myNavigator").pushPage('question.html', {
+                  data: {
+                    qAndA: data,
+                  }
+                });
+              }
             }
           },
         });
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
             console.log(user.uid)
-            vm_i.data = getIncomplete();
+            vm_i.recent = getQuestionAndAnswer(2);
           } else {
-            console.log("not LogedIn")
+            console.log("not LogedIn");
           }
-          vm_i.currentUser = user
+          vm_i.currentUser = user;
         });
       }
     </script>

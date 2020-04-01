@@ -47,8 +47,9 @@
             qAndA.memo = this.memo;
             qAndA.success = this.success;
             qAndA.category = this.category;
-            setNewData(qAndA)
-            myNavigator.resetToPage('index.html')
+            qAndA.complete = true;
+            updateData(qAndA);
+            myNavigator.resetToPage('index.html');
           },
         }
       });

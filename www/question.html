@@ -11,7 +11,7 @@
     </div>
     <div class="writting">
       <p>{{ qa.num }}</p>
-      <p>{{ qa.why }}<input v-if="qa.num >= 2" type="text" v-model="qa.question">？</p>
+      <p>{{ qa.why }}<input v-show="qa.num >= 2" type="text" v-model="qa.question">？</p>
       <textarea v-model="qa.answer"></textarea>
     </div>
     <div class="buttons">
@@ -22,7 +22,7 @@
     </div>
     <div class="overlay" v-show="showSavingModal" @click="closeModal">
       <p>分析を中断しますか？</p>
-      <button>はい</button>
+      <button @click="savingButton">はい</button>
       <button @click="closeModal">いいえ</button>
     </div>
     <my-toolbar></my-toolbar>
@@ -32,14 +32,24 @@
     var myNavigator = document.querySelector('#myNavigator')
     ons.getScriptPage().onInit = function() {
       var qAndA = myNavigator.topPage.data.qAndA;
+      var items = [];
+      var why = "なぜ取り組みたい/叶えたい";
+      for(i=1; i<qAndA.answers.length; i++) {
+        items.push({
+          num: i,
+          why: qAndA.questions[i],
+          answer: qAndA.answers[i],
+        });
+        why = "なぜ";
+      }
       var vm_q = new Vue({
         el: '#questionVue',
         data: {
           theme: qAndA.answers[0],
-          items: [],
+          items: items,
           qa: {
-            num: 1,
-            why: "なぜ取り組みたい/叶えたい",
+            num: qAndA.answers.length,
+            why: why,
             question: "",
             answer: ""
           },
@@ -53,22 +63,25 @@
 
           },
           nextButtonClick: function() {
-            this.qa.why = this.qa.why + this.qa.question + "？"
-            this.items.push(Object.assign({}, this.qa))
+            if(this.qa.answer != "") {
+              this.qa.why = this.qa.why + this.qa.question + "？";
+              this.items.push(Object.assign({}, this.qa));
+              qAndA.questions.push(this.qa.why);
+              qAndA.answers.push(this.qa.answer);
+            }
             this.qa.num++;
             this.qa.why = "なぜ";
             this.qa.question = "";
             this.qa.answer = "";
-            console.log(this.items)
+            console.log(qAndA);
           },
           finishButtonClick: function() {
-            this.qa.why = this.qa.why + this.qa.question + "？"
-            this.items.push(Object.assign({}, this.qa))
-            this.items.forEach(item => {
-              console.log(item)
-              qAndA.questions.push(item.why)
-              qAndA.answers.push(item.answer)
-            });
+            if(this.qa.answer != "") {
+              this.qa.why = this.qa.why + this.qa.question + "？";
+              this.items.push(Object.assign({}, this.qa));
+              qAndA.questions.push(this.qa.why);
+              qAndA.answers.push(this.qa.answer);
+            }
             console.log(qAndA)
             myNavigator.pushPage('result.html',{
               data: {
@@ -78,6 +91,17 @@
           },
           closeModal: function() {
             this.showSavingModal = false;
+          },
+          savingButton: function() {
+            if(this.qa.answer != "") {
+              this.qa.why = this.qa.why + this.qa.question + "？";
+              this.items.push(Object.assign({}, this.qa));
+              qAndA.questions.push(this.qa.why);
+              qAndA.answers.push(this.qa.answer);
+            }
+            qAndA.complete = false;
+            updateData(qAndA);
+            myNavigator.resetToPage('index.html');
           },
         }
       });
