@@ -47,7 +47,8 @@
       
       <div id="notSignIn" v-if="currentUser== null">
         <p><img class="logo" src="./images/サインイン前_home.png" alt="ロゴ"></p>
-        <a id="login" @click="loginButtonClick"><img src="images/サインインボタン.png"></a>
+        <a @click="loginButtonClick"><img class="img-button" src="images/signin_ボタン.png"></a><br>
+        <a @click="signUpButtonClick"><img class="img-button" src="images/signup_ボタン.png"></a>
       </div>
       <div id="isSignIn" v-else>
         <img class="logo" src="./images/サインイン後_home.png" alt="ロゴ">
@@ -74,6 +75,9 @@
           },
           methods: {
             loginButtonClick: function () {
+              document.getElementById("myNavigator").pushPage('account.html', {data: {title: 'アカウント'}});
+            },
+            signUpButtonClick: function () {
               document.getElementById("myNavigator").pushPage('account.html', {data: {title: 'アカウント'}});
             },
             logoutButtonClick: function () {

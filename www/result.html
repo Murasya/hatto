@@ -6,7 +6,7 @@
       <option disabled value="">カテゴリ</option>
     </select>
     <div v-for="index in answers.length-1" class="items">
-      <p>{{ index }}</p>
+      <p :class='tags[index] == "" ? defoClass : (tags[index] == "out" ? lightClass : blueClass)'>{{ index }}</p>
       <p>{{ questions[index] }}</p>
       <p>{{ answers[index] }}</p>
     </div>
@@ -37,10 +37,14 @@
           theme: qAndA.answers[0],
           questions: qAndA.questions,
           answers: qAndA.answers,
+          tags: qAndA.tags,
           memo: qAndA.memo,
           success: qAndA.success,
           category: qAndA.category,
           recode: recode,
+          defoClass: "defo",
+          lightClass: "lightBlue",
+          blueClass: "blue",
         },
         methods: {
           saveButtonClick: function() {

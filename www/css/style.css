@@ -111,8 +111,10 @@ header {
   max-width: 50%;
 }
 
-#login {
-  margin-left: 40%;
+#notSignIn .img-button {
+  width: 75px;
+  margin-top: 10px;
+  margin-left: 150px;
 }
 
 #isSignIn p {
@@ -257,6 +259,15 @@ header {
   margin-top: 38.5px;
   margin-left: 14px;
 }
+#questionVue .defo {
+  background-color: #D5D5D5;
+}
+#questionVue .lightBlue {
+  background-color: #88CDDF;
+}
+#questionVue .blue {
+  background-color: #3895AD;
+}
 .items {
   position: relative;
   height: 75px;
@@ -292,7 +303,7 @@ header {
 }
 .items p:nth-of-type(3) {
   position: absolute;
-  padding-left: 10%;
+  padding-left: 15%;
   top: 25px;
   left: 0;
   width: 90%;
@@ -312,7 +323,7 @@ header {
   margin-bottom: 200px;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.29);
 }
-#questionVue .writting p:nth-of-type(1) {
+#questionVue .writting a {
   position: absolute;
   margin: 0;
   top: 0;
@@ -321,10 +332,9 @@ header {
   height: 75px;
   border-radius: 0 100% 100% 0/0 50% 50% 0;
   line-height: 75px;
-  background-color: #D5D5D5;
   z-index: 5;
 }
-#questionVue .writting p:nth-of-type(2) {
+#questionVue .writting p {
   text-align: center;
   position: absolute;
   background-color: #EDEDED;
@@ -341,7 +351,7 @@ header {
   position: absolute;
   border: 0;
   padding: 0;
-  padding-left: 10%;
+  padding-left: 15%;
   top: 25px;
   left: 0;
   width: 90%;
@@ -389,7 +399,24 @@ header {
   z-index: 100;
   color: white;
 }
-
+#questionVue .overlay-help {
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#questionVue .overlay-help iframe {
+  width: 100%;
+  height: 100%;
+}
+#questionVue .overlay-help a {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+}
 
 /* result.html */
 #resultVue {
@@ -510,4 +537,55 @@ header {
   position: relative;
   bottom: 17px;
   margin: 0 21px;
+}
+
+/* help */
+.speech-box {
+  position: relative;
+  top: 80px;
+  left: 150px;
+  width: 160px;
+  height: 70px;
+  margin: 0;
+}
+.speech-box p {
+  position: absolute;
+  z-index: 30;
+  font-size: 11px;
+  margin: 21px 21px 21px 37px;
+}
+.speech-box img {
+  position: absolute;
+  width: 160px;
+  z-index: 20;
+}
+#help .header {
+  height: auto;
+  background-color: #ED6A4C;
+  padding-bottom: 45px;
+}
+#help .header .links {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  margin-top: 100px;
+}
+#help .header .links a {
+  color: #000000;
+  text-decoration: none;
+  margin-left: 30px;
+}
+#help h1 {
+  font-size: 20px;
+  border-left: solid 1px #ED6A4C;
+  border-bottom: solid 1px #ED6A4C;
+  margin-top: 30px;
+  padding-left: 5px;
+  display: inline-block;
+}
+#help .help-content {
+  margin: 0 30px 100px;
+}
+#help .help-content span {
+  color: #ED6A4C;
 }

@@ -5,12 +5,12 @@
       <p>{{ theme }}</p>
     </div>
     <div v-for="item in items" class="items">
-      <p>{{ item.num }}</p>
+      <p :class='item.tag == "" ? defoClass : (item.tag == "out" ? lightClass : blueClass)'>{{ item.num }}</p>
       <p>{{ item.why }}</p>
       <p>{{ item.answer }}</p>
     </div>
     <div class="writting">
-      <p>{{ qa.num }}</p>
+      <a @click="onNumber" :class="numberClass">{{ qa.num }}</a>
       <p>{{ qa.why }}<input v-show="qa.num >= 2" type="text" v-model="qa.question">？</p>
       <textarea v-model="qa.answer"></textarea>
     </div>
@@ -25,6 +25,11 @@
       <button @click="savingButton">はい</button>
       <button @click="closeModal">いいえ</button>
     </div>
+    <div class="overlay-help" v-show="showHelpModal" @click="closeModal">
+      <iframe src="help.html"></iframe>
+      <a @click="closeModal">×</a>
+    </div>
+    
     <my-toolbar></my-toolbar>
   </div>
   
@@ -39,6 +44,7 @@
           num: i,
           why: qAndA.questions[i],
           answer: qAndA.answers[i],
+          tag: qAndA.tags[i-1]
         });
         why = "なぜ";
       }
@@ -51,24 +57,43 @@
             num: qAndA.answers.length,
             why: why,
             question: "",
-            answer: ""
+            answer: "",
+            tag: "",
           },
           showSavingModal: false,
+          showHelpModal: false,
+          numberClass: {
+            defo: true,
+            lightBlue: false,
+            blue: false,
+          },
+          defoClass: "defo",
+          lightClass: "lightBlue",
+          blueClass: "blue",
         },
         methods: {
           interruptionButtonClick: function() {
             this.showSavingModal = true;
           },
           helpButtonClick: function() {
-
+            this.showHelpModal = true;
           },
           nextButtonClick: function() {
-            if(this.qa.answer != "") {
-              this.qa.why = this.qa.why + this.qa.question + "？";
-              this.items.push(Object.assign({}, this.qa));
-              qAndA.questions.push(this.qa.why);
-              qAndA.answers.push(this.qa.answer);
+            if(this.qa.answer == "") {
+              ons.notification.toast( '回答欄が入力されていません', {timeout: 1000, animation: 'fall'});
+              return;
+            } else if(this.qa.question == "" && this.qa.num != 1) {
+              ons.notification.toast( 'なぜの後が入力されていません', {timeout: 1000, animation: 'fall'});
+              return ;
+            } else if(this.qa.tag == "") {
+              ons.notification.toast( '内と外が決まっていません', {timeout: 1000, animation: 'fall'});
+              return;
             }
+            this.qa.why = this.qa.why + this.qa.question + "？";
+            this.items.push(Object.assign({}, this.qa));
+            qAndA.questions.push(this.qa.why);
+            qAndA.answers.push(this.qa.answer);
+            qAndA.tags.push(this.qa.tag);
             this.qa.num++;
             this.qa.why = "なぜ";
             this.qa.question = "";
@@ -81,6 +106,7 @@
               this.items.push(Object.assign({}, this.qa));
               qAndA.questions.push(this.qa.why);
               qAndA.answers.push(this.qa.answer);
+              qAndA.tags.push(this.qa.tag);
             }
             console.log(qAndA)
             myNavigator.pushPage('result.html',{
@@ -91,6 +117,7 @@
           },
           closeModal: function() {
             this.showSavingModal = false;
+            this.showHelpModal = false;
           },
           savingButton: function() {
             if(this.qa.answer != "") {
@@ -98,11 +125,27 @@
               this.items.push(Object.assign({}, this.qa));
               qAndA.questions.push(this.qa.why);
               qAndA.answers.push(this.qa.answer);
+              qAndA.tags.push(this.qa.tag);
             }
             qAndA.complete = false;
             updateData(qAndA);
             myNavigator.resetToPage('index.html');
           },
+          onNumber: function() {
+            if(this.numberClass.defo) {
+              this.numberClass.defo = false;
+              this.numberClass.lightBlue = true;
+              this.qa.tag = "out";
+            } else if(this.numberClass.lightBlue) {
+              this.numberClass.lightBlue = false;
+              this.numberClass.blue = true;
+              this.qa.tag = "in";
+            } else {
+              this.numberClass.blue = false;
+              this.numberClass.defo = true;
+              this.qa.tag = "";
+            }
+          }
         }
       });
     }
