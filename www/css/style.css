@@ -688,3 +688,36 @@ header {
   width: 75%;
   height: 23px;
 }
+
+/* ready */
+#readyVue {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #E8F6FD;
+}
+#readyVue img {
+  width: 170px;
+  margin-bottom: 30px;
+}
+#readyVue p {
+  width: 100%;
+  background-color: #FFF;
+  color: #484848;
+  line-height: 24px;
+  padding: 21px 0;
+  margin: 0;
+}
+#readyVue button {
+  width: 85px;
+  height: 36px;
+  background-color: #ED6A4C;
+  border-radius: 8px;
+  border: none;
+  color: #FFF;
+  font-size: 14px;
+  margin-top: 26px;
+}

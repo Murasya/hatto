@@ -1,0 +1,18 @@
+<ons-page>
+  <div id="readyVue">
+    <img src="images/分析中_キャラ.png">
+    <p>今からボクと一緒に、<br>分析の練習をしてみるテン！<br><b>準備はいいテン？</b></p>
+    <button @click="onButton">YES!</button>
+  </div>
+  
+  <script>
+    var vm = new Vue({
+      el: '#readyVue',
+      methods: {
+        onButton: function() {
+          document.getElementById("myNavigator").pushPage("analyze.html");
+        }
+      }
+    });
+  </script>
+</ons-page>
