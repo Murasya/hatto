@@ -1,20 +1,12 @@
 <ons-page>
-  <ons-toolbar>
-    <div class="left"><ons-back-button></ons-back-button></div>
-    <div class="center">新規登録</div>
-  </ons-toolbar>
   <div id="register">
-    <!--<p style="margin: 0 auto 0 15%; font-size: 18px; text-align: left;">ユーザーネーム</p>
-    <input type="text" id="userName_register">-->
-    <p style="margin: 0 auto 0 15%; font-size: 18px; text-align: left;">メールアドレス</p>
-    <input type="email" id="email_register" v-model="email">
-    <p style="margin: 0 auto 0 15%; font-size: 18px; text-align: left;">パスワード</p>
-    <input type="password" id="password_register" v-model="password">
-    <!-- <p  style="margin: 0 auto 0 15%; font-size: 18px; text-align: left;">生年月日</p>
-    <input type="date" id="date_register">
-    <input type="radio" id="man_register" value="man" name="gender"><label for="man_register">男性</label>
-    <input type="radio" id="woman_register" value="woman" name="gender"><label for="woman_register">女性</label> -->
-    <input type="button" value="登録" class="btn" id="register" @click="onRegister">
+    <p>REGISTER</p>
+    <div>
+      <input type="email" id="email_register" v-model="email" placeholder="メールアドレス">
+      <input type="password" id="password_register" v-model="password" placeholder="パスワード">
+      <input type="button" value="登録" @click="onRegister">
+    </div>
+    <button><ons-icon icon="fa-twitter"></ons-icon> Twitterアカウントで始める</button>
   </div>
   <script>
     ons.getScriptPage().onInit = function () {
@@ -33,7 +25,7 @@
               })
               .catch(function(error) {
                 ons.notification.toast(error.message, { timeout: 1000, animation: 'fall'});
-              }) 
+              });
           }
         }
       });
