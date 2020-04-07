@@ -31,37 +31,42 @@
   <ons-page id="index">
     <div class="background" style="background-color: #FFFFFF;"></div>
     <div class="content" v-cloak>
-      <header>
-        <div :class="{ menu_btn: true, open_: menuFlag }" @click="naviOpen">
-          <span class="menu_trigger">
-            <span></span><span></span><span></span>
-          </span>
-        </div>
-      </header>
-      <transition>
-        <div class="nav" v-show="menuFlag">
-          <p><img src="images/設定ボタン.png">OPTIONS</p>
-          <p><a @click="logoutButtonClick">SIGN OUT</a></p>
-        </div>
-      </transition>
-      
-      <div id="notSignIn" v-if="currentUser== null">
-        <p><img class="logo" src="./images/サインイン前_home.png" alt="ロゴ"></p>
-        <a @click="loginButtonClick"><img class="img-button" src="images/signin_ボタン.png"></a><br>
-        <a @click="signUpButtonClick"><img class="img-button" src="images/signup_ボタン.png"></a>
+      <div v-if="tutorialFinish != true">
+        <a><img src="images/ダウンロード後_シンボル_顔なし.png"></a>
       </div>
-      <div id="isSignIn" v-else>
-        <img class="logo" src="./images/サインイン後_home.png" alt="ロゴ">
-        <p>-Recents-</p>
-        <div class="recode">
-          <a v-for="data in recent" class="data" @click="onDataButton(data)">
-            <span>{{ data.timestamp.getFullYear() }}/{{ ('0'+(data.timestamp.getMonth()+1)).slice(-2) }}/{{ data.timestamp.getDate() }}</span>
-            <p>{{ data.answers[0] }}</p>
-            <hr>
-          </a>
+      <div v-else>
+        <header>
+          <div :class="{ menu_btn: true, open_: menuFlag }" @click="naviOpen">
+            <span class="menu_trigger">
+              <span></span><span></span><span></span>
+            </span>
+          </div>
+        </header>
+        <transition>
+          <div class="nav" v-show="menuFlag">
+            <p><img src="images/設定ボタン.png">OPTIONS</p>
+            <p><a @click="logoutButtonClick">SIGN OUT</a></p>
+          </div>
+        </transition>
+        
+        <div id="notSignIn" v-if="currentUser== null">
+          <p><img class="logo" src="./images/サインイン前_home.png" alt="ロゴ"></p>
+          <a @click="loginButtonClick"><img class="img-button" src="images/signin_ボタン.png"></a><br>
+          <a @click="signUpButtonClick"><img class="img-button" src="images/signup_ボタン.png"></a>
         </div>
+        <div id="isSignIn" v-else>
+          <img class="logo" src="./images/サインイン後_home.png" alt="ロゴ">
+          <p>-Recents-</p>
+          <div class="recode">
+            <a v-for="data in recent" class="data" @click="onDataButton(data)">
+              <span>{{ data.timestamp.getFullYear() }}/{{ ('0'+(data.timestamp.getMonth()+1)).slice(-2) }}/{{ data.timestamp.getDate() }}</span>
+              <p>{{ data.answers[0] }}</p>
+              <hr>
+            </a>
+          </div>
+        </div>
+        <my-toolbar></my-toolbar>
       </div>
-      <my-toolbar></my-toolbar>
     </div>
     
     <script>
@@ -72,6 +77,7 @@
             currentUser: null,
             recent: [],
             menuFlag: false,
+            tutorialFinish: localStorage.getItem('tutorial'),
           },
           methods: {
             loginButtonClick: function () {
