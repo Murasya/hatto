@@ -7,8 +7,8 @@
 
 .cartoon {
   position: absolute;
-  top: -15%;
-  left: -30%;
+  top: -70px;
+  left: -120px;
   width: 70%;
 }
 
@@ -208,16 +208,19 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  margin-top: 170px;
+  height: 100vh;
 }
 #analyze .background {
   background-color: #E8F6FD;
   background-image: url('../images/分析_1枚目背景.png');
+  background-size: cover;
 }
 #analyze .speech {
   position: relative;
 }
-#analyze span {
+#analyze .speech span {
   position: absolute;
   top: 60%;
   left: 50%;
@@ -226,11 +229,31 @@ header {
   font-size: 14px;
   margin: 0;
   padding: 0;
+  text-align: left;
+}
+#analyze .speech p {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #FFFFFF;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  width: 199px;
 }
 #analyze .speech img {
-  width: 70%;
-  margin-left: 15%;
-  margin-right: 15%;
+  width: 260px;
+}
+#analyze select {
+  width: 107px;
+  height: 20px;
+  border-radius: 1.45px;
+  border: solid 0.23px #A6A7A7;
+  color: #8E8E8F;
+  font-size: 10px;
+  margin-top: 32px;
 }
 #analyze input {
   border-bottom: 1px solid #DE4D2B;
@@ -239,13 +262,15 @@ header {
   border-left: none;
   background-color: transparent;
   width: 70%;
+  margin-top: 40px;
 }
 #analyze button {
   border-radius: 8px;
-  width: 33%;
+  border: none;
   height: 30px;
   background-color: #A6A7A7;
   color: #FFFFFF;
+  margin-top: 25px;
 }
 
 /* question */

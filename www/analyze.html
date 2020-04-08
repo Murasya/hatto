@@ -5,22 +5,35 @@
     <div id="analyzeVue" v-cloak>
       <div class="speech">
         <img src="images/分析_お題画面_キャラ.png">
-        <span>取り組みたいことや<br>叶えたいことを書くテン。</span>
+        <span v-if="tutorial == true"><b>取り組みたいことや<br>叶えたいことを書くテン。</b></span>
+        <p v-else>まずは、キミの<b><u>取り組みたいこと<br>
+          や叶えたいこと</u></b>を書くテン。<br>
+          今回は<b>「英会話を学びたい」</b>として<br>
+          進めるテン！</p>
       </div>
-      <input type="text" v-model="theme"></input><br>
-      <button @click="nextButtonClick">これを分析！</button><br>
+      <input type="text" v-model="theme" :placeholder="ph">
+      <select v-model="category">
+        <option disabled value="">カテゴリ</option>
+      </select>
+      <button @click="nextButtonClick">これを分析！</button>
       <my-toolbar></my-toolbar>
     </div>
   </div>
   
-  
   <script>
     ons.getScriptPage().onInit = function () {
-      var qAndA = new QAndA()
+      var qAndA = new QAndA();
+      var ph = "";
+      if (!localStorage.getItem('tutorial')) {
+        ph = "英会話を学びたい";
+      }
       var vm_a = new Vue({
         el: '#analyzeVue',
         data: {
           theme: "",
+          category: "",
+          tutorial: localStorage.getItem('tutorial'),
+          ph: ph, 
         },
         methods: {
           nextButtonClick: function() {
