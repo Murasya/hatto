@@ -1,5 +1,5 @@
 <ons-page>
-  <div class="explain-page">
+  <div class="explain-page" id="tab2">
     <img src="images/自分の記録ボタン.png">
     <p>記録する</p>
     <div>
@@ -12,5 +12,16 @@
         あなた次第でいろいろな使い道があるはず！</p>
     </div>
     <p><span style="color: #B9B9B9;">●</span><span style="color: #ED6A4C;">●</span></p>
+    <button @click="onClick">Next</button>
   </div>
+  <script>
+    var vm = new Vue({
+      el: '#tab2',
+      methods: {
+        onClick: function() {
+          document.getElementById("myNavigator").pushPage('analyze_tutorial.html');
+        }
+      }
+    })
+  </script>
 </ons-page>
