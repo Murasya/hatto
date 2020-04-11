@@ -795,3 +795,30 @@ header {
   font-size: 14px;
   margin-top: 26px;
 }
+
+/* finish_tutorial */
+#finish_tutorial {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: rgba(232, 246, 253, 1);
+  height: 100vh;
+}
+#finish_tutorial img {
+  width: 170px;
+}
+#finish_tutorial p {
+  background-color: #FFF;
+  width: 100%;
+  padding: 33px 0;
+}
+#finish_tutorial button {
+  font-size: 14px;
+  color: #FFF;
+  background-color: rgba(237, 106, 76, 1);
+  border: none;
+  border-radius: 8px;
+  padding: 11px 18px;
+}
