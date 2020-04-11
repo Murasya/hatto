@@ -11,11 +11,15 @@
       setTimeout(startQuestion, 800)
     }
     function startQuestion() {
-      myNavigator.pushPage('question.html', {
-        data: {
-          qAndA: myNavigator.topPage.data.qAndA
-        }
-      })
+      if(!localStorage.getItem('tutorial')) {
+        myNavigator.pushPage('question_tutorial.html');
+      } else {
+        myNavigator.pushPage('question.html', {
+          data: {
+            qAndA: myNavigator.topPage.data.qAndA
+          }
+        });
+      }
     }
   </script>
 </ons-page>

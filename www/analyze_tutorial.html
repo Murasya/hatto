@@ -1,13 +1,16 @@
-<ons-page id="analyze_tutorial">
+<ons-page id="analyze">
   <div class="background"></div>
   <div class="content">
     <img class="cartoon" src="./images/分析中_キャラ.png">
     <div id="analyzeVue" v-cloak>
       <div class="speech">
         <img src="images/分析_お題画面_キャラ.png">
-        <span><b>取り組みたいことや<br>叶えたいことを書くテン。</b></span>
+        <p>まずは、キミの<b><u>取り組みたいこと<br>
+          や叶えたいこと</u></b>を書くテン。<br>
+          今回は<b>「英会話を学びたい」</b>として<br>
+          進めるテン！</p>
       </div>
-      <input type="text" v-model="theme">
+      <input type="text" v-model="theme" placeholder="英会話を学びたい">
       <select v-model="category">
         <option disabled value="">カテゴリ</option>
       </select>
@@ -27,19 +30,11 @@
         },
         methods: {
           nextButtonClick: function() {
-            if (this.theme == "") {
-              ons.notification.toast('テーマが入力されていません', {timeout: 2000, animation: "fall"});
+            if (this.theme != "英会話を学びたい") {
+              ons.notification.toast('テーマに「英会話を学びたい」と入力してください', {timeout: 2000, animation: "fall"});
               return;
             }
-            qAndA.questions.push("取り組みたいこと/叶えたいこと");
-            qAndA.answers.push(this.theme)
-            qAndA.uid = firebase.auth().currentUser.uid
-            qAndA.id = setNewData(qAndA);
-            document.querySelector('#myNavigator').pushPage('start.html', {
-              data: {
-                qAndA: qAndA
-              }
-            });
+            document.querySelector('#myNavigator').pushPage('start.html');
           },
         }
       });

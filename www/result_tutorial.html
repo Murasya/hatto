@@ -1,0 +1,66 @@
+<ons-page>
+  <div class="background" style="background-color: #E8F6FD;"></div>
+  <div id="resultVue" v-cloak>
+    <p class="theme">{{ theme }}</p>
+    
+    <div v-for="index in answers.length-1" class="items">
+      <p :class='tags[index] == "out" ? "lightBlue" : "blue"'>{{ index }}</p>
+      <p>{{ questions[index] }}</p>
+      <p>{{ answers[index] }}</p>
+    </div>
+    <textarea v-model="memo"></textarea>
+    <select v-model="success">
+      <option disabled value="">分析はうまくいった？</option>
+      <option>はい</option>
+      <option>いいえ</option>
+      <option>どちらともいえない</option>
+    </select><br>
+    <button v-show="recode == false" @click="saveButtonClick">記録する</button><br>
+    <button>Tweet</button>
+    <my-toolbar></my-toolbar>
+  </div>
+
+  <script>
+    var myNavigator = document.querySelector('#myNavigator');
+    ons.getScriptPage().onInit = function() {
+      vm = new Vue({
+        el: '#resultVue',
+        data: {
+          theme: "英会話を学びたい",
+          questions: [
+            "なぜ取り組みたい/叶えたい？",
+            "なぜ留学生と話せると良いのか？",
+            "なぜ違う文化を持つ人と話したいのか？",
+            "なぜ日本人らしすぎる気がするのか？",
+            "なぜはっきりとものが言えないのか？",
+          ],
+          answers: [
+            "なぜはっきりとものが言えないのか？",
+            "違う文化を持つ人と話してみたいから。",
+            "今の自分は日本人らしすぎる気がするから。",
+            "人の顔色を必要以上に伺ってしまっている節があるから。先輩や先生など目上の人たちに気を使えるのは自分の長所だけど、同級生にも自分の思っていることをはっきり言えないのは問題だと感じる。",
+            "自分の意見にあまり自信がないから。意見して変な目で見られるよりは、言わない方がいいやと思ってしまう。",
+          ],
+          tags: [
+            "out",
+            "in",
+            "in",
+            "in",
+            "in",
+          ],
+          memo: "漠然と留学生と話せるようになりたいと思っていたけど、本当は、周りの顔色をうかがわずにはっきりとものが言えるイメージのある海外の人に憧れを抱いていただけなのかもしれない。英会話ができるようになるのはもちろんいいことだけど、英会話ができるようにならなくても自分の良くないところは改善できるのではと思ったので、別の方法も考えたい。また、この点は自分の長所であるとも言えるので、いい部分として伸ばしていきたいとも思った。",
+          success: "",
+          category: [
+            "勉強",
+            "スキルアップ",
+          ],
+        },
+        methods: {
+          saveButtonClick: function() {
+            myNavigator.resetToPage('index.html');
+          },
+        }
+      });
+    }
+  </script>
+</ons-page>

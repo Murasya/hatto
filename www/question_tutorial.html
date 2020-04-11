@@ -1,0 +1,275 @@
+<ons-page>
+  <div class="background" style="background-color: #E8F6FD;"></div>
+  <div id="questionVue" v-cloak>
+    <div class="theme">
+      <p>{{ theme }}</p>
+    </div>
+    <div v-for="item in items" class="items">
+      <p :class='item.tag == "out" ? "lightBlue" : "blue"'>{{ item.num }}</p>
+      <p>{{ item.why }}</p>
+      <p>{{ item.answer }}</p>
+    </div>
+    <img src="images/チュートリアル_説明3-1.png" v-show="qa.num == 2"
+      style="width: 122px;">
+    <div class="writting">
+      <a @click="onNumber" :class="numberClass">{{ qa.num }}</a>
+      <p>{{ qa.why }}<input v-show="qa.num >= 2" type="text" v-model="qa.question">？</p>
+      <textarea v-model="qa.answer"></textarea>
+    </div>
+    <img src="images/チュートリアル_説明2-1.png" class="explain" v-show="qa.num == 1">
+    <img src="images/チュートリアル_説明2.png" class="explain" v-show="qa.num == 1">
+    <img src="images/チュートリアル_説明3-2.png" class="explain" v-show="qa.num == 2">
+    <img src="images/チュートリアル_説明3.png" class="explain" v-show="qa.num == 2">
+    <div class="buttons">
+      <a @click="interruptionButtonClick"><img src="./images/分析_一時保存ボタン.png" alt="中断ボタン" width="30px">途中セーブ</a>
+      <a @click="helpButtonClick"><img src="./images/分析_ヘルプボタン.png" alt="ヘルプボタン" width="30px">ヘルプ</a>
+      <a v-show="qa.num >= 5" @click="finishButtonClick"><img src="./images/分析_finish!ボタン.png" alt="finishボタン" width="70px"></a>
+      <a @click="nextButtonClick"><img src="./images/分析_nextボタン.png" alt="Nextボタン"  width="70px"></a>  
+    </div>
+    <div class="overlay" v-show="showSavingModal" @click="closeModal">
+      <p>分析を中断しますか？</p>
+      <button @click="savingButton">はい</button>
+      <button @click="closeModal">いいえ</button>
+    </div>
+    <div class="overlay-help" v-show="showHelpModal" @click="closeModal">
+      <iframe src="help.html"></iframe>
+      <a @click="closeModal">×</a>
+    </div>
+    <div class="overlay1" v-show="show1Modal" @click="closeModal">
+      <img src="images/チュートリアル_ウインク_キャラ.png" class="cartoon">
+      <div class="speech">
+        <img src="images/チュートリアル_吹き出し2,3,4.png">
+        <p>早速分析を始めるテン！<br>
+          なぜそれに取り組みたいのかを考えて<br>
+          入力するテン。<br>
+          今回は<b>「英語が話せたら留学生と話せ<br>
+          るから」</b>と回答するテン。</p>
+      </div>
+    </div>
+    <div class="overlay1" v-show="show2Modal" @click="closeModal">
+      <img src="images/分析中_キャラ.png" class="cartoon">
+      <div class="speech">
+        <img src="images/チュートリアル_吹き出し2,3,4.png">
+        <p>入力したら、回答内容が自分の<b>外側</b>の<br>
+          ことなのか<b>内側</b>のことなのかによって<br>
+          左のナンバーボタンの色を変えるテン！<br><br>
+          <b><u>外：環境や状況、一般的な事実など</u></b><br>
+          <b><u>内：自分の考えや感情・気持ち、体験など</u></b></p>
+      </div>
+    </div>
+    <div class="overlay1" v-show="show3Modal" @click="closeModal">
+      <img src="images/分析中_キャラ.png" class="cartoon">
+      <div class="speech">
+        <img src="images/チュートリアル_吹き出し2,3,4.png">
+        <p>次は、前の回答に対して「なぜ……<br>
+          なのか？」という質問を自分で立てて、<br>
+          またそれに回答していくテン！<br>
+          今回は、<b>「なぜ留学生と話せると良いの<br>
+          か？」→「違う文化を持つ人と話してみ<br>
+          たいから」</b>としてみるテン。</p>
+      </div>
+    </div>
+    <div class="overlay1" v-show="show4Modal" @click="closeModal">
+      <img src="images/チュートリアル_キリッと_キャラ.png" class="cartoon">
+      <div class="speech">
+        <img src="images/チュートリアル_吹き出し2,3,4.png">
+        <p>また同じように、「なぜ……？」を<br>
+          入力してそれに回答するテン。これを<br>
+          <b><u>5回以上</u></b>繰り返すテン！<br>
+          大変だけど、どんどん自分を深掘りして<br>
+          いけるんだテン！<br><br>
+          今回は特別に、3〜5回目まで僕がやっ<br>
+          てみるテン。ちゃんと見ておくテン！</p>
+      </div>
+    </div>
+    <div class="overlay1" v-show="show5Modal" @click="closeModal">
+      <img src="images/チュートリアル_疲れた_キャラ.png" class="cartoon">
+      <div class="speech">
+        <img src="images/チュートリアル_吹き出し5.png">
+        <p>ふぅ…自分を見つめられたことだし、<br>
+          そろそろ満足だテン。<br>
+          <b>記録</b>を残して終わりにするテン！</p>
+      </div>
+    </div>
+    <div class="overlay2" v-show="show6Modal">
+      <a v-show="qa.num >= 5" @click="finishButtonClick"><img src="./images/分析_finish!ボタン.png" alt="finishボタン" width="70px"></a>
+    </div>
+    <my-toolbar></my-toolbar>
+  </div>
+  
+  <script>
+    var myNavigator = document.querySelector('#myNavigator');
+    
+    ons.getScriptPage().onInit = function() {
+      var items = [];
+      var why = "なぜ取り組みたい/叶えたい";
+      var vm_q = new Vue({
+        el: '#questionVue',
+        data: {
+          theme: "英会話を学びたい",
+          items: items,
+          qa: {
+            num: 1,
+            why: why,
+            question: "",
+            answer: "",
+            tag: "",
+          },
+          showSavingModal: false,
+          showHelpModal: false,
+          show1Modal: false,
+          show2Modal: false,
+          show3Modal: false,
+          show4Modal: false,
+          show5Modal: false,
+          show6Modal: false,
+          numberClass: "defo",
+          temp: {
+            questions: [
+              "取り組みたい/叶えたい",
+              "留学生と話せると良いのか",
+              "違う文化を持つ人と話したいのか",
+              "日本人らしすぎる気がするのか",
+              "はっきりとものが言えないのか",
+            ],
+            answers: [
+              "英語が話せたら留学生と話せるから",
+              "違う文化を持つ人と話してみたいから",
+              "今の自分は日本人らしすぎる気がするから。",
+              "人の顔色を必要以上に伺ってしまっている節があるから。先輩や先生など目上の人たちに気を使えるのは自分の長所だけど、同級生にも自分の思っていることをはっきり言えないのは問題だと感じる。",
+              "自分の意見にあまり自信がないから。意見して変な目で見られるよりは、言わないほうがいいやと思ってしまう。"
+            ],
+            tags: [
+              "out",
+              "in",
+              "in",
+              "in",
+              "in",
+            ]
+          },
+        },
+        methods: {
+          interruptionButtonClick: function() {
+            //this.showSavingModal = true;
+          },
+          helpButtonClick: function() {
+            this.showHelpModal = true;
+          },
+          nextButtonClick: function() {
+            if(this.qa.num == 1) {
+              if(this.qa.answer != "英語が話せたら留学生と話せるから") {
+                ons.notification.toast( "「英語が話せたら留学生と話せるから」と入力しよう", {timeout: 1000, animation: 'fall'});
+                return;
+              }
+              if(this.qa.tag != "out") {
+                ons.notification.toast( "1回タップしよう", {timeout: 1000, animation: 'fall'});
+                return;
+              }
+            }
+            if(this.qa.num == 2) {
+              if(this.qa.question != "留学生と話せると良いのか") {
+                ons.notification.toast( "「留学生と話せると良いのか」と入力しよう", {timeout: 1000, animation: 'fall'});
+                return;
+              }
+              if(this.qa.answer != "違う文化を持つ人と話してみたいから") {
+                ons.notification.toast( "「違う文化を持つ人と話してみたいから」と入力しよう", {timeout: 1000, animation: 'fall'});
+                return;
+              }
+              if(this.qa.tag != "in") {
+                ons.notification.toast( "2回タップしよう", {timeout: 1000, animation: 'fall'});
+                return ;
+              }
+            }
+            this.qa.why = this.qa.why + this.qa.question + "？";
+            this.items.push(Object.assign({}, this.qa));
+            this.qa.num++;
+            this.qa.why = "なぜ";
+            this.qa.question = "";
+            this.qa.answer = "";
+            this.numberClass = "defo";
+            this.qa.tag = "";
+            if(this.qa.num == 2) {
+              this.show3Modal = true;
+            } else if(this.qa.num == 3) {
+              this.show4Modal = true;
+            }
+          },
+          finishButtonClick: function() {
+            if(this.qa.answer != "") {
+              this.qa.why = this.qa.why + this.qa.question + "？";
+              this.items.push(Object.assign({}, this.qa));
+            }
+            myNavigator.pushPage('result_tutorial.html');
+          },
+          closeModal: function() {
+            this.showSavingModal = false;
+            this.showHelpModal = false;
+            this.show2Modal = false;
+            if(this.show1Modal == true) {
+              this.show1Modal = false;
+              showModal(2);
+            }
+            this.show3Modal = false;
+            if (this.show5Modal == true) {
+              this.show5Modal = false;
+              this.show6Modal = true;
+            }
+            if (this.show4Modal == true) {
+              this.show4Modal = false;
+              var t = this;
+              var id = setInterval(function() {
+                if (t.qa.num < 5) {
+                  t.qa.question = t.temp.questions[t.qa.num-1];
+                  t.qa.answer = t.temp.answers[t.qa.num-1];
+                  t.qa.tag = t.temp.tags[t.qa.num-1];
+                  t.numberClass = "blue";
+                  t.qa.why = t.qa.why + t.qa.question + "？";
+                  t.items.push(Object.assign({}, t.qa));
+                  t.qa.why = "なぜ";
+                  t.qa.question = t.temp.questions[t.qa.num];
+                  t.qa.answer = t.temp.answers[t.qa.num];
+                  t.qa.num++;
+                } else {
+                  t.show5Modal = true;
+                  clearInterval(id);
+                }
+              }, 1000);
+            }
+          },
+          savingButton: function() {
+            // if(this.qa.answer != "") {
+            //   this.qa.why = this.qa.why + this.qa.question + "？";
+            //   this.items.push(Object.assign({}, this.qa));
+            // }
+            // myNavigator.resetToPage('index.html');
+          },
+          onNumber: function() {
+            if(this.numberClass == "defo") {
+              this.numberClass = "lightBlue";
+              this.qa.tag = "out";
+            } else if (this.numberClass == "lightBlue") {
+              this.numberClass = "blue";
+              this.qa.tag = "in";
+            } else {
+              this.numberClass = "defo";
+              this.qa.tag = "";
+            }
+          }
+        }
+      });
+      
+      setTimeout(showModal(1), 800);
+
+      function showModal(num) {
+        switch(num) {
+          case 1:
+            vm_q.show1Modal = true;
+            break;
+          case 2:
+            vm_q.show2Modal = true;
+            break;
+        }
+      }
+    }
+  </script>
+</ons-page>
