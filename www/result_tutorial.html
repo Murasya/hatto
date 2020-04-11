@@ -2,21 +2,36 @@
   <div class="background" style="background-color: #E8F6FD;"></div>
   <div id="resultVue" v-cloak>
     <p class="theme">{{ theme }}</p>
-    
-    <div v-for="index in answers.length-1" class="items">
-      <p :class='tags[index] == "out" ? "lightBlue" : "blue"'>{{ index }}</p>
+    <span style="border: solid 0.23px rgba(166, 167, 167, 1);
+                 background-color: #FFF;
+                 color: rgba(166, 167, 167, 1);
+                 padding: 5px;
+                 font-size: 10px;">勉強 スキルアップ</span>
+    <div v-for="(value, index) in questions" class="items">
+      <p :class='tags[index] == "out" ? "lightBlue" : "blue"'>{{ index+1 }}</p>
       <p>{{ questions[index] }}</p>
       <p>{{ answers[index] }}</p>
     </div>
     <textarea v-model="memo"></textarea>
+    <img src="images/チュートリアル_説明4.png" width="173px">
     <select v-model="success">
       <option disabled value="">分析はうまくいった？</option>
       <option>はい</option>
       <option>いいえ</option>
       <option>どちらともいえない</option>
     </select><br>
-    <button v-show="recode == false" @click="saveButtonClick">記録する</button><br>
-    <button>Tweet</button>
+    <button @click="saveButtonClick">完了 </button><br>
+    <button><ons-icon icon="fa-twitter"></ons-icon> Tweet</button>
+    <div class="overlay1" v-show="showModal" @click="closeModal">
+      <img src="images/分析中_キャラ.png" class="cartoon">
+      <div class="speech">
+        <img src="images/チュートリアル_吹き出し6.png">
+        <p>分析が終わったら、今回の思考回路や<br>
+          そこから考えたこと、思ったことなど<br>
+          をメモして残しておくテン！<br>
+          ボクが書いてみたから、読んでほしいテン！</p>
+      </div>
+    </div>
     <my-toolbar></my-toolbar>
   </div>
 
@@ -35,7 +50,7 @@
             "なぜはっきりとものが言えないのか？",
           ],
           answers: [
-            "なぜはっきりとものが言えないのか？",
+            "英語が話せたら留学生と話せるから。",
             "違う文化を持つ人と話してみたいから。",
             "今の自分は日本人らしすぎる気がするから。",
             "人の顔色を必要以上に伺ってしまっている節があるから。先輩や先生など目上の人たちに気を使えるのは自分の長所だけど、同級生にも自分の思っていることをはっきり言えないのは問題だと感じる。",
@@ -54,13 +69,18 @@
             "勉強",
             "スキルアップ",
           ],
+          showModal: false,
         },
         methods: {
           saveButtonClick: function() {
-            myNavigator.resetToPage('index.html');
+            myNavigator.resetToPage('finish_tutorial.html');
           },
+          closeModal: function() {
+            this.showModal = false;
+          }
         }
       });
+      vm.showModal = true;
     }
   </script>
 </ons-page>

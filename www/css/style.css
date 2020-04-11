@@ -284,13 +284,13 @@ header {
   margin-top: 38.5px;
   margin-left: 14px;
 }
-#questionVue .defo {
+.defo {
   background-color: #D5D5D5;
 }
-#questionVue .lightBlue {
+.lightBlue {
   background-color: #88CDDF;
 }
-#questionVue .blue {
+.blue {
   background-color: #3895AD;
 }
 .items {
@@ -309,8 +309,8 @@ header {
   height: 75px;
   border-radius: 0 100% 100% 0/0 50% 50% 0;
   line-height: 75px;
-  background-color: #D5D5D5;
   z-index: 5;
+  color: #FFF;
 }
 .items p:nth-of-type(2) {
   text-align: center;
@@ -441,7 +441,7 @@ header {
   right: 20px;
   font-size: 30px;
 }
-#questionVue .overlay1 {
+.overlay1 {
   z-index: 99;
   position: fixed;
   top: 0;
@@ -450,18 +450,18 @@ header {
   height: 100%;
   background-color: rgba(90, 159, 193, 0.79);
 }
-#questionVue .overlay1 .speech {
+.overlay1 .speech {
   position: relative;
   top: 160px;
 }
-#questionVue .overlay1 .speech img {
+.overlay1 .speech img {
   width: 80%;
   position: relative;
   display: block;
   top: 0;
   margin: 0 auto;
 }
-#questionVue .overlay1 .speech p {
+.overlay1 .speech p {
   position: absolute;
   color: rgba(237, 106, 76, 1);
   font-size: 12px;
