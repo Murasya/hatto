@@ -1,12 +1,42 @@
 <ons-page>
-  <div id="register">
-    <p>REGISTER</p>
-    <div>
-      <input type="email" id="email_register" v-model="email" placeholder="メールアドレス">
-      <input type="password" id="password_register" v-model="password" placeholder="パスワード">
-      <input type="button" value="登録" @click="onRegister">
+  <div id="register" v-cloak>
+    <ul>
+      <li>仮登録またはTwitterアカウントで登録を行うことにより、<a>利用規約</a>・<a>プライバシーポリシー</a>に同意したものとみなします。</li>
+      <li>メールアドレスおよび連携サービスのDMにアプリ改善のためのアンケート等をお送りする場合がございます。あらかじめご了承ください。</li>
+    </ul>
+    <div class="form">
+      <p>メールアドレス</p>
+      <input type="email" id="email_register" v-model="email" placeholder="入力してください">
+      <p>パスワード</p>
+      <input type="password" id="password_register" v-model="password" placeholder="入力してください">
+      <p>性別</p>
+      <select v-model="sex">
+        <option value="男">男</option>
+        <option value="女">女</option>
+        <option value="その他">その他</option>
+      </select>
+      <p>生年月日</p>
+      <div>
+        <select v-model="year" @change="get_days">
+          <option v-for="n in 100" :value="n + 1920">{{ n + 1920 }}</option>
+        </select>年
+        <select v-model="month" @change="get_days">
+          <option v-for="n in 12">{{ n }}</option>
+        </select>月
+        <select v-model="day">
+          <option v-for="n in days_max" :value="n">{{ n }}</option>
+        </select>日
+      </div>
+      <p>職業</p>
+      <select v-model="occupation">
+        <option v-for="n in occupation_list" :value="n">{{ n }}</option>
+      </select>
     </div>
-    <button><ons-icon icon="fa-twitter"></ons-icon> Twitterアカウントで始める</button>
+    <div class="btns">
+      <button @click="onRegister" class="send_mail_btn">仮登録メールを送信</button>
+      <hr>
+      <button class="twitter_register"><ons-icon icon="fa-twitter"></ons-icon> Twitterアカウントで登録</button>
+    </div>
   </div>
   <script>
     ons.getScriptPage().onInit = function () {
@@ -15,6 +45,24 @@
         data: {
           email: "",
           password: "",
+          sex: "男",
+          year: 2020,
+          month: 1,
+          day: 1,
+          days_max: "",
+          occupation: "学生",
+          occupation_list: [
+            "学生",
+            "会社員",
+            "自営業",
+            "専業主婦(夫)",
+            "パート・アルバイト",
+            "無職",
+            "その他",
+          ]
+        },
+        created: function() {
+          this.get_days();
         },
         methods: {
           onRegister: function() {
@@ -31,6 +79,9 @@
               .catch(function(error) {
                 ons.notification.toast(error.message, { timeout: 1000, animation: 'fall'});
               });
+          },
+          get_days: function() {
+            this.days_max = new Date(this.year, this.month, 0).getDate();
           }
         }
       });

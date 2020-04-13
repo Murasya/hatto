@@ -749,60 +749,72 @@ header {
 
 /* register */
 #register {
-  background-color: #ED6A4C;
-  background-image: url(../images/機能紹介_サインイン_サインアップ_背景.png);
-  background-size: cover;
+  background-color: #F7C7B9;
+  height: 100vh;
+  width: 100%;
+  text-align: left;
+}
+#register ul {
+  background-color: #FFF;
+  margin: 0;
+  padding: 46px 36px 16px 50px;
+}
+#register li {
+  font-size: 11px;
+}
+#register .form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  align-items: flex-start;
+  padding: 0 50px;
+}
+#register .form div {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
 }
 #register p {
-  font-size: 25px;
+  font-size: 12px;
+  margin: 12px 0 6px;
 }
-#register div {
-  background-color: rgba(255, 220, 213, 0.49);
+#register input {
+  border-radius: 22px;
+  border: solid 0.8px #707070;
+  padding: 10px;
+  width: 100%;
+}
+#register select {
+  border-radius: 13px;
+  border: solid 0.8px #707070;
+  padding: 7px 0 7px 10px;
+  font-size: 11px;
+}
+#register button {
+  color: #FFF;
+  border-radius: 5px;
+  border: none;
+  padding: 7px 40px;
+}
+#register .btns {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 216px;
+  margin: 20px 50px 0;
 }
-#register input[type="email"] {
-  width: 80%;
-  height: 43px;
-  border-radius: 22px;
-  border: solid 1px #707070;
-  padding-left: 14px;
-}
-#register input[type="password"] {
-  width: 80%;
-  height: 43px;
-  border-radius: 22px;
-  border: solid 1px #707070;
-  margin: 18px 0 23px;
-  padding-left: 14px;
-}
-#register input[type="button"] {
-  width: 66px;
-  height: 25px;
+#register .send_mail_btn {
   background-color: #ED6A4C;
-  color: #FFF;
-  font-size: 15px;
-  border: none;
-  border-radius: 5px;
+  font-size: 14px;
 }
-#register button {
+#register hr {
+  width: 100%;
+  border: solid 1px #3B3B3B;
+  margin: 23px 0;
+}
+.twitter_register {
   background-color: #4190C6;
-  color: #FFF;
-  border-radius: 5px;
-  border: none;
-  font-size: 10px;
-  margin-top: 24px;
-  width: 75%;
-  height: 23px;
+  font-size: 11px;
 }
 
 /* ready */
