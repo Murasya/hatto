@@ -81,16 +81,36 @@ header {
 }
 .nav {
   position: fixed;
-  top: 30px;
+  top: 40px;
   left: 0;
   width: 40%;
   height: 100%;
   z-index: 99;
   background-color: rgba(237,106,76,0.8);
   transition: all .5s;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+  padding-left: 23px;
+  padding-top: 10px;
 }
 .nav.v-enter, .nav.v-leave-to {
   opacity: 0;
+}
+.nav a {
+  margin: 5px 0;
+  height: 28px;
+}
+.nav a:nth-of-type(1):before {
+  display: inline-block;
+  content: "";
+  width: 28px;
+  height: 28px;
+  background: url("../images/options_アイコン.png") no-repeat;
+  background-size: contain;
+  vertical-align: middle;
+  margin-right: 5px;
 }
 
 [v-cloak] {

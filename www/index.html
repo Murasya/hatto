@@ -43,9 +43,9 @@
           </div>
         </header>
         <transition>
-          <div class="nav" v-show="menuFlag" @click="naviOpen">
-            <p><img src="">OPTIONS</p>
-            <p><a @click="logoutButtonClick">SIGN OUT</a></p>
+          <div class="nav" v-show="menuFlag">
+            <a>OPTIONS</a>
+            <a @click="logoutButtonClick">SIGN OUT</a>
           </div>
         </transition>
         
