@@ -35,7 +35,7 @@
         <a @click="goTutorial"><img class="logo" src="images/ダウンロード後_シンボル_顔なし.png"></a>
       </div>
       <div v-else>
-        <header>
+        <header v-show="currentUser != null">
           <div :class="{ menu_btn: true, open_: menuFlag }" @click="naviOpen">
             <span class="menu_trigger">
               <span></span><span></span><span></span>
@@ -43,29 +43,31 @@
           </div>
         </header>
         <transition>
-          <div class="nav" v-show="menuFlag">
-            <p><img src="images/設定ボタン.png">OPTIONS</p>
+          <div class="nav" v-show="menuFlag" @click="naviOpen">
+            <p><img src="">OPTIONS</p>
             <p><a @click="logoutButtonClick">SIGN OUT</a></p>
           </div>
         </transition>
         
-        <div id="notSignIn" v-if="currentUser== null">
-          <p><img class="logo" src="./images/サインイン前_home.png" alt="ロゴ"></p>
-          <a @click="loginButtonClick"><img class="img-button" src="images/signin_ボタン.png"></a><br>
-          <a @click="signUpButtonClick"><img class="img-button" src="images/signup_ボタン.png"></a>
-        </div>
-        <div id="isSignIn" v-else>
-          <img class="logo" src="./images/サインイン後_home.png" alt="ロゴ">
-          <p>-Recents-</p>
-          <div class="recode">
-            <a v-for="data in recent" class="data" @click="onDataButton(data)">
-              <span>{{ data.timestamp.getFullYear() }}/{{ ('0'+(data.timestamp.getMonth()+1)).slice(-2) }}/{{ data.timestamp.getDate() }}</span>
-              <p>{{ data.answers[0] }}</p>
-              <hr>
-            </a>
+        <div v-show="loading">
+          <div id="notSignIn" v-if="currentUser == null">
+            <p><img class="logo" src="./images/サインイン前_シンボル.png" alt="ロゴ"></p>
+            <a @click="loginButtonClick"><img class="img-button" src="images/signin_ボタン.png"></a><br>
+            <a @click="signUpButtonClick"><img class="img-button" src="images/registerボタン.png"></a>
+          </div>
+          <div id="isSignIn" v-else>
+            <a @click="goAnalyze"><img class="logo" src="./images/home_シンボル.png" alt="ロゴ"></a>
+            <p>Recents</p>
+            <div class="recode">
+              <a v-for="data in recent" class="data" @click="onDataButton(data)">
+                <span>{{ data.timestamp.getFullYear() }}/{{ ('0'+(data.timestamp.getMonth()+1)).slice(-2) }}/{{ data.timestamp.getDate() }}</span>
+                <p>{{ data.answers[0] }}</p>
+                <hr>
+              </a>
+            </div>
           </div>
         </div>
-        <my-toolbar></my-toolbar>
+        <my-toolbar v-show="currentUser != null"></my-toolbar>
       </div>
     </div>
     
@@ -78,13 +80,14 @@
             recent: [],
             menuFlag: false,
             tutorialFinish: localStorage.getItem('tutorial'),
+            loading: false,
           },
           methods: {
             loginButtonClick: function () {
               document.getElementById("myNavigator").pushPage('account.html', {data: {title: 'アカウント'}});
             },
             signUpButtonClick: function () {
-              document.getElementById("myNavigator").pushPage('account.html', {data: {title: 'アカウント'}});
+              document.getElementById("myNavigator").pushPage('register.html', {data: {title: 'アカウント'}});
             },
             logoutButtonClick: function () {
               firebase.auth().signOut();
@@ -110,17 +113,21 @@
             },
             goTutorial: function() {
               document.getElementById("myNavigator").pushPage('explain.html');
+            },
+            goAnalyze: function() {
+              document.getElementById("myNavigator").resetToPage('analyze.html');
             }
           },
         });
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
-            console.log(user.uid)
+            console.log(user.uid);
             vm_i.recent = getQuestionAndAnswer(2);
           } else {
             console.log("not LogedIn");
           }
           vm_i.currentUser = user;
+          vm_i.loading = true;
         });
       }
     </script>

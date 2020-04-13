@@ -15,18 +15,18 @@
         data: {
           email: "",
           password: "",
-          tutorialFinish: localStorage.getItem('tutorial'),
         },
         methods: {
           onRegister: function() {
             firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
               .then(function() {
-                if(this.tutorialFinish) {
-                  document.querySelector('#myNavigator').resetToPage("index.html");
-                  ons.notification.toast('アカウント登録成功', { timeout: 1000, animation: 'fall'});
-                } else {
-                  document.querySelector('#myNavigator').pushPage("ready.html");
-                }
+                document.querySelector('#myNavigator').resetToPage("index.html");
+                firebase.auth().currentUser.sendEmailVerification().then(function() {
+                  ons.notification.toast('確認メールを送りました', {timeout: 1000, animation: 'fall'});
+                }).catch(function(error) {
+                  
+                });
+                ons.notification.toast('アカウント登録成功', { timeout: 1000, animation: 'fall'});
               })
               .catch(function(error) {
                 ons.notification.toast(error.message, { timeout: 1000, animation: 'fall'});

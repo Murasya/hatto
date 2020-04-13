@@ -1,15 +1,12 @@
 <ons-page id="account">
-  <ons-toolbar>
-    <div class="left"><ons-back-button></ons-back-button></div>
-    <div class="center">アカウント</div>
-  </ons-toolbar>
-  <div class="background" style="background-color: #ED6A4C;"><img src="images/サインイン_背景.png" width="100%"></div>
   <div id="signIn">
     <p>SIGN IN</p>
-    <input type="email" id="email" v-model="email" placeholder="メールアドレス">
-    <input type="password" id="password" v-model="password" placeholder="パスワード"><br>
-    <a @click="onLoginAccount"><img src="images/アカウント矢印.png"></a><br>
-    <button @click="onNewAccount">アカウント作成</button>
+    <div>
+      <input type="email" id="email" v-model="email" placeholder="メールアドレス">
+      <input type="password" id="password" v-model="password" placeholder="パスワード">
+      <a @click="onLoginAccount"><img src="images/signin_完了ボタン.png" width="50px"></a>
+    </div>
+    <button @click="onTwitterAccount" class="twitter_login"><ons-icon icon="fa-twitter"></ons-icon> Twitterアカウントでサインイン</button>
   </div>
   <script>
     ons.getScriptPage().onInit = function() {
@@ -29,8 +26,8 @@
                 alert(error.message);
               });
           },
-          onNewAccount: function() {
-            document.querySelector('#myNavigator').pushPage("register.html");
+          onTwitterAccount: function() {
+            
           }
         }
       });
