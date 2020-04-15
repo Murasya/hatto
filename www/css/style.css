@@ -28,6 +28,14 @@
   height: 64px;
   padding-top: 12px;
 }
+.toolbar div {
+  display: flex;
+  flex-direction: column;
+}
+.toolbar span {
+  font-size: 9px;
+  color: #585858;
+}
 
 header {
   background-color: rgba(255, 255, 255, 1.0);
