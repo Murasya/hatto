@@ -44,8 +44,14 @@
         </header>
         <transition>
           <div class="nav" v-show="menuFlag">
-            <a>OPTIONS</a>
-            <a @click="logoutButtonClick">SIGN OUT</a>
+            <input type="checkbox" id="acd-check1" class="acd-check">
+            <label for="acd-check1" class="acd-label">OPTIONS </label>
+            <div class="acd-content">
+              <a>利用規約</a>
+              <a>プライバシー<br>ポリシー</a>
+              <a>フィードバック</a>
+            </div>
+            <a @click="logoutButtonClick" class="signout">SIGN OUT</a>
           </div>
         </transition>
         

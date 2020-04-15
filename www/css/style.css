@@ -106,16 +106,59 @@ header {
 .nav.v-enter, .nav.v-leave-to {
   opacity: 0;
 }
-.nav a {
+.nav .signout {
   margin: 5px 0;
   height: 28px;
 }
-.nav a:nth-of-type(1):before {
+.acd-check {
+  display: none;
+}
+.acd-label:before {
   display: inline-block;
   content: "";
   width: 28px;
   height: 28px;
   background: url("../images/options_アイコン.png") no-repeat;
+  background-size: contain;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.acd-content {
+  height: 0;
+  opacity: 0;
+  transition: .5s;
+  visibility: hidden;
+  font-size: 10px;
+  color: #4B4B4B;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-left: solid 1px #4B4B4B;
+  text-align: left;
+  margin-left: 30px;
+}
+.acd-check:checked + .acd-label + .acd-content {
+  height: 67px;
+  opacity: 1;
+  padding-left: 10px;
+  visibility: visible;
+}
+.acd-check:not(:checked) + .acd-label:after {
+  font-family: "Font Awesome 5 Free";
+  content: '\f107';
+  font-weight: 900;
+}
+.acd-check:checked + .acd-label:after {
+  font-family: "Font Awesome 5 Free";
+  content: '\f106';
+  font-weight: 900;
+}
+.nav .signout:before {
+  display: inline-block;
+  content: "";
+  width: 28px;
+  height: 28px;
+  background: url("../images/signout_アイコン.png") no-repeat;
   background-size: contain;
   vertical-align: middle;
   margin-right: 5px;
