@@ -23,7 +23,7 @@
   <script src="js/app.js"></script>
 </head>
 <body>
-  <ons-navigator swapable id="myNavigator" page="register.html"></ons-navigator>
+  <ons-navigator swapable id="myNavigator" page="mail_resend.html"></ons-navigator>
 </body>
 </html>
 
@@ -52,8 +52,8 @@
         <div v-show="loading">
           <div id="notSignIn" v-if="currentUser == null">
             <p><img class="logo" src="./images/サインイン前_シンボル.png" alt="ロゴ"></p>
-            <a @click="loginButtonClick"><img class="img-button" src="images/signin_ボタン.png"></a><br>
-            <a @click="signUpButtonClick"><img class="img-button" src="images/registerボタン.png"></a>
+            <a @click="loginButtonClick"><img class="img-button" src="images/各種ボタン/signin_ボタン.png"></a><br>
+            <a @click="signUpButtonClick"><img class="img-button" src="images/各種ボタン/register_ボタン.png"></a>
           </div>
           <div id="isSignIn" v-else>
             <a @click="goAnalyze"><img class="logo" src="./images/home_シンボル.png" alt="ロゴ"></a>

@@ -4,9 +4,12 @@
     <div>
       <input type="email" id="email" v-model="email" placeholder="メールアドレス">
       <input type="password" id="password" v-model="password" placeholder="パスワード">
-      <a @click="onLoginAccount"><img src="images/signin_完了ボタン.png" width="50px"></a>
+      <a @click="onLoginAccount"><img src="images/各種ボタン/signin実行_ボタン.png" width="50px"></a>
+      <hr>
+      <button @click="onTwitterAccount" class="twitter_login"><ons-icon icon="fa-twitter"></ons-icon> Twitterアカウントでサインイン</button>
+      <button @click="onGoogleAccount" class="google_login"><ons-icon icon="fa-google"></ons-icon> Googleアカウントでサインイン</button>
     </div>
-    <button @click="onTwitterAccount" class="twitter_login"><ons-icon icon="fa-twitter"></ons-icon> Twitterアカウントでサインイン</button>
+    <a class="forgot_password" @click="onForgotPassword">パスワードを忘れた場合</a>
   </div>
   <script>
     ons.getScriptPage().onInit = function() {
@@ -28,6 +31,12 @@
           },
           onTwitterAccount: function() {
             
+          },
+          onGoogleAccount: function() {
+
+          },
+          onForgotPassword: function() {
+            document.getElementById("myNavigator").pushPage('password_reset.html');
           }
         }
       });

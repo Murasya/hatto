@@ -66,6 +66,8 @@
         },
         methods: {
           onRegister: function() {
+            var day = new Date(year, month, day);
+            setNewUser(this.email, this.sex, day, this.occupation);
             firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
               .then(function() {
                 document.querySelector('#myNavigator').resetToPage("index.html");
