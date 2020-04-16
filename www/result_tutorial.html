@@ -2,37 +2,34 @@
   <div class="background" style="background-color: #E8F6FD;"></div>
   <div id="resultVue" v-cloak>
     <p class="theme">{{ theme }}</p>
-    <span style="border: solid 0.23px rgba(166, 167, 167, 1);
-                 background-color: #FFF;
-                 color: rgba(166, 167, 167, 1);
-                 padding: 5px;
-                 font-size: 10px;">勉強 スキルアップ</span>
+    <span>勉強 スキルアップ</span>
     <div v-for="(value, index) in questions" class="items">
       <p :class='tags[index] == "out" ? "lightBlue" : "blue"'>{{ index+1 }}</p>
       <p>{{ questions[index] }}</p>
       <p>{{ answers[index] }}</p>
     </div>
-    <textarea v-model="memo"></textarea>
-    <img src="images/チュートリアル_説明4.png" width="173px">
+    <textarea v-model="memo" placeholder="メモ"></textarea>
+    <img src="images/チュートリアル_説明4.png" width="173px" class="explain-suc">
     <select v-model="success">
       <option disabled value="">分析はうまくいった？</option>
-      <option>はい</option>
-      <option>いいえ</option>
-      <option>どちらともいえない</option>
+      <option value="はい">はい</option>
+      <option value="いいえ">いいえ</option>
+      <option value="どちらともいえない">どちらともいえない</option>
     </select><br>
     <button @click="saveButtonClick">完了 </button><br>
     <button><ons-icon icon="fa-twitter"></ons-icon> Tweet</button>
     <div class="overlay1" v-show="showModal" @click="closeModal">
       <img src="images/分析中_キャラ.png" class="cartoon">
       <div class="speech">
-        <img src="images/チュートリアル_吹き出し6.png">
-        <p>分析が終わったら、今回の思考回路や<br>
-          そこから考えたこと、思ったことなど<br>
-          をメモして残しておくテン！<br>
-          ボクが書いてみたから、読んでほしいテン！</p>
+        <img src="images/吹き出し/チュートリアル_吹き出し(11)(10)(9)(6)(22).png">
+        <p>分析が終わったら、感想を書くテン！<br>
+          今回の "分析" から考えたこと・思っ<br>
+          たこと，これからやろうと思うことを<br>
+          メモして残しておくと良いテンね！<br><br>
+          今回はボクが頑張って書いたから、<br>
+          読んでほしいテン！</p>
       </div>
     </div>
-    <my-toolbar></my-toolbar>
   </div>
 
   <script>

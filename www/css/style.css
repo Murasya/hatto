@@ -647,41 +647,55 @@ header {
 
 /* result.html */
 #resultVue {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#resultVue span{
+  display: inline-block;
+  border: solid 0.23px rgba(166, 167, 167, 1);
+  background-color: #FFF;
+  color: rgba(166, 167, 167, 1);
+  padding: 5px;
+  font-size: 10px;
+  align-self: flex-start;
+  margin: 0 0 20px 28px;
 }
 #resultVue .theme {
   margin-top: 50px;
   margin-left: 28px;
   font-size: 17px;
   color: #DE4D2B;
+  align-self: flex-start;
 }
-#resultVue select:nth-of-type(1) {
+#resultVue select {
+  display: inline-block;
   color: #A6A7A7;
   border-radius: 1.45px;
   border-width: 0.23px;
-  width: 107px;
+  width: 70%;
+  padding: 10px;
   margin-top: 10px;
   margin-left: 28px;
   text-align: left;
 }
-#resultVue select:nth-of-type(2) {
-  color: #A6A7A7;
-  border-radius: 2.27px;
-  border-width: 0.36px;
-  width: 70%;
-  height: 38px;
-  margin-top: 30px;
-}
 #resultVue textarea {
-  width: 70%;
+  width: 75%;
   height: 180px;
   border-left: solid 1.5px #DE4D2B;
   border-bottom: solid 1.5px #DE4D2B;
   border-top: none;
   border-right: none;
   background: none;
-  margin-top: 45px;
+  margin: 45px 10% 0;
   font-size: 11px;
+  resize: none;
+}
+#resultVue .explain-suc {
+  position: relative;
+  top: 30px;
+  left: 70px;
 }
 #resultVue button:nth-of-type(1) {
   width: 94px;
