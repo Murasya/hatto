@@ -8,8 +8,8 @@
         <span><b>取り組みたいことや<br>叶えたいことを書くテン。</b></span>
       </div>
       <input type="text" v-model="theme">
-      <select v-model="category">
-        <option disabled value="">カテゴリ</option>
+      <select v-model="category" @change="getSelect" size="1" multiple>
+        <option v-for="n in categories" :value="n" :disabled="isPushed ? !(category.includes(n)) : false">{{ n }}</option>
       </select>
       <button @click="nextButtonClick">これを分析！</button>
       <my-toolbar></my-toolbar>
@@ -23,12 +23,39 @@
         el: '#analyzeVue',
         data: {
           theme: "",
-          category: "",
+          category: [],
+          categories: [
+            "夢",
+            "欲しいもの",
+            "就活",
+            "研究",
+            "進路",
+            "将来",
+            "勉強",
+            "スキルアップ",
+            "ゼミ",
+            "読書",
+            "資格",
+            "サークル",
+            "部活",
+            "人間関係",
+            "趣味",
+            "自己分析",
+            "1週間後",
+            "1年後",
+            "10年後",
+            "その他",
+          ],
+          isPushed: false,
         },
         methods: {
           nextButtonClick: function() {
             if (this.theme == "") {
               ons.notification.toast('テーマが入力されていません', {timeout: 2000, animation: "fall"});
+              return;
+            }
+            if (this.category.length == 0) {
+              ons.notification.toast('カテゴリを1～3つ選択してください', {timeout: 2000, animation: "fall"});
               return;
             }
             qAndA.questions.push("取り組みたいこと/叶えたいこと");
@@ -41,6 +68,15 @@
               }
             });
           },
+          getSelect: function() {
+            var count = this.category.length;
+            console.log(count);
+            if(count >= 3) {
+              this.isPushed = true;
+            } else {
+              this.isPushed = false;
+            }
+          }
         }
       });
     }
