@@ -395,15 +395,21 @@ header {
 }
 
 /* question */
+#questionVue {
+  height: 100vh;
+}
 #questionVue .theme {
   height: 65px;
   background-color: #E0836E;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.29);
+  color: #FFF;
+  font-size: 12px;
 }
 #questionVue .theme p {
   font-size: 12px;
-  margin-top: 38.5px;
-  margin-left: 14px;
+  padding-top: 38.5px;
+  padding-left: 14px;
+  margin: 0;
 }
 .defo {
   background-color: #D5D5D5;
@@ -495,37 +501,42 @@ header {
 #questionVue .writting textarea {
   position: absolute;
   border: 0;
-  padding: 0;
-  padding-left: 15%;
+  padding: 5px 0 0 15%;
   top: 25px;
   left: 0;
-  width: 90%;
-  height: 50px;
+  width: 85%;
+  height: 45px;
   z-index: 4;
+  resize: none;
 }
-
+#questionVue .buttons {
+  position: absolute;
+  bottom: 80px;
+  left: 0;
+  width: 100%;
+}
 #questionVue .buttons a:nth-of-type(1) {
-  position: fixed;
+  position: relative;
   left: 45px;
-  bottom: 50px;
+  bottom: 0px;
   z-index: 30;
 }
 #questionVue .buttons a:nth-of-type(2) {
-  position: fixed;
+  position: absolute;
   left: 45px;
-  bottom: 90px;
+  bottom: 40px;
   z-index: 30;
 }
 #questionVue .buttons a:nth-of-type(3) {
-  position: fixed;
-  bottom: 40px;
+  position: absolute;
+  bottom: 0;
   right: 35px;
   z-index: 30;
 }
 #questionVue .buttons a:nth-of-type(4) {
-  position: fixed;
-  bottom: 40px;
-  right: 112px;
+  position: absolute;
+  bottom: 0;
+  right: 120px;
   z-index: 30;
 }
 #questionVue .overlay {
@@ -583,18 +594,25 @@ header {
   margin: 0 auto;
 }
 .overlay1 .speech p {
-  position: absolute;
+  position: relative;
   color: rgba(237, 106, 76, 1);
   font-size: 12px;
   text-align: left;
-  top: 40%;
+  top: -170px;
+  left: 70px;
   margin: 0 auto;
+  width: 100%;
 }
-#questionVue .explain {
-  width: 250px;
+#questionVue .explain-tag {
   position: relative;
   left: 20px;
-  top: -20px;
+  top: -110px;
+  z-index: 30;
+}
+#questionVue .explain-ans {
+  position: relative;
+  top: -10px;
+  left: 30%;
   z-index: 30;
 }
 #questionVue .overlay2 {

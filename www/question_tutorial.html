@@ -16,15 +16,15 @@
       <p>{{ qa.why }}<input v-show="qa.num >= 2" type="text" v-model="qa.question">？</p>
       <textarea v-model="qa.answer"></textarea>
     </div>
-    <img src="images/チュートリアル_説明2-1.png" class="explain" v-show="qa.num == 1">
-    <img src="images/チュートリアル_説明2.png" class="explain" v-show="qa.num == 1">
+    <img src="images/チュートリアル_説明2-1.png" class="explain-ans" v-show="qa.num == 1" width="250px">
+    <img src="images/チュートリアル_説明2-2.png" class="explain-tag" v-show="qa.num == 1" width="260px">
     <img src="images/チュートリアル_説明3-2.png" class="explain" v-show="qa.num == 2">
     <img src="images/チュートリアル_説明3.png" class="explain" v-show="qa.num == 2">
     <div class="buttons">
-      <a @click="interruptionButtonClick"><img src="./images/分析_一時保存ボタン.png" alt="中断ボタン" width="30px">途中セーブ</a>
-      <a @click="helpButtonClick"><img src="./images/分析_ヘルプボタン.png" alt="ヘルプボタン" width="30px">ヘルプ</a>
-      <a v-show="qa.num >= 5" @click="finishButtonClick"><img src="./images/分析_finish!ボタン.png" alt="finishボタン" width="70px"></a>
-      <a @click="nextButtonClick"><img src="./images/分析_nextボタン.png" alt="Nextボタン"  width="70px"></a>  
+      <a @click="interruptionButtonClick"><img src="./images/各種ボタン/break_ボタン.png" alt="中断ボタン" width="30px">途中セーブ</a>
+      <a @click="helpButtonClick"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" width="30px">ヘルプ</a>
+      <a v-show="qa.num >= 5" @click="finishButtonClick"><img src="./images/各種ボタン/finish_ボタン.png" alt="finishボタン" width="70px"></a>
+      <a @click="nextButtonClick"><img src="./images/各種ボタン/next_ボタン.png" alt="Nextボタン"  width="70px"></a>  
     </div>
     <div class="overlay" v-show="showSavingModal" @click="closeModal">
       <p>分析を中断しますか？</p>
@@ -38,21 +38,23 @@
     <div class="overlay1" v-show="show1Modal" @click="closeModal">
       <img src="images/チュートリアル_ウインク_キャラ.png" class="cartoon">
       <div class="speech">
-        <img src="images/チュートリアル_吹き出し2,3,4.png">
-        <p>早速分析を始めるテン！<br>
-          なぜそれに取り組みたいのかを考えて<br>
-          入力するテン。<br>
-          今回は<b>「英語が話せたら留学生と話せ<br>
-          るから」</b>と回答するテン。</p>
+        <img src="images/吹き出し/チュートリアル_吹き出し(11)(10)(9)(6)(22).png">
+        <p>さあ "分析" を始めるテン！<br>
+          「なぜそれに取り組みたいのか？」<br>
+          を考えて入力するテン。<br><br>
+          今回は<br>
+          <b>「英語が話せたら留学生と話せるから」</b><br>
+          と回答するテン。</p>
       </div>
     </div>
     <div class="overlay1" v-show="show2Modal" @click="closeModal">
       <img src="images/分析中_キャラ.png" class="cartoon">
       <div class="speech">
-        <img src="images/チュートリアル_吹き出し2,3,4.png">
+        <img src="images/吹き出し/チュートリアル_吹き出し(11)(10)(9)(6)(22).png">
         <p>入力したら、回答内容が自分の<b>外側</b>の<br>
           ことなのか<b>内側</b>のことなのかによって<br>
-          左のナンバーボタンの色を変えるテン！<br><br>
+          左のナンバーボタンの色を変えるテン！<br>
+          <b>外なら１回、内なら２回</b>タップするテン。<br><br>
           <b><u>外：環境や状況、一般的な事実など</u></b><br>
           <b><u>内：自分の考えや感情・気持ち、体験など</u></b></p>
       </div>
@@ -94,7 +96,6 @@
     <div class="overlay2" v-show="show6Modal">
       <a v-show="qa.num >= 5" @click="finishButtonClick"><img src="./images/分析_finish!ボタン.png" alt="finishボタン" width="70px"></a>
     </div>
-    <my-toolbar></my-toolbar>
   </div>
   
   <script>
