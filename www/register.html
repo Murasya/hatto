@@ -66,8 +66,9 @@
         },
         methods: {
           onRegister: function() {
-            var day = new Date(year, month, day);
-            setNewUser(this.email, this.sex, day, this.occupation);
+            var day = new Date(this.year, this.month-1, this.day);
+            var user = new User(this.email, this.sex, day, this.occupation);
+            setNewUser(user);
             firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
               .then(function() {
                 document.querySelector('#myNavigator').resetToPage("index.html");
@@ -76,7 +77,6 @@
                 }).catch(function(error) {
                   
                 });
-                ons.notification.toast('アカウント登録成功', { timeout: 1000, animation: 'fall'});
               })
               .catch(function(error) {
                 ons.notification.toast(error.message, { timeout: 1000, animation: 'fall'});

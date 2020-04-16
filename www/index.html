@@ -23,7 +23,7 @@
   <script src="js/app.js"></script>
 </head>
 <body>
-  <ons-navigator swapable id="myNavigator" page="feedback.html"></ons-navigator>
+  <ons-navigator swapable id="myNavigator" page="index.html"></ons-navigator>
 </body>
 </html>
 
@@ -97,6 +97,7 @@
             },
             logoutButtonClick: function () {
               firebase.auth().signOut();
+              this.menuFlag = false;
             },
             naviOpen: function() {
               this.menuFlag = !this.menuFlag;
