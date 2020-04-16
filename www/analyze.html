@@ -12,7 +12,7 @@
         <option v-for="n in categories" :value="n" :disabled="isPushed ? !(category.includes(n)) : false">{{ n }}</option>
       </select>
       <button @click="nextButtonClick">これを分析！</button>
-      <a @click="helpButtonClick"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" width="30px"></a>
+      <a @click="helpButtonClick" class="help_button"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" width="30px"></a>
       <div class="overlay-help" v-show="showHelpModal" @click="closeModal">
         <iframe src="help.html"></iframe>
         <a @click="closeModal">×</a>
