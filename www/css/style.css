@@ -381,7 +381,7 @@ header {
 }
 #analyze button {
   position: relative;
-  top: -100px;
+  top: 0;
   left: 0;
   border-radius: 8px;
   border: none;
@@ -577,9 +577,9 @@ header {
   height: 100%;
 }
 .overlay-help a {
-  position: fixed;
-  bottom: 80px;
-  right: 35px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
   font-size: 30px;
 }
 .overlay1 {

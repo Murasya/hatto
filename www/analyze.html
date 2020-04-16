@@ -4,7 +4,7 @@
     <img class="cartoon" src="./images/分析中_キャラ.png">
     <div id="analyzeVue" v-cloak>
       <div class="speech">
-        <img src="images/分析_お題画面_キャラ.png">
+        <img src="images/吹き出し/分析_吹き出し(analyze).png">
         <span><b>取り組みたいことや<br>叶えたいことを書くテン。</b></span>
       </div>
       <input type="text" v-model="theme">
@@ -12,6 +12,11 @@
         <option v-for="n in categories" :value="n" :disabled="isPushed ? !(category.includes(n)) : false">{{ n }}</option>
       </select>
       <button @click="nextButtonClick">これを分析！</button>
+      <a @click="helpButtonClick"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" width="30px"></a>
+      <div class="overlay-help" v-show="showHelpModal" @click="closeModal">
+        <iframe src="help.html"></iframe>
+        <a @click="closeModal">×</a>
+      </div>
       <my-toolbar></my-toolbar>
     </div>
   </div>
@@ -24,6 +29,7 @@
         data: {
           theme: "",
           category: [],
+          showHelpModal: false,
           categories: [
             "夢",
             "欲しいもの",
@@ -77,6 +83,12 @@
             } else {
               this.isPushed = false;
             }
+          },
+          helpButtonClick: function() {
+            this.showHelpModal = true;
+          },
+          closeModal: function() {
+            this.showHelpModal = false;
           }
         }
       });
