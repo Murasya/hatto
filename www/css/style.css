@@ -404,6 +404,7 @@ header {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.29);
   color: #FFF;
   font-size: 12px;
+  margin-bottom: 25px;
 }
 #questionVue .theme p {
   font-size: 12px;
@@ -424,7 +425,7 @@ header {
   position: relative;
   height: 75px;
   width: 100%;
-  margin-top: 25px;
+  margin-bottom: 8px;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.29);
 }
 .items p:nth-of-type(1) {
@@ -447,6 +448,7 @@ header {
   left: 0;
   width: 100%;
   height: 25px;
+  line-height: 25px;
   border-color: #707070;
   border-width: 0.2px;
   z-index: 4;
@@ -458,7 +460,7 @@ header {
   padding-left: 15%;
   top: 25px;
   left: 0;
-  width: 90%;
+  width: 85%;
   height: 50px;
   z-index: 4;
   background-color: #FFF;
@@ -484,6 +486,7 @@ header {
   border-radius: 0 100% 100% 0/0 50% 50% 0;
   line-height: 75px;
   z-index: 5;
+  color: #FFF;
 }
 #questionVue .writting p {
   text-align: center;
@@ -536,7 +539,7 @@ header {
 #questionVue .buttons a:nth-of-type(4) {
   position: absolute;
   bottom: 0;
-  right: 120px;
+  right: 115px;
   z-index: 30;
 }
 #questionVue .overlay {
@@ -569,8 +572,8 @@ header {
 }
 #questionVue .overlay-help a {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  bottom: 80px;
+  right: 35px;
   font-size: 30px;
 }
 .overlay1 {
@@ -594,14 +597,25 @@ header {
   margin: 0 auto;
 }
 .overlay1 .speech p {
-  position: relative;
+  position: absolute;
   color: rgba(237, 106, 76, 1);
   font-size: 12px;
   text-align: left;
-  top: -170px;
+  top: 80px;
   left: 70px;
   margin: 0 auto;
   width: 100%;
+}
+#questionVue ons-icon {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+#questionVue .explain-que {
+  position: absolute;
+  top: 180px;
+  right: 40px;
+  z-index: 30;
 }
 #questionVue .explain-tag {
   position: relative;
@@ -626,7 +640,7 @@ header {
 }
 #questionVue .overlay2 a {
   position: fixed;
-  bottom: 40px;
+  bottom: 80px;
   right: 35px;
   z-index: 100;
 }

@@ -9,8 +9,8 @@
       <p>{{ item.why }}</p>
       <p>{{ item.answer }}</p>
     </div>
-    <img src="images/チュートリアル_説明3-1.png" v-show="qa.num == 2"
-      style="width: 122px;">
+    <ons-icon icon="fa-arrow-down" v-show="qa.num != 1"></ons-icon>
+    <img src="images/チュートリアル_説明3-1.png" class="explain-que" v-show="qa.num == 2" width="122px">
     <div class="writting">
       <a @click="onNumber" :class="numberClass">{{ qa.num }}</a>
       <p>{{ qa.why }}<input v-show="qa.num >= 2" type="text" v-model="qa.question">？</p>
@@ -18,8 +18,8 @@
     </div>
     <img src="images/チュートリアル_説明2-1.png" class="explain-ans" v-show="qa.num == 1" width="250px">
     <img src="images/チュートリアル_説明2-2.png" class="explain-tag" v-show="qa.num == 1" width="260px">
-    <img src="images/チュートリアル_説明3-2.png" class="explain" v-show="qa.num == 2">
-    <img src="images/チュートリアル_説明3.png" class="explain" v-show="qa.num == 2">
+    <img src="images/チュートリアル_説明3-2.png" class="explain-ans" v-show="qa.num == 2" width="253px">
+    <img src="images/チュートリアル_説明3-3.png" class="explain-tag" v-show="qa.num == 2" width="250px">
     <div class="buttons">
       <a @click="interruptionButtonClick"><img src="./images/各種ボタン/break_ボタン.png" alt="中断ボタン" width="30px">途中セーブ</a>
       <a @click="helpButtonClick"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" width="30px">ヘルプ</a>
@@ -62,39 +62,40 @@
     <div class="overlay1" v-show="show3Modal" @click="closeModal">
       <img src="images/分析中_キャラ.png" class="cartoon">
       <div class="speech">
-        <img src="images/チュートリアル_吹き出し2,3,4.png">
+        <img src="images/吹き出し/チュートリアル_吹き出し(11)(10)(9)(6)(22).png">
         <p>次は、前の回答に対して「なぜ……<br>
           なのか？」という質問を自分で立てて、<br>
-          またそれに回答していくテン！<br>
-          今回は、<b>「なぜ留学生と話せると良いの<br>
-          か？」→「違う文化を持つ人と話してみ<br>
-          たいから」</b>としてみるテン。</p>
+          またそれに回答していくテン！<br><br>
+          今回は、<br>
+          <b>「なぜ留学生と話せると良いのか？」<br>
+            →「違う文化を持つ人と話してみたいから」</b><br>
+            としてみるテン。</p>
       </div>
     </div>
     <div class="overlay1" v-show="show4Modal" @click="closeModal">
       <img src="images/チュートリアル_キリッと_キャラ.png" class="cartoon">
       <div class="speech">
-        <img src="images/チュートリアル_吹き出し2,3,4.png">
+        <img src="images/吹き出し/チュートリアル_吹き出し(11)(10)(9)(6)(22).png">
         <p>また同じように、「なぜ……？」を<br>
           入力してそれに回答するテン。これを<br>
-          <b><u>5回以上</u></b>繰り返すテン！<br>
+          <b><u>５回以上</u></b>繰り返すテン！<br>
           大変だけど、どんどん自分を深掘りして<br>
           いけるんだテン！<br><br>
-          今回は特別に、3〜5回目まで僕がやっ<br>
+          今回は特別に、３〜５回目まで僕がやっ<br>
           てみるテン。ちゃんと見ておくテン！</p>
       </div>
     </div>
     <div class="overlay1" v-show="show5Modal" @click="closeModal">
       <img src="images/チュートリアル_疲れた_キャラ.png" class="cartoon">
       <div class="speech">
-        <img src="images/チュートリアル_吹き出し5.png">
+        <img src="images/吹き出し/チュートリアル_吹き出し(8).png">
         <p>ふぅ…自分を見つめられたことだし、<br>
-          そろそろ満足だテン。<br>
+          そろそろ満足だテン。<br><br>
           <b>記録</b>を残して終わりにするテン！</p>
       </div>
     </div>
     <div class="overlay2" v-show="show6Modal">
-      <a v-show="qa.num >= 5" @click="finishButtonClick"><img src="./images/分析_finish!ボタン.png" alt="finishボタン" width="70px"></a>
+      <a v-show="qa.num >= 5" @click="finishButtonClick"><img src="./images/各種ボタン/finish_ボタン.png" alt="finishボタン" width="70px"></a>
     </div>
   </div>
   
