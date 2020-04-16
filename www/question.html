@@ -15,10 +15,10 @@
       <textarea v-model="qa.answer"></textarea>
     </div>
     <div class="buttons">
-      <a @click="interruptionButtonClick"><img src="./images/分析_一時保存ボタン.png" alt="中断ボタン" width="30px"></a>
-      <a @click="helpButtonClick"><img src="./images/分析_ヘルプボタン.png" alt="ヘルプボタン" width="30px"></a>
-      <a v-show="qa.num >= 5" @click="finishButtonClick"><img src="./images/分析_finish!ボタン.png" alt="finishボタン" width="70px"></a>
-      <a @click="nextButtonClick"><img src="./images/分析_nextボタン.png" alt="Nextボタン"  width="70px"></a>  
+      <a @click="interruptionButtonClick"><img src="./images/各種ボタン/break_ボタン.png" alt="中断ボタン" width="30px"></a>
+      <a @click="helpButtonClick"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" width="30px"></a>
+      <a v-show="qa.num >= 5" @click="finishButtonClick"><img src="./images/各種ボタン/finish_ボタン.png" alt="finishボタン" width="70px"></a>
+      <a @click="nextButtonClick"><img src="./images/各種ボタン/next_ボタン.png" alt="Nextボタン"  width="70px"></a>  
     </div>
     <div class="overlay" v-show="showSavingModal" @click="closeModal">
       <p>分析を中断しますか？</p>
@@ -29,7 +29,29 @@
       <iframe src="help.html"></iframe>
       <a @click="closeModal">×</a>
     </div>
-    
+    <div class="overlay1" v-show="showModal1" @click="closeModal">
+      <img class="cartoon" src="images/分析中_キャラ.png">
+      <div class="speech">
+        <img src="images/分析_吹き出し_アドバイス・記録前.png">
+        <p>そろそろ自分自身のことを<br>考えてみてもいい頃合いだテンよ！<br>
+          <span>なぜ____?をもっと自分に向けて<br>みたら</span>、きっとうまくいくテン。<br>
+          具体的には、<span>「なぜこの環境下で自分が最初のテーマを選んだのか？」</span>とかテンね！</p>
+      </div>
+    </div>
+    <div class="overlay1" v-show="showModal2" @click="closeModal">
+      <img class="cartoon" src="images/分析中_キャラ2.png">
+      <div class="speech">
+        <img src="images/分析_吹き出し_その調子.png">
+        <p>お主、なかなかやるテン・・・！<br>その調子で頑張るテン！</p>
+      </div>
+    </div>
+    <div class="overlay1" v-show="showModal3" @click="closeModal">
+      <img class="cartoon" src="images/分析中_キャラ3.png">
+      <div class="speech">
+        <img src="images/分析_吹き出し_その調子.png">
+        <p>お疲れ様テン！<br>キミの頑張りを記録に残しておくテン。</p>
+      </div>
+    </div>
     <my-toolbar></my-toolbar>
   </div>
   
@@ -62,6 +84,9 @@
           },
           showSavingModal: false,
           showHelpModal: false,
+          showModal1: false,
+          showModal2: false,
+          showModal3: false,
           numberClass: {
             defo: true,
             lightBlue: false,
@@ -70,6 +95,7 @@
           defoClass: "defo",
           lightClass: "lightBlue",
           blueClass: "blue",
+          outCount: 0,
         },
         methods: {
           interruptionButtonClick: function() {
@@ -89,6 +115,15 @@
               ons.notification.toast( '内と外が決まっていません', {timeout: 1000, animation: 'fall'});
               return;
             }
+            if (this.qa.tag == "out") {
+              this.outCount++;
+            }
+            if (this.outCount == 3) {
+              this.showModal1 = true;
+            }
+            if (this.qa.num == 6) {
+              this.showModal2 = true;
+            }
             this.qa.why = this.qa.why + this.qa.question + "？";
             this.items.push(Object.assign({}, this.qa));
             qAndA.questions.push(this.qa.why);
@@ -103,6 +138,7 @@
           },
           finishButtonClick: function() {
             if(this.qa.answer != "") {
+              this.showModal3 = true;
               this.qa.why = this.qa.why + this.qa.question + "？";
               this.items.push(Object.assign({}, this.qa));
               qAndA.questions.push(this.qa.why);
@@ -120,6 +156,9 @@
           closeModal: function() {
             this.showSavingModal = false;
             this.showHelpModal = false;
+            this.showModal1 = false;
+            this.showModal2 = false;
+            this.showModal3 = false;
           },
           savingButton: function() {
             if(this.qa.answer != "") {
