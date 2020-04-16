@@ -123,6 +123,7 @@
               }
             },
             goTutorial: function() {
+              localStorage.setItem('tutorial', false);
               document.getElementById("myNavigator").pushPage('explain.html');
             },
             goAnalyze: function() {

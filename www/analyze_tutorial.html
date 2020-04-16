@@ -17,6 +17,11 @@
       </select>
       <img class="exp" src="images/チュートリアル_説明1.png" height="118px">
       <button @click="nextButtonClick">これを分析！</button>
+      <a @click="helpButtonClick"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" width="30px"></a>
+      <div class="overlay-help" v-show="showHelpModal" @click="closeModal">
+        <iframe src="help.html"></iframe>
+        <a @click="closeModal">×</a>
+      </div>
     </div>
   </div>
   
@@ -29,6 +34,7 @@
           theme: "",
           isPushed: false,
           category: "",
+          showHelpModal: false,
           categories: [
             "夢",
             "欲しいもの",
@@ -71,6 +77,12 @@
             } else {
               this.isPushed = false;
             }
+          },
+          helpButtonClick: function() {
+            this.showHelpModal = true;
+          },
+          closeModal: function() {
+            this.showHelpModal = false;
           }
         }
       });

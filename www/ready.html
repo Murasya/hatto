@@ -1,7 +1,7 @@
 <ons-page>
   <div id="readyVue">
-    <img src="images/分析中_キャラ.png">
-    <p>今からボクと一緒に、<br>分析の練習をしてみるテン！<br><b>準備はいいテン？</b></p>
+    <img src="images/チュートリアルスタート_キャラ.png">
+    <p>今からボクと一緒に、<br>"分析" の練習をしてみるテン！<br><b>準備はいいテン？</b></p>
     <button @click="onButton">YES!</button>
   </div>
   
@@ -10,7 +10,7 @@
       el: '#readyVue',
       methods: {
         onButton: function() {
-          document.getElementById("myNavigator").pushPage("analyze.html");
+          document.getElementById("myNavigator").pushPage("analyze_tutorial.html");
         }
       }
     });

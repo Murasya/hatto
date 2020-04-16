@@ -8,10 +8,10 @@
     var myNavigator = document.querySelector('#myNavigator')
     ons.getScriptPage().onShow = function() {
       
-      setTimeout(startQuestion, 800)
+      setTimeout(startQuestion, 800);
     }
     function startQuestion() {
-      if(!localStorage.getItem('tutorial')) {
+      if(localStorage.getItem('tutorial') != true) {
         myNavigator.pushPage('question_tutorial.html');
       } else {
         myNavigator.pushPage('question.html', {
