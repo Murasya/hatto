@@ -1,14 +1,14 @@
 <ons-page>
   <div class="background" style="background-color: #F7F7F7;"></div>
-  <div id="feedback">
+  <div id="feedback" v-cloak>
     <div class="head">
       <a @click="popBack"><ons-icon icon="fa-chevron-left"></ons-icon> キャンセル</a>
       <h1>フィードバック</h1>
     </div>
     <form>
       <p>サービス・使い方に関して気になることや改善すべき点に<br>ついて、下記フォームへご記入ください。</p>    
-      <textarea name="feedback"></textarea>
-      <input type="submit" value="送信" @click="sendMail">
+      <textarea v-model="text"></textarea>
+      <input type="button" value="送信" @click="sendMail">
     </form>
     <div class="overlay" v-show="showModal" @click="closeModal">
       <div>
@@ -24,6 +24,7 @@
         el: "#feedback",
         data: {
           showModal: false,
+          text: "",
         },
         methods: {
           popBack: function() {
@@ -33,11 +34,7 @@
             this.showModal = false;
           },
           sendMail: function() {
-            const sendMail = ff.httpsCallable('sendMail');
-            let parent = this;
-            sendResults({destination: 'noteappm@gmail.com'}).then(function(result) {
-              parent.snackbar = true;
-            });
+            createFeedback(this.text);
             this.showModal = true;
           }
         }
