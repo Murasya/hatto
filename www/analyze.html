@@ -59,8 +59,9 @@
               return;
             }
             qAndA.questions.push("取り組みたいこと/叶えたいこと");
-            qAndA.answers.push(this.theme)
-            qAndA.uid = firebase.auth().currentUser.uid
+            qAndA.answers.push(this.theme);
+            qAndA.uid = firebase.auth().currentUser.uid;
+            qAndA.category = this.category;
             qAndA.id = setNewData(qAndA);
             document.querySelector('#myNavigator').pushPage('start.html', {
               data: {

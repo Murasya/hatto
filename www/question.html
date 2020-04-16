@@ -94,6 +94,7 @@
             qAndA.questions.push(this.qa.why);
             qAndA.answers.push(this.qa.answer);
             qAndA.tags.push(this.qa.tag);
+            updateData(qAndA);
             this.qa.num++;
             this.qa.why = "なぜ";
             this.qa.question = "";
@@ -107,6 +108,7 @@
               qAndA.questions.push(this.qa.why);
               qAndA.answers.push(this.qa.answer);
               qAndA.tags.push(this.qa.tag);
+              updateData(qAndA);
             }
             console.log(qAndA)
             myNavigator.pushPage('result.html',{
