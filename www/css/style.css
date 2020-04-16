@@ -330,6 +330,8 @@ header {
 }
 #analyze .speech {
   position: relative;
+  top: 0;
+  left: 0;
 }
 #analyze .speech span {
   position: absolute;
@@ -364,6 +366,7 @@ header {
   color: #8E8E8F;
   font-size: 10px;
   margin-top: 32px;
+  padding: 2px;
 }
 #analyze input {
   border-bottom: 1px solid #DE4D2B;
@@ -375,12 +378,20 @@ header {
   margin-top: 40px;
 }
 #analyze button {
+  position: relative;
+  top: -100px;
+  left: 0;
   border-radius: 8px;
   border: none;
   height: 30px;
   background-color: #A6A7A7;
   color: #FFFFFF;
   margin-top: 25px;
+}
+#analyze .exp {
+  position: relative;
+  top: -20px;
+  left: 107px;
 }
 
 /* question */

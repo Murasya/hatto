@@ -4,16 +4,18 @@
     <img class="cartoon" src="./images/分析中_キャラ.png">
     <div id="analyzeVue" v-cloak>
       <div class="speech">
-        <img src="images/吹き出し/">
+        <img src="images/吹き出し/チュートリアル_吹き出し(2).png">
         <p>まずは、キミの<b><u>取り組みたいこと<br>
           や叶えたいこと</u></b>を書くテン。<br>
           今回は<b>「英会話を学びたい」</b>として<br>
           進めるテン！</p>
       </div>
       <input type="text" v-model="theme" placeholder="英会話を学びたい">
-      <select v-model="category">
+      <select v-model="category" @change="getSelect" size="1" multiple>
         <option disabled value="">カテゴリ</option>
+        <option v-for="n in categories" :value="n" :disabled="isPushed ? !(category.includes(n)) : false">{{ n }}</option>
       </select>
+      <img class="exp" src="images/チュートリアル_説明1.png" height="118px">
       <button @click="nextButtonClick">これを分析！</button>
     </div>
   </div>
@@ -25,7 +27,30 @@
         el: '#analyzeVue',
         data: {
           theme: "",
+          isPushed: false,
           category: "",
+          categories: [
+            "夢",
+            "欲しいもの",
+            "就活",
+            "研究",
+            "進路",
+            "将来",
+            "勉強",
+            "スキルアップ",
+            "ゼミ",
+            "読書",
+            "資格",
+            "サークル",
+            "部活",
+            "人間関係",
+            "趣味",
+            "自己分析",
+            "1週間後",
+            "1年後",
+            "10年後",
+            "その他",
+          ],
         },
         methods: {
           nextButtonClick: function() {
@@ -33,8 +58,20 @@
               ons.notification.toast('テーマに「英会話を学びたい」と入力してください', {timeout: 2000, animation: "fall"});
               return;
             }
-            document.querySelector('#myNavigator').pushPage('start.html');
+            if (this.category.includes("勉強") && this.category.includes("スキルアップ") && this.category.length === 2) {
+              document.querySelector('#myNavigator').pushPage('start.html');
+              return ;
+            }
+            ons.notification.toast('「勉強」と「スキルアップ」のカテゴリを選んで下さい', {timeout: 2000, animation: "fall"});
           },
+          getSelect: function() {
+            var count = this.category.length;
+            if(count >= 3) {
+              this.isPushed = true;
+            } else {
+              this.isPushed = false;
+            }
+          }
         }
       });
     }
