@@ -140,7 +140,7 @@ header {
   margin-left: 30px;
 }
 .acd-check:checked + .acd-label + .acd-content {
-  height: 67px;
+  height: 80px;
   opacity: 1;
   padding-left: 10px;
   visibility: visible;
