@@ -1,3 +1,6 @@
+html {
+  font-family: 'vdl-v7gothic', sans-serif;
+}
 .content {
   display: flex;
   flex-direction: column;
