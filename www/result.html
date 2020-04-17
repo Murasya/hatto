@@ -2,7 +2,7 @@
   <div class="background" style="background-color: #E8F6FD;"></div>
   <div id="resultVue" v-cloak>
     <p class="theme">{{ theme }}</p>
-    
+    <span class="category">{{ category }}</span>
     <div v-for="index in answers.length-1" class="items">
       <p :class='tags[index] == "" ? defoClass : (tags[index] == "out" ? lightClass : blueClass)'>{{ index }}</p>
       <p>{{ questions[index] }}</p>
@@ -33,6 +33,7 @@
         el: '#resultVue',
         data: {
           theme: qAndA.answers[0],
+          category: qAndA.category,
           questions: qAndA.questions,
           answers: qAndA.answers,
           tags: qAndA.tags,
@@ -46,6 +47,9 @@
         },
         methods: {
           saveButtonClick: function() {
+            if (this.memo == "") {
+              ons.notification.toast("感想を書いてください", {timeout: 1000, animation: "fall"});
+            }
             qAndA.memo = this.memo;
             qAndA.success = this.success;
             qAndA.category = this.category;

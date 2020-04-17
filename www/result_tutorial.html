@@ -2,7 +2,7 @@
   <div class="background" style="background-color: #E8F6FD;"></div>
   <div id="resultVue" v-cloak>
     <p class="theme">{{ theme }}</p>
-    <span>勉強 スキルアップ</span>
+    <span class="category">勉強 スキルアップ</span>
     <div v-for="(value, index) in questions" class="items">
       <p :class='tags[index] == "out" ? "lightBlue" : "blue"'>{{ index+1 }}</p>
       <p>{{ questions[index] }}</p>

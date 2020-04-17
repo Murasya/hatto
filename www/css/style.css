@@ -375,6 +375,7 @@ header {
   border-top: none;
   border-right: none;
   border-left: none;
+  border-radius: 0px;
   background-color: transparent;
   width: 70%;
   margin-top: 40px;
@@ -679,7 +680,7 @@ header {
   justify-content: center;
   align-items: center;
 }
-#resultVue span{
+#resultVue .category{
   display: inline-block;
   border: solid 0.23px rgba(166, 167, 167, 1);
   background-color: #FFF;
