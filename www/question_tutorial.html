@@ -32,7 +32,9 @@
       <button @click="closeModal">いいえ</button>
     </div>
     <div class="overlay-help" v-show="showHelpModal" @click="closeModal">
-      <iframe src="help.html"></iframe>
+      <div class="iframe-wrap">
+        <iframe src="help.html" frameboader="0"></iframe>
+      </div>
       <a @click="closeModal">×</a>
     </div>
     <div class="overlay1" v-show="show1Modal" @click="closeModal">

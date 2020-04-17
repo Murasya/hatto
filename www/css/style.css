@@ -585,9 +585,21 @@ header {
   width: 100%;
   height: 100%;
 }
-.overlay-help iframe {
+.overlay-help .iframe-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 100vh;
+  overflow: auto;
+  border: none;
+}
+.overlay-help .iframe-wrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  border: none;
+  display: block;
 }
 .overlay-help a {
   position: absolute;
