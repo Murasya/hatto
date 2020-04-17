@@ -20,10 +20,12 @@
       <a v-show="qa.num >= 5" @click="finishButtonClick"><img src="./images/各種ボタン/finish_ボタン.png" alt="finishボタン" width="70px"></a>
       <a @click="nextButtonClick"><img src="./images/各種ボタン/next_ボタン.png" alt="Nextボタン"  width="70px"></a>  
     </div>
-    <div class="overlay" v-show="showSavingModal" @click="closeModal">
+    <div class="overlay saving" v-show="showSavingModal" @click="closeModal">
       <p>分析を中断しますか？</p>
-      <button @click="savingButton">はい</button>
-      <button @click="closeModal">いいえ</button>
+      <div>
+        <button @click="savingButton">はい</button>
+        <button @click="closeModal">いいえ</button>
+      </div>
     </div>
     <div class="overlay-help" v-show="showHelpModal" @click="closeModal">
       <div class="iframe-wrap">
