@@ -452,6 +452,7 @@ header {
   z-index: 5;
   color: #FFF;
   font-size: 20pt;
+  box-sizing: border-box;
 }
 .items p:nth-of-type(2) {
   text-align: center;
@@ -501,6 +502,8 @@ header {
   line-height: 75pt;
   z-index: 5;
   color: #FFF;
+  box-sizing: border-box;
+  font-size: 20pt;
 }
 #questionVue .writting p {
   text-align: center;
@@ -519,7 +522,7 @@ header {
   border: none;
   border-bottom: solid 0.5pt #7B7B7B;
   background: none;
-  width: 65%;
+  width: 60%;
   margin: 0 5pt;
 }
 #questionVue .writting textarea {
