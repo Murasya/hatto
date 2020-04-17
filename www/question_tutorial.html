@@ -150,6 +150,10 @@
             ]
           },
         },
+        created: function() {
+          var vue = this;
+          setTimeout(function() {vue.show1Modal = true}, 1000);
+        },
         methods: {
           interruptionButtonClick: function() {
             //this.showSavingModal = true;
@@ -191,9 +195,11 @@
             this.numberClass = "defo";
             this.qa.tag = "";
             if(this.qa.num == 2) {
-              this.show3Modal = true;
+              var vue = this;
+              setTimeout(function() {vue.show3Modal = true}, 1000);
             } else if(this.qa.num == 3) {
-              this.show4Modal = true;
+              var vue = this;
+              setTimeout(function() {vue.show4Modal = true}, 1000);
             }
           },
           finishButtonClick: function() {
@@ -209,7 +215,7 @@
             this.show2Modal = false;
             if(this.show1Modal == true) {
               this.show1Modal = false;
-              showModal(2);
+              this.show2Modal = true;
             }
             this.show3Modal = false;
             if (this.show5Modal == true) {
@@ -259,19 +265,6 @@
           }
         }
       });
-      
-      setTimeout(showModal(1), 800);
-
-      function showModal(num) {
-        switch(num) {
-          case 1:
-            vm_q.show1Modal = true;
-            break;
-          case 2:
-            vm_q.show2Modal = true;
-            break;
-        }
-      }
     }
   </script>
 </ons-page>

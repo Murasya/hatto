@@ -402,7 +402,10 @@ header {
 
 /* question */
 #questionVue {
-  height: 100vh;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 200px;
+  box-sizing: border-box;
 }
 #questionVue .theme {
   height: 65px;
@@ -442,6 +445,7 @@ header {
   width: 35px;
   height: 75px;
   border-radius: 0 100% 100% 0/0 50% 50% 0;
+  padding-left: 10px;
   line-height: 75px;
   z-index: 5;
   color: #FFF;
@@ -490,6 +494,7 @@ header {
   width: 35px;
   height: 75px;
   border-radius: 0 100% 100% 0/0 50% 50% 0;
+  padding-left: 10px;
   line-height: 75px;
   z-index: 5;
   color: #FFF;
@@ -506,6 +511,13 @@ header {
   border-width: 0.2px;
   z-index: 4;
   margin: 0;
+}
+#questionVue .writting input {
+  border: none;
+  border-bottom: solid 0.5px #7B7B7B;
+  background: none;
+  width: 65%;
+  margin: 0 5px;
 }
 #questionVue .writting textarea {
   position: absolute;
@@ -590,6 +602,15 @@ header {
   width: 100%;
   height: 100%;
   background: linear-gradient(to bottom, rgba(0, 162, 222, 0.6), rgba(255, 255, 255, 0));
+  animation: slide-down 2s both;
+}
+@keyframes slide-down {
+  0% {
+    transform: translate(0, -100%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }
 .overlay1 .speech {
   position: relative;
@@ -632,7 +653,7 @@ header {
 #questionVue .explain-ans {
   position: relative;
   top: -10px;
-  left: 30%;
+  left: 20%;
   z-index: 30;
 }
 #questionVue .overlay2 {
