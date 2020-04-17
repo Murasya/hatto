@@ -563,7 +563,7 @@ header {
 #questionVue .buttons a:nth-of-type(4) {
   position: absolute;
   bottom: 0;
-  right: 115pt;
+  right: 90pt;
   z-index: 30;
 }
 #questionVue .overlay {
@@ -665,10 +665,10 @@ header {
 .overlay1 .speech p {
   position: absolute;
   color: rgba(237, 106, 76, 1);
-  font-size: 12pt;
+  font-size: 12px;
   text-align: left;
-  top: 80pt;
-  left: 70pt;
+  top: 30%;
+  left: 20%;
   margin: 0 auto;
   width: 100%;
 }
@@ -679,14 +679,14 @@ header {
 }
 #questionVue .explain-que {
   position: absolute;
-  top: 180pt;
-  right: 40pt;
+  top: 190pt;
+  right: 30pt;
   z-index: 30;
 }
 #questionVue .explain-tag {
   position: relative;
   left: 20pt;
-  top: -110pt;
+  top: -80pt;
   z-index: 30;
 }
 #questionVue .explain-ans {
