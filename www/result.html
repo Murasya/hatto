@@ -10,15 +10,17 @@
       <p>{{ questions[index] }}</p>
       <p>{{ answers[index] }}</p>
     </div>
-    <textarea v-model="memo"></textarea>
-    <select v-model="success">
+    <textarea v-model="memo" v-if="recode == false"></textarea>
+    <div v-else class="memo">{{ memo }}</div>
+    <select v-model="success" v-if="recode == false">
       <option disabled value="">分析はうまくいった？</option>
       <option>はい</option>
       <option>いいえ</option>
       <option>どちらともいえない</option>
     </select><br>
+    <span class="success">分析はうまくいった？<ons-icon icon="fa-arrow-right"></ons-icon>{{ success }}</span>
     <button v-show="recode == false" @click="saveButtonClick">記録する</button><br>
-    <button>Tweet</button>
+    <button><ons-icon icon="fa-twitter"></ons-icon> Tweet</button>
     <my-toolbar></my-toolbar>
   </div>
 
