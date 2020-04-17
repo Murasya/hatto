@@ -323,7 +323,7 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  margin-top: 170pt;
+  margin-top: 100pt;
   height: 100vh;
 }
 #analyze .background {
@@ -360,10 +360,10 @@ header {
   width: 199pt;
 }
 #analyze .speech img {
-  width: 260pt;
+  width: 252pt;
 }
 #analyze select {
-  width: 107pt;
+  width: 25%;
   border-radius: 1.45pt;
   border: solid 0.23pt #A6A7A7;
   color: #8E8E8F;
@@ -393,9 +393,9 @@ header {
   margin-top: 25pt;
 }
 #analyze .exp {
-  position: relative;
-  top: -20pt;
-  left: 107pt;
+  position: absolute;
+  top: 350pt;
+  right: 20pt;
 }
 #analyze .help_button {
   align-self: flex-start;

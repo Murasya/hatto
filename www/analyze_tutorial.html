@@ -11,13 +11,23 @@
           進めるテン！</p>
       </div>
       <input type="text" v-model="theme" placeholder="英会話を学びたい">
-      <select v-model="category" @change="getSelect" size="1" multiple>
-        <option disabled value="">カテゴリ</option>
-        <option v-for="n in categories" :value="n" :disabled="isPushed ? !(category.includes(n)) : false">{{ n }}</option>
-      </select>
+      <div>
+        <select v-model="cat[0]">
+          <option disabled value="">カテゴリ</option>
+          <option v-for="n in categories" :value="n">{{ n }}</option>
+        </select>
+        <select v-model="cat[1]">
+          <option disabled value="">カテゴリ</option>
+          <option v-for="n in categories" :value="n">{{ n }}</option>
+        </select>
+        <select v-model="cat[2]">
+          <option disabled value="">カテゴリ</option>
+          <option v-for="n in categories" :value="n">{{ n }}</option>
+        </select>
+      </div>
       <img class="exp" src="images/チュートリアル_説明1.png" height="118px">
       <button @click="nextButtonClick">これを分析！</button>
-      <a @click="helpButtonClick"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" width="30px"></a>
+      <a @click="helpButtonClick" class="help_button"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" width="30px"></a>
       <div class="overlay-help" v-show="showHelpModal" @click="closeModal">
         <div class="iframe-wrap">
           <iframe src="help.html" frameboader="0"></iframe>
@@ -34,8 +44,12 @@
         el: '#analyzeVue',
         data: {
           theme: "",
-          isPushed: false,
-          category: "",
+          category: [],
+          cat: [
+            "",
+            "",
+            "",
+          ],
           showHelpModal: false,
           categories: [
             "夢",
@@ -62,6 +76,12 @@
         },
         methods: {
           nextButtonClick: function() {
+            this.category = [];
+            for(var i=0; i<3; i++) {
+              if(this.cat[i] != "") {
+                this.category.push(this.cat[i]);
+              }
+            }
             if (this.theme != "英会話を学びたい") {
               ons.notification.toast('テーマに「英会話を学びたい」と入力してください', {timeout: 2000, animation: "fall"});
               return;
@@ -71,14 +91,6 @@
               return ;
             }
             ons.notification.toast('「勉強」と「スキルアップ」のカテゴリを選んで下さい', {timeout: 2000, animation: "fall"});
-          },
-          getSelect: function() {
-            var count = this.category.length;
-            if(count >= 3) {
-              this.isPushed = true;
-            } else {
-              this.isPushed = false;
-            }
           },
           helpButtonClick: function() {
             this.showHelpModal = true;
