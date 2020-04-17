@@ -36,7 +36,7 @@ html {
   flex-direction: column;
 }
 .toolbar span {
-  font-size: 9px;
+  font-size: 9pt;
   color: #585858;
 }
 
@@ -130,7 +130,7 @@ header {
   opacity: 0;
   transition: .5s;
   visibility: hidden;
-  font-size: 10px;
+  font-size: 10pt;
   color: #4B4B4B;
   display: flex;
   flex-direction: column;
@@ -194,7 +194,7 @@ header {
 
 #logout {
   margin-right: 10%;
-  font-size: 13px;
+  font-size: 13pt;
   font-family: "Futura-CondensedExtraBold", Futura, sans-serif;
   font-stretch: condensed;
   font-weight: bold;
@@ -204,7 +204,7 @@ header {
 #index #analyze, #showRecode {
   margin-bottom: 2%;
   margin-right: 10%;
-  font-size: 14px;
+  font-size: 14pt;
   font-family: "Futura-CondensedExtraBold", Futura, sans-serif;
   font-stretch: condensed;
   font-weight: bold;
@@ -226,7 +226,7 @@ header {
 }
 #signIn p {
   color: #ED6A4C;
-  font-size: 25px;
+  font-size: 25pt;
 }
 #signIn div {
   background-color: rgba(162, 162, 162, 0.27);
@@ -252,7 +252,7 @@ header {
   color: #FFF;
   width: 230px;
   padding: 6px 30px;
-  font-size: 10px;
+  font-size: 10pt;
   margin-top: 20px;
 }
 .google_login {
@@ -260,7 +260,7 @@ header {
   border-radius: 5px;
   border: solid 0.5px #707070;
   padding: 6px 30px;
-  font-size: 10px;
+  font-size: 10pt;
   margin-top: 15px;
 }
 #email, #password {
@@ -273,7 +273,7 @@ header {
 }
 .forgot_password {
   text-decoration: underline;
-  font-size: 12px;
+  font-size: 12pt;
   color: #ED6A4C;
   margin-top: 14px;
 }
@@ -283,7 +283,7 @@ header {
   height: 44.9px;
   background-color: #E8610C;
   color: #FFFFFF;
-  font-size: 26.27px;
+  font-size: 26.27pt;
   display: block;
   margin: 50.74px auto 99.71px;
 }
@@ -294,7 +294,7 @@ header {
   background-color: #A6A7A7;
   color: #FFFFFF;
   border-radius: 6.47px;
-  font-size: 18.43px;
+  font-size: 18.43pt;
 }
 
 /* start */
@@ -311,7 +311,7 @@ header {
   width: 191px;
 }
 #start p, #resume p {
-  font-size: 31px;
+  font-size: 31pt;
   color: #FFF;
   margin: 52px 0 0 0;
 }
@@ -341,7 +341,7 @@ header {
   left: 50%;
   transform: translate(-50%, -50%);
   color: #FFFFFF;
-  font-size: 14px;
+  font-size: 14pt;
   margin: 0;
   padding: 0;
   text-align: left;
@@ -352,7 +352,7 @@ header {
   left: 50%;
   transform: translate(-50%, -50%);
   color: #FFFFFF;
-  font-size: 12px;
+  font-size: 12pt;
   margin: 0;
   padding: 0;
   text-align: left;
@@ -366,7 +366,7 @@ header {
   border-radius: 1.45px;
   border: solid 0.23px #A6A7A7;
   color: #8E8E8F;
-  font-size: 10px;
+  font-size: 10pt;
   margin-top: 32px;
   padding: 2px;
 }
@@ -413,11 +413,11 @@ header {
   background-color: #E0836E;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.29);
   color: #FFF;
-  font-size: 12px;
+  font-size: 12pt;
   margin-bottom: 25px;
 }
 #questionVue .theme p {
-  font-size: 12px;
+  font-size: 12pt;
   padding-top: 38.5px;
   padding-left: 14px;
   margin: 0;
@@ -606,7 +606,7 @@ header {
   position: absolute;
   top: 30px;
   right: 30px;
-  font-size: 30px;
+  font-size: 30pt;
 }
 .overlay1 {
   z-index: 99;
@@ -640,7 +640,7 @@ header {
 .overlay1 .speech p {
   position: absolute;
   color: rgba(237, 106, 76, 1);
-  font-size: 12px;
+  font-size: 12pt;
   text-align: left;
   top: 80px;
   left: 70px;
@@ -699,14 +699,14 @@ header {
   background-color: #FFF;
   color: rgba(166, 167, 167, 1);
   padding: 5px;
-  font-size: 10px;
+  font-size: 10pt;
   align-self: flex-start;
   margin: 0 0 20px 28px;
 }
 #resultVue .theme {
   margin-top: 50px;
   margin-left: 28px;
-  font-size: 17px;
+  font-size: 17pt;
   color: #DE4D2B;
   align-self: flex-start;
 }
@@ -730,7 +730,7 @@ header {
   border-right: none;
   background: none;
   margin: 45px 10% 0;
-  font-size: 11px;
+  font-size: 11pt;
   resize: none;
 }
 #resultVue .explain-suc {
@@ -773,7 +773,7 @@ header {
   height: 26px;
   border-radius: 13px;
   border: none;
-  font-size: 10px;
+  font-size: 10pt;
 }
 #myRecodeVue .tab button:nth-of-type(2) {
   position: absolute;
@@ -781,7 +781,7 @@ header {
   height: 26px;
   border-radius: 13px;
   border: none;
-  font-size: 10px;
+  font-size: 10pt;
 }
 .recode {
   display: flex;
@@ -798,7 +798,7 @@ header {
   position: relative;
   top: 0;
   left: 0;
-  font-size: 10px;
+  font-size: 10pt;
   color: #626262;
   margin: 0;
   padding: 5px 21px;
@@ -808,7 +808,7 @@ header {
 .data p {
   position: relative;
   top: -3px;
-  font-size: 12px;
+  font-size: 12pt;
   margin: 0;
   padding: 12px 0 18px 21px;
   background-color: #E8F6FD;
@@ -833,7 +833,7 @@ header {
 .speech-box p {
   position: absolute;
   z-index: 30;
-  font-size: 11px;
+  font-size: 11pt;
   margin: 21px 21px 21px 37px;
 }
 .speech-box img {
@@ -858,7 +858,7 @@ header {
   margin-left: 30px;
 }
 #help h1 {
-  font-size: 20px;
+  font-size: 20pt;
   border-left: solid 1px #ED6A4C;
   border-bottom: solid 1px #ED6A4C;
   margin-top: 30px;
@@ -890,7 +890,7 @@ header {
 }
 .explain-page p {
   color: #ED6A4C;
-  font-size: 20px;
+  font-size: 20pt;
 }
 .explain-page div {
   background-color: rgba(237, 106, 76, 0.27);
@@ -899,17 +899,17 @@ header {
 .explain-page div p:nth-of-type(1) {
   display: inline-block;
   color: #434343;
-  font-size: 14px;
+  font-size: 14pt;
   border-bottom: solid 2px #FFF;
   margin-top: 25px;
 }
 .explain-page div p:nth-of-type(2) {
-  font-size: 11px;
+  font-size: 11pt;
   color: #434343;
   line-height: 25px;
 }
 .explain-page span {
-  font-size: 10px;
+  font-size: 10pt;
 }
 .explain-page hr {
   border-top: solid 2px #FFF;
@@ -929,7 +929,7 @@ header {
   padding: 46px 36px 16px 50px;
 }
 #register li {
-  font-size: 11px;
+  font-size: 11pt;
 }
 #register .form {
   display: flex;
@@ -944,7 +944,7 @@ header {
   padding: 0;
 }
 #register p {
-  font-size: 12px;
+  font-size: 12pt;
   margin: 12px 0 6px;
 }
 #register input {
@@ -957,7 +957,7 @@ header {
   border-radius: 13px;
   border: solid 0.8px #707070;
   padding: 7px 0 7px 10px;
-  font-size: 11px;
+  font-size: 11pt;
 }
 #register button {
   color: #FFF;
@@ -974,7 +974,7 @@ header {
 }
 #register .send_mail_btn {
   background-color: #ED6A4C;
-  font-size: 14px;
+  font-size: 14pt;
 }
 #register hr {
   width: 100%;
@@ -983,7 +983,7 @@ header {
 }
 .twitter_register {
   background-color: #4190C6;
-  font-size: 11px;
+  font-size: 11pt;
 }
 
 /* ready */
@@ -1015,7 +1015,7 @@ header {
   border-radius: 8px;
   border: none;
   color: #FFF;
-  font-size: 14px;
+  font-size: 14pt;
   margin-top: 26px;
 }
 
@@ -1038,7 +1038,7 @@ header {
   padding: 33px 0;
 }
 #finish_tutorial button {
-  font-size: 14px;
+  font-size: 14pt;
   color: #FFF;
   background-color: rgba(237, 106, 76, 1);
   border: none;
@@ -1054,7 +1054,7 @@ header {
   height: 100vh;
 }
 .password_reset h1 {
-  font-size: 20px;
+  font-size: 20pt;
   text-align: center;
 }
 .password_reset div {
@@ -1067,7 +1067,7 @@ header {
   box-shadow: 3px 5px 6px rgba(18, 18, 18, 0.16);
 }
 .password_reset p {
-  font-size: 11px;
+  font-size: 11pt;
   text-align: center;
   margin: 0;
 }
@@ -1076,14 +1076,14 @@ header {
   border-radius: 22px;
   border: solid 1px #707070;
   padding: 15px;
-  font-size: 13px;
+  font-size: 13pt;
   margin-top: 37px;
 }
 .password_reset button {
   width: 210px;
   border-radius: 5px;
   border: none;
-  font-size: 14px;
+  font-size: 14pt;
   background-color: #ED6A4C;
   padding: 8px 0;
   color: #FFF;
@@ -1100,7 +1100,7 @@ header {
   height: 100vh;
 }
 #mail_sent h1 {
-  font-size: 20px;
+  font-size: 20pt;
   color: #ED6A4C;
   background-color: #FFF;
   width: 100%;
@@ -1108,13 +1108,13 @@ header {
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
 }
 #mail_sent p {
-  font-size: 13px;
+  font-size: 13pt;
 }
 #mail_sent a {
   text-decoration: underline;
   margin-top: 21px;
   color: rgba(113, 113, 113, 1);
-  font-size: 12px;
+  font-size: 12pt;
 }
 
 /* feedback */
@@ -1124,12 +1124,12 @@ header {
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
 }
 #feedback div.head a {
-  font-size: 12px;
+  font-size: 12pt;
   color: rgba(56, 56, 56, 1);
 }
 #feedback div.head h1 {
   color: #FFF;
-  font-size: 20px;
+  font-size: 20pt;
   text-align: center;
   margin: 0;
 }
@@ -1140,7 +1140,7 @@ header {
   align-items: center;
 }
 #feedback form p {
-  font-size: 11px;
+  font-size: 11pt;
   text-align: left;
   margin-top: 36px;
 }
@@ -1154,7 +1154,7 @@ header {
 }
 #feedback form input {
   color: #FFF;
-  font-size: 14px;
+  font-size: 14pt;
   background-color: rgba(114, 114, 114, 1);
   border-radius: 5px;
   padding: 7px 44px;
@@ -1187,12 +1187,12 @@ header {
   margin: 20px;
 }
 #feedback .overlay div h2 {
-  font-size: 22px;
+  font-size: 22pt;
   color: #FFF;
   margin-top: 0;
 }
 #feedback .overlay div p {
-  font-size: 11px;
+  font-size: 11pt;
   color: black;
   margin-bottom: 30px;
 }
