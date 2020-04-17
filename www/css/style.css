@@ -740,11 +740,15 @@ header {
   color: #A6A7A7;
   border-radius: 1.45pt;
   border-width: 0.23pt;
-  width: 70%;
+  width: 30%;
   padding: 10pt;
   margin-top: 10pt;
-  margin-left: 28pt;
   text-align: left;
+}
+#resultVue .explain-tweet {
+  position: relative;
+  top: -90pt;
+  left: 80pt;
 }
 #resultVue textarea {
   width: 75%;
@@ -760,8 +764,8 @@ header {
 }
 #resultVue .explain-suc {
   position: relative;
-  top: 30pt;
-  left: 70pt;
+  top: -30pt;
+  left: 80pt;
 }
 #resultVue button:nth-of-type(1) {
   width: 94pt;
@@ -771,7 +775,6 @@ header {
   color: #FFF;
   box-shadow: 0 0 6pt rgba(0, 0, 0, 0.29);
   border: none;
-  margin-top: 27pt;
 }
 #resultVue button:nth-of-type(2) {
   width: 75pt;
