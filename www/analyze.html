@@ -8,9 +8,20 @@
         <span><b>取り組みたいことや<br>叶えたいことを書くテン。</b></span>
       </div>
       <input type="text" v-model="theme">
-      <ons-select v-model="category" @change="getSelect" size="1" multiple>
-        <option v-for="n in categories" :value="n" :disabled="isPushed ? !(category.includes(n)) : false">{{ n }}</option>
-      </ons-select>
+      <div>
+        <select v-model="cat[0]">
+          <option disabled value="">カテゴリ</option>
+          <option v-for="n in categories" :value="n">{{ n }}</option>
+        </select>
+        <select v-model="cat[1]">
+          <option disabled value="">カテゴリ</option>
+          <option v-for="n in categories" :value="n">{{ n }}</option>
+        </select>
+        <select v-model="cat[2]">
+          <option disabled value="">カテゴリ</option>
+          <option v-for="n in categories" :value="n">{{ n }}</option>
+        </select>
+      </div>
       <button @click="nextButtonClick">これを分析！</button>
       <a @click="helpButtonClick" class="help_button"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" width="30px"></a>
       <div class="overlay-help" v-show="showHelpModal" @click="closeModal">
@@ -31,6 +42,11 @@
         data: {
           theme: "",
           category: [],
+          cat: [
+            "",
+            "",
+            "",
+          ],
           showHelpModal: false,
           categories: [
             "夢",
@@ -58,6 +74,12 @@
         },
         methods: {
           nextButtonClick: function() {
+            this.category = [];
+            for(var i=0; i<3; i++) {
+              if(this.cat[i] != "") {
+                this.category.push(this.cat[i]);
+              }
+            }
             if (this.theme == "") {
               ons.notification.toast('テーマが入力されていません', {timeout: 2000, animation: "fall"});
               return;
