@@ -137,15 +137,17 @@
             console.log(qAndA);
           },
           finishButtonClick: function() {
-            if(this.qa.answer != "") {
-              this.showModal3 = true;
-              this.qa.why = this.qa.why + this.qa.question + "？";
-              this.items.push(Object.assign({}, this.qa));
-              qAndA.questions.push(this.qa.why);
-              qAndA.answers.push(this.qa.answer);
-              qAndA.tags.push(this.qa.tag);
-              updateData(qAndA);
+            if (this.qa.answer == "") {
+              ons.notification.toast("回答欄が入力されていません");
+              return;
             }
+            this.showModal3 = true;
+            this.qa.why = this.qa.why + this.qa.question + "？";
+            this.items.push(Object.assign({}, this.qa));
+            qAndA.questions.push(this.qa.why);
+            qAndA.answers.push(this.qa.answer);
+            qAndA.tags.push(this.qa.tag);
+            updateData(qAndA);
             console.log(qAndA)
             myNavigator.pushPage('result.html',{
               data: {
