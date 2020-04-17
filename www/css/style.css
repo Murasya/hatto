@@ -26,15 +26,16 @@ html {
 }
 
 .toolbar {
-  display: inline-flex;
+  display: flex;
   flex-direction: row;
   justify-content: space-around;
   height: 64pt;
-  padding-top: 12pt;
+  align-items: center;
 }
 .toolbar div {
   display: flex;
   flex-direction: column;
+  width: 60pt;
 }
 .toolbar span {
   font-size: 9pt;
