@@ -10,8 +10,8 @@ html {
 
 .cartoon {
   position: absolute;
-  top: -70px;
-  left: -120px;
+  top: -70pt;
+  left: -120pt;
   width: 70%;
 }
 
@@ -22,14 +22,15 @@ html {
   width: 100%;
   background-color: #E8E8E8;
   z-index: 100;
+  text-align: center;
 }
 
 .toolbar {
   display: inline-flex;
   flex-direction: row;
   justify-content: space-around;
-  height: 64px;
-  padding-top: 12px;
+  height: 64pt;
+  padding-top: 12pt;
 }
 .toolbar div {
   display: flex;
@@ -50,9 +51,9 @@ header {
 }
 
 .menu_btn {
-  width: 30px;
-  height: 30px;
-  padding: 4px;
+  width: 30pt;
+  height: 30pt;
+  padding: 4pt;
 }
 .menu_trigger {
   position: relative;
@@ -65,34 +66,34 @@ header {
   left: 0;
   display: block;
   width: 100%;
-  height: 2px;
+  height: 2pt;
   background: #333;
-  border-radius: 2px;
+  border-radius: 2pt;
   transition: all 0.5s;
 }
 .menu_btn .menu_trigger span:nth-of-type(1) {
-  top: 8px;
+  top: 8pt;
 }
 .menu_btn .menu_trigger span:nth-of-type(2) {
-  top: calc(50% - 1px);
+  top: calc(50% - 1pt);
 }
 .menu_btn .menu_trigger span:nth-of-type(3) {
-  bottom: 8px;
+  bottom: 8pt;
 }
 .menu_btn.open_ .menu_trigger span:nth-of-type(1) {
-  top: calc(50% - 1px);
+  top: calc(50% - 1pt);
   transform: rotate(-45deg);
 }
 .menu_btn.open_ .menu_trigger span:nth-of-type(2) {
   opacity: 0;
 }
 .menu_btn.open_ .menu_trigger span:nth-of-type(3) {
-  bottom: calc(50% - 1px);
+  bottom: calc(50% - 1pt);
   transform: rotate(45deg);
 }
 .nav {
   position: fixed;
-  top: 40px;
+  top: 40pt;
   left: 0;
   width: 40%;
   z-index: 99;
@@ -102,15 +103,15 @@ header {
   flex-direction: column;
   justify-content: start;
   align-items: flex-start;
-  padding-left: 23px;
-  padding-top: 10px;
+  padding-left: 23pt;
+  padding-top: 10pt;
 }
 .nav.v-enter, .nav.v-leave-to {
   opacity: 0;
 }
 .nav .signout {
-  margin: 5px 0;
-  height: 28px;
+  margin: 5pt 0;
+  height: 28pt;
 }
 .acd-check {
   display: none;
@@ -118,12 +119,12 @@ header {
 .acd-label:before {
   display: inline-block;
   content: "";
-  width: 28px;
-  height: 28px;
+  width: 28pt;
+  height: 28pt;
   background: url("../images/options_アイコン.png") no-repeat;
   background-size: contain;
   vertical-align: middle;
-  margin-right: 5px;
+  margin-right: 5pt;
 }
 .acd-content {
   height: 0;
@@ -135,14 +136,14 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-left: solid 1px #4B4B4B;
+  border-left: solid 1pt #4B4B4B;
   text-align: left;
-  margin-left: 30px;
+  margin-left: 30pt;
 }
 .acd-check:checked + .acd-label + .acd-content {
-  height: 80px;
+  height: 80pt;
   opacity: 1;
-  padding-left: 10px;
+  padding-left: 10pt;
   visibility: visible;
 }
 .acd-check:not(:checked) + .acd-label:after {
@@ -158,12 +159,12 @@ header {
 .nav .signout:before {
   display: inline-block;
   content: "";
-  width: 28px;
-  height: 28px;
+  width: 28pt;
+  height: 28pt;
   background: url("../images/signout_アイコン.png") no-repeat;
   background-size: contain;
   vertical-align: middle;
-  margin-right: 5px;
+  margin-right: 5pt;
 }
 
 [v-cloak] {
@@ -183,9 +184,9 @@ header {
 }
 
 #notSignIn .img-button {
-  width: 75px;
-  margin-top: 10px;
-  margin-left: 150px;
+  width: 75pt;
+  margin-top: 10pt;
+  margin-left: 150pt;
 }
 
 #isSignIn p {
@@ -235,65 +236,65 @@ header {
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 32px 0;
+  padding: 32pt 0;
 }
 #signIn hr {
   width: 80%;
-  border-top: solid 1px #FFF;
+  border-top: solid 1pt #FFF;
 }
 #signIn div a {
   align-self: flex-end;
-  margin-right: 48px;
+  margin-right: 48pt;
 }
 .twitter_login {
   background-color: #4190C6;
-  border-radius: 5px;
+  border-radius: 5pt;
   border: none;
   color: #FFF;
-  width: 230px;
-  padding: 6px 30px;
+  width: 230pt;
+  padding: 6pt 30pt;
   font-size: 10pt;
-  margin-top: 20px;
+  margin-top: 20pt;
 }
 .google_login {
   background-color: #FFF;
-  border-radius: 5px;
-  border: solid 0.5px #707070;
-  padding: 6px 30px;
+  border-radius: 5pt;
+  border: solid 0.5pt #707070;
+  padding: 6pt 30pt;
   font-size: 10pt;
-  margin-top: 15px;
+  margin-top: 15pt;
 }
 #email, #password {
-  width: 279px;
-  height: 43px;
-  border-radius: 22px;
-  border: solid 1px #707070;
-  text-indent: 25px;
-  margin-bottom: 18px;
+  width: 279pt;
+  height: 43pt;
+  border-radius: 22pt;
+  border: solid 1pt #707070;
+  text-indent: 25pt;
+  margin-bottom: 18pt;
 }
 .forgot_password {
   text-decoration: underline;
   font-size: 12pt;
   color: #ED6A4C;
-  margin-top: 14px;
+  margin-top: 14pt;
 }
 
 #login_account {
-  width: 72.98px;
-  height: 44.9px;
+  width: 72.98pt;
+  height: 44.9pt;
   background-color: #E8610C;
   color: #FFFFFF;
   font-size: 26.27pt;
   display: block;
-  margin: 50.74px auto 99.71px;
+  margin: 50.74pt auto 99.71pt;
 }
 
 #new_account {
-  width: 117.18px;
-  height: 33.89px;
+  width: 117.18pt;
+  height: 33.89pt;
   background-color: #A6A7A7;
   color: #FFFFFF;
-  border-radius: 6.47px;
+  border-radius: 6.47pt;
   font-size: 18.43pt;
 }
 
@@ -308,12 +309,12 @@ header {
 }
 
 #start img, #resume img {
-  width: 191px;
+  width: 191pt;
 }
 #start p, #resume p {
   font-size: 31pt;
   color: #FFF;
-  margin: 52px 0 0 0;
+  margin: 52pt 0 0 0;
 }
 
 /* analyze */
@@ -322,7 +323,7 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  margin-top: 170px;
+  margin-top: 170pt;
   height: 100vh;
 }
 #analyze .background {
@@ -356,70 +357,70 @@ header {
   margin: 0;
   padding: 0;
   text-align: left;
-  width: 199px;
+  width: 199pt;
 }
 #analyze .speech img {
-  width: 260px;
+  width: 260pt;
 }
 #analyze select {
-  width: 107px;
-  border-radius: 1.45px;
-  border: solid 0.23px #A6A7A7;
+  width: 107pt;
+  border-radius: 1.45pt;
+  border: solid 0.23pt #A6A7A7;
   color: #8E8E8F;
   font-size: 10pt;
-  margin-top: 32px;
-  padding: 2px;
+  margin-top: 32pt;
+  padding: 2pt;
 }
 #analyze input {
-  border-bottom: 1px solid #DE4D2B;
+  border-bottom: 1pt solid #DE4D2B;
   border-top: none;
   border-right: none;
   border-left: none;
-  border-radius: 0px;
+  border-radius: 0pt;
   background-color: transparent;
   width: 70%;
-  margin-top: 40px;
+  margin-top: 40pt;
 }
 #analyze button {
   position: relative;
   top: 0;
   left: 0;
-  border-radius: 8px;
+  border-radius: 8pt;
   border: none;
-  height: 30px;
+  height: 30pt;
   background-color: #A6A7A7;
   color: #FFFFFF;
-  margin-top: 25px;
+  margin-top: 25pt;
 }
 #analyze .exp {
   position: relative;
-  top: -20px;
-  left: 107px;
+  top: -20pt;
+  left: 107pt;
 }
 #analyze .help_button {
   align-self: flex-start;
-  margin-left: 45px;
+  margin-left: 45pt;
 }
 
 /* question */
 #questionVue {
   position: relative;
   min-height: 100vh;
-  padding-bottom: 200px;
+  padding-bottom: 200pt;
   box-sizing: border-box;
 }
 #questionVue .theme {
-  height: 65px;
+  height: 65pt;
   background-color: #E0836E;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.29);
+  box-shadow: 0 3pt 6pt rgba(0, 0, 0, 0.29);
   color: #FFF;
   font-size: 12pt;
-  margin-bottom: 25px;
+  margin-bottom: 25pt;
 }
 #questionVue .theme p {
   font-size: 12pt;
-  padding-top: 38.5px;
-  padding-left: 14px;
+  padding-top: 38.5pt;
+  padding-left: 14pt;
   margin: 0;
 }
 .defo {
@@ -433,21 +434,21 @@ header {
 }
 .items {
   position: relative;
-  height: 75px;
+  height: 75pt;
   width: 100%;
-  margin-bottom: 8px;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.29);
+  margin-bottom: 8pt;
+  box-shadow: 0 1pt 6pt rgba(0, 0, 0, 0.29);
 }
 .items p:nth-of-type(1) {
   position: absolute;
   margin: 0;
   top: 0;
   left: 0;
-  width: 35px;
-  height: 75px;
+  width: 35pt;
+  height: 75pt;
   border-radius: 0 100% 100% 0/0 50% 50% 0;
-  padding-left: 10px;
-  line-height: 75px;
+  padding-left: 10pt;
+  line-height: 75pt;
   z-index: 5;
   color: #FFF;
   font-size: 20pt;
@@ -459,10 +460,10 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  height: 25px;
-  line-height: 25px;
+  height: 25pt;
+  line-height: 25pt;
   border-color: #707070;
-  border-width: 0.2px;
+  border-width: 0.2pt;
   z-index: 4;
   margin: 0;
   font-size: 10pt;
@@ -470,10 +471,10 @@ header {
 .items p:nth-of-type(3) {
   position: absolute;
   padding-left: 15%;
-  top: 25px;
+  top: 25pt;
   left: 0;
   width: 85%;
-  height: 50px;
+  height: 50pt;
   z-index: 4;
   background-color: #FFF;
   margin: 0;
@@ -483,21 +484,21 @@ header {
 }
 #questionVue .writting {
   position: relative;
-  height: 75px;
+  height: 75pt;
   width: 100%;
-  margin-top: 25px;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.29);
+  margin-top: 25pt;
+  box-shadow: 0 1pt 6pt rgba(0, 0, 0, 0.29);
 }
 #questionVue .writting a {
   position: absolute;
   margin: 0;
   top: 0;
   left: 0;
-  width: 35px;
-  height: 75px;
+  width: 35pt;
+  height: 75pt;
   border-radius: 0 100% 100% 0/0 50% 50% 0;
-  padding-left: 10px;
-  line-height: 75px;
+  padding-left: 10pt;
+  line-height: 75pt;
   z-index: 5;
   color: #FFF;
 }
@@ -508,58 +509,58 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  height: 25px;
+  height: 25pt;
   border-color: #707070;
-  border-width: 0.2px;
+  border-width: 0.2pt;
   z-index: 4;
   margin: 0;
 }
 #questionVue .writting input {
   border: none;
-  border-bottom: solid 0.5px #7B7B7B;
+  border-bottom: solid 0.5pt #7B7B7B;
   background: none;
   width: 65%;
-  margin: 0 5px;
+  margin: 0 5pt;
 }
 #questionVue .writting textarea {
   position: absolute;
   border: 0;
-  padding: 5px 0 0 15%;
-  top: 25px;
+  padding: 5pt 0 0 15%;
+  top: 25pt;
   left: 0;
   width: 85%;
-  height: 45px;
+  height: 45pt;
   z-index: 4;
   resize: none;
 }
 #questionVue .buttons {
   position: absolute;
-  bottom: 80px;
+  bottom: 80pt;
   left: 0;
   width: 100%;
 }
 #questionVue .buttons a:nth-of-type(1) {
   position: relative;
-  left: 45px;
-  bottom: 0px;
+  left: 45pt;
+  bottom: 0pt;
   z-index: 30;
 }
 #questionVue .buttons a:nth-of-type(2) {
   position: absolute;
-  left: 45px;
-  bottom: 40px;
+  left: 45pt;
+  bottom: 40pt;
   z-index: 30;
 }
 #questionVue .buttons a:nth-of-type(3) {
   position: absolute;
   bottom: 0;
-  right: 35px;
+  right: 35pt;
   z-index: 30;
 }
 #questionVue .buttons a:nth-of-type(4) {
   position: absolute;
   bottom: 0;
-  right: 115px;
+  right: 115pt;
   z-index: 30;
 }
 #questionVue .overlay {
@@ -604,8 +605,8 @@ header {
 }
 .overlay-help a {
   position: absolute;
-  top: 30px;
-  right: 30px;
+  top: 30pt;
+  right: 30pt;
   font-size: 30pt;
 }
 .overlay1 {
@@ -628,7 +629,7 @@ header {
 }
 .overlay1 .speech {
   position: relative;
-  top: 160px;
+  top: 160pt;
 }
 .overlay1 .speech img {
   width: 80%;
@@ -642,31 +643,31 @@ header {
   color: rgba(237, 106, 76, 1);
   font-size: 12pt;
   text-align: left;
-  top: 80px;
-  left: 70px;
+  top: 80pt;
+  left: 70pt;
   margin: 0 auto;
   width: 100%;
 }
 #questionVue ons-icon {
   width: 100%;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 20pt;
 }
 #questionVue .explain-que {
   position: absolute;
-  top: 180px;
-  right: 40px;
+  top: 180pt;
+  right: 40pt;
   z-index: 30;
 }
 #questionVue .explain-tag {
   position: relative;
-  left: 20px;
-  top: -110px;
+  left: 20pt;
+  top: -110pt;
   z-index: 30;
 }
 #questionVue .explain-ans {
   position: relative;
-  top: -10px;
+  top: -10pt;
   left: 20%;
   z-index: 30;
 }
@@ -681,8 +682,8 @@ header {
 }
 #questionVue .overlay2 a {
   position: fixed;
-  bottom: 80px;
-  right: 35px;
+  bottom: 80pt;
+  right: 35pt;
   z-index: 100;
 }
 
@@ -695,17 +696,17 @@ header {
 }
 #resultVue .category{
   display: inline-block;
-  border: solid 0.23px rgba(166, 167, 167, 1);
+  border: solid 0.23pt rgba(166, 167, 167, 1);
   background-color: #FFF;
   color: rgba(166, 167, 167, 1);
-  padding: 5px;
+  padding: 5pt;
   font-size: 10pt;
   align-self: flex-start;
-  margin: 0 0 20px 28px;
+  margin: 0 0 20pt 28pt;
 }
 #resultVue .theme {
-  margin-top: 50px;
-  margin-left: 28px;
+  margin-top: 50pt;
+  margin-left: 28pt;
   font-size: 17pt;
   color: #DE4D2B;
   align-self: flex-start;
@@ -713,73 +714,73 @@ header {
 #resultVue select {
   display: inline-block;
   color: #A6A7A7;
-  border-radius: 1.45px;
-  border-width: 0.23px;
+  border-radius: 1.45pt;
+  border-width: 0.23pt;
   width: 70%;
-  padding: 10px;
-  margin-top: 10px;
-  margin-left: 28px;
+  padding: 10pt;
+  margin-top: 10pt;
+  margin-left: 28pt;
   text-align: left;
 }
 #resultVue textarea {
   width: 75%;
-  height: 180px;
-  border-left: solid 1.5px #DE4D2B;
-  border-bottom: solid 1.5px #DE4D2B;
+  height: 180pt;
+  border-left: solid 1.5pt #DE4D2B;
+  border-bottom: solid 1.5pt #DE4D2B;
   border-top: none;
   border-right: none;
   background: none;
-  margin: 45px 10% 0;
+  margin: 45pt 10% 0;
   font-size: 11pt;
   resize: none;
 }
 #resultVue .explain-suc {
   position: relative;
-  top: 30px;
-  left: 70px;
+  top: 30pt;
+  left: 70pt;
 }
 #resultVue button:nth-of-type(1) {
-  width: 94px;
-  height: 22px;
-  border-radius: 8px;
+  width: 94pt;
+  height: 22pt;
+  border-radius: 8pt;
   background-color: #DE4D2B;
   color: #FFF;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.29);
+  box-shadow: 0 0 6pt rgba(0, 0, 0, 0.29);
   border: none;
-  margin-top: 27px;
+  margin-top: 27pt;
 }
 #resultVue button:nth-of-type(2) {
-  width: 75px;
-  height: 27px;
+  width: 75pt;
+  height: 27pt;
   background-color: #4190C6;
   color: #FFF;
   border: none;
-  border-radius: 5px;
-  margin-top: 10px;
-  margin-bottom: 68px;
+  border-radius: 5pt;
+  margin-top: 10pt;
+  margin-bottom: 68pt;
 }
 
 /* myRecode */
 #myRecodeVue .tab {
   position: relative;
   background-color: #E0836E;
-  height: 97px;
+  height: 97pt;
   width: 100%;
 }
 #myRecodeVue .tab button:nth-of-type(1) {
   position: absolute;
-  left: 19px;
-  top: 57px;
-  height: 26px;
-  border-radius: 13px;
+  left: 19pt;
+  top: 57pt;
+  height: 26pt;
+  border-radius: 13pt;
   border: none;
   font-size: 10pt;
 }
 #myRecodeVue .tab button:nth-of-type(2) {
   position: absolute;
-  top: 57px;
-  height: 26px;
-  border-radius: 13px;
+  top: 57pt;
+  height: 26pt;
+  border-radius: 13pt;
   border: none;
   font-size: 10pt;
 }
@@ -792,7 +793,7 @@ header {
   position: relative;
   display: block;
   width: 90%;
-  margin: 12px auto 0;
+  margin: 12pt auto 0;
 }
 .data span {
   position: relative;
@@ -801,72 +802,72 @@ header {
   font-size: 10pt;
   color: #626262;
   margin: 0;
-  padding: 5px 21px;
+  padding: 5pt 21pt;
   background-color: #E8F6FD;
-  border-radius: 5px;
+  border-radius: 5pt;
 }
 .data p {
   position: relative;
-  top: -3px;
+  top: -3pt;
   font-size: 12pt;
   margin: 0;
-  padding: 12px 0 18px 21px;
+  padding: 12pt 0 18pt 21pt;
   background-color: #E8F6FD;
-  border-radius: 5px;
+  border-radius: 5pt;
 
 }
 .data hr {
   position: relative;
-  bottom: 17px;
-  margin: 0 21px;
+  bottom: 17pt;
+  margin: 0 21pt;
 }
 
 /* help */
 .speech-box {
   position: relative;
-  top: 80px;
-  left: 150px;
-  width: 160px;
-  height: 70px;
+  top: 80pt;
+  left: 150pt;
+  width: 160pt;
+  height: 70pt;
   margin: 0;
 }
 .speech-box p {
   position: absolute;
   z-index: 30;
   font-size: 11pt;
-  margin: 21px 21px 21px 37px;
+  margin: 21pt 21pt 21pt 37pt;
 }
 .speech-box img {
   position: absolute;
-  width: 160px;
+  width: 160pt;
   z-index: 20;
 }
 #help .header {
   height: auto;
   background-color: #ED6A4C;
-  padding-bottom: 45px;
+  padding-bottom: 45pt;
 }
 #help .header .links {
   display: flex;
   flex-direction: column;
   align-items: baseline;
-  margin-top: 100px;
+  margin-top: 100pt;
 }
 #help .header .links a {
   color: #000000;
   text-decoration: none;
-  margin-left: 30px;
+  margin-left: 30pt;
 }
 #help h1 {
   font-size: 20pt;
-  border-left: solid 1px #ED6A4C;
-  border-bottom: solid 1px #ED6A4C;
-  margin-top: 30px;
-  padding-left: 5px;
+  border-left: solid 1pt #ED6A4C;
+  border-bottom: solid 1pt #ED6A4C;
+  margin-top: 30pt;
+  padding-left: 5pt;
   display: inline-block;
 }
 #help .help-content {
-  margin: 0 30px 100px;
+  margin: 0 30pt 100pt;
 }
 #help .help-content span {
   color: #ED6A4C;
@@ -886,7 +887,7 @@ header {
   text-align: center;
 }
 .explain-page img {
-  width: 35px;
+  width: 35pt;
 }
 .explain-page p {
   color: #ED6A4C;
@@ -900,19 +901,19 @@ header {
   display: inline-block;
   color: #434343;
   font-size: 14pt;
-  border-bottom: solid 2px #FFF;
-  margin-top: 25px;
+  border-bottom: solid 2pt #FFF;
+  margin-top: 25pt;
 }
 .explain-page div p:nth-of-type(2) {
   font-size: 11pt;
   color: #434343;
-  line-height: 25px;
+  line-height: 25pt;
 }
 .explain-page span {
   font-size: 10pt;
 }
 .explain-page hr {
-  border-top: solid 2px #FFF;
+  border-top: solid 2pt #FFF;
   width: 80%;
 }
 
@@ -926,7 +927,7 @@ header {
 #register ul {
   background-color: #FFF;
   margin: 0;
-  padding: 46px 36px 16px 50px;
+  padding: 46pt 36pt 16pt 50pt;
 }
 #register li {
   font-size: 11pt;
@@ -936,7 +937,7 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 0 50px;
+  padding: 0 50pt;
 }
 #register .form div {
   display: flex;
@@ -945,32 +946,32 @@ header {
 }
 #register p {
   font-size: 12pt;
-  margin: 12px 0 6px;
+  margin: 12pt 0 6pt;
 }
 #register input {
-  border-radius: 22px;
-  border: solid 0.8px #707070;
-  padding: 10px;
+  border-radius: 22pt;
+  border: solid 0.8pt #707070;
+  padding: 10pt;
   width: 100%;
 }
 #register select {
-  border-radius: 13px;
-  border: solid 0.8px #707070;
-  padding: 7px 0 7px 10px;
+  border-radius: 13pt;
+  border: solid 0.8pt #707070;
+  padding: 7pt 0 7pt 10pt;
   font-size: 11pt;
 }
 #register button {
   color: #FFF;
-  border-radius: 5px;
+  border-radius: 5pt;
   border: none;
-  padding: 7px 40px;
+  padding: 7pt 40pt;
 }
 #register .btns {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 20px 50px 0;
+  margin: 20pt 50pt 0;
 }
 #register .send_mail_btn {
   background-color: #ED6A4C;
@@ -978,8 +979,8 @@ header {
 }
 #register hr {
   width: 100%;
-  border: solid 1px #3B3B3B;
-  margin: 23px 0;
+  border: solid 1pt #3B3B3B;
+  margin: 23pt 0;
 }
 .twitter_register {
   background-color: #4190C6;
@@ -997,26 +998,26 @@ header {
   background-color: #E8F6FD;
 }
 #readyVue img {
-  width: 170px;
-  margin-bottom: 30px;
+  width: 170pt;
+  margin-bottom: 30pt;
 }
 #readyVue p {
   width: 100%;
   background-color: #FFF;
   color: #484848;
-  line-height: 24px;
-  padding: 21px 0;
+  line-height: 24pt;
+  padding: 21pt 0;
   margin: 0;
 }
 #readyVue button {
-  width: 85px;
-  height: 36px;
+  width: 85pt;
+  height: 36pt;
   background-color: #ED6A4C;
-  border-radius: 8px;
+  border-radius: 8pt;
   border: none;
   color: #FFF;
   font-size: 14pt;
-  margin-top: 26px;
+  margin-top: 26pt;
 }
 
 /* finish_tutorial */
@@ -1030,20 +1031,20 @@ header {
   height: 100vh;
 }
 #finish_tutorial img {
-  width: 170px;
+  width: 170pt;
 }
 #finish_tutorial p {
   background-color: #FFF;
   width: 100%;
-  padding: 33px 0;
+  padding: 33pt 0;
 }
 #finish_tutorial button {
   font-size: 14pt;
   color: #FFF;
   background-color: rgba(237, 106, 76, 1);
   border: none;
-  border-radius: 8px;
-  padding: 11px 18px;
+  border-radius: 8pt;
+  padding: 11pt 18pt;
 }
 
 /* password_reset */
@@ -1062,9 +1063,9 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px 0;
+  padding: 40pt 0;
   background-color: rgba(255, 255, 255, 0.39);
-  box-shadow: 3px 5px 6px rgba(18, 18, 18, 0.16);
+  box-shadow: 3pt 5pt 6pt rgba(18, 18, 18, 0.16);
 }
 .password_reset p {
   font-size: 11pt;
@@ -1073,21 +1074,21 @@ header {
 }
 .password_reset input {
   width: 70%;
-  border-radius: 22px;
-  border: solid 1px #707070;
-  padding: 15px;
+  border-radius: 22pt;
+  border: solid 1pt #707070;
+  padding: 15pt;
   font-size: 13pt;
-  margin-top: 37px;
+  margin-top: 37pt;
 }
 .password_reset button {
-  width: 210px;
-  border-radius: 5px;
+  width: 210pt;
+  border-radius: 5pt;
   border: none;
   font-size: 14pt;
   background-color: #ED6A4C;
-  padding: 8px 0;
+  padding: 8pt 0;
   color: #FFF;
-  margin-top: 37px;
+  margin-top: 37pt;
 }
 
 /* mail_sent */
@@ -1104,15 +1105,15 @@ header {
   color: #ED6A4C;
   background-color: #FFF;
   width: 100%;
-  padding: 33px 0;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  padding: 33pt 0;
+  box-shadow: 0pt 3pt 6pt rgba(0, 0, 0, 0.16);
 }
 #mail_sent p {
   font-size: 13pt;
 }
 #mail_sent a {
   text-decoration: underline;
-  margin-top: 21px;
+  margin-top: 21pt;
   color: rgba(113, 113, 113, 1);
   font-size: 12pt;
 }
@@ -1120,8 +1121,8 @@ header {
 /* feedback */
 #feedback div.head {
   background-color: #AFAFAF;
-  padding: 48px 24px 23px;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  padding: 48pt 24pt 23pt;
+  box-shadow: 0pt 3pt 6pt rgba(0, 0, 0, 0.16);
 }
 #feedback div.head a {
   font-size: 12pt;
@@ -1142,23 +1143,23 @@ header {
 #feedback form p {
   font-size: 11pt;
   text-align: left;
-  margin-top: 36px;
+  margin-top: 36pt;
 }
 #feedback form textarea {
-  padding: 10px;
-  border-radius: 15px;
-  border: solid 0.5px rgba(175, 175, 175, 1);
-  height: 336px;
+  padding: 10pt;
+  border-radius: 15pt;
+  border: solid 0.5pt rgba(175, 175, 175, 1);
+  height: 336pt;
   width: 80%;
-  margin-top: 30px;
+  margin-top: 30pt;
 }
 #feedback form input {
   color: #FFF;
   font-size: 14pt;
   background-color: rgba(114, 114, 114, 1);
-  border-radius: 5px;
-  padding: 7px 44px;
-  margin-top: 26px;
+  border-radius: 5pt;
+  padding: 7pt 44pt;
+  margin-top: 26pt;
 }
 #feedback .overlay {
   z-index: 99;
@@ -1183,8 +1184,8 @@ header {
 #feedback .overlay div a {
   align-self: flex-end;
   text-align: right;
-  width: 12px;
-  margin: 20px;
+  width: 12pt;
+  margin: 20pt;
 }
 #feedback .overlay div h2 {
   font-size: 22pt;
@@ -1194,5 +1195,5 @@ header {
 #feedback .overlay div p {
   font-size: 11pt;
   color: black;
-  margin-bottom: 30px;
+  margin-bottom: 30pt;
 }
