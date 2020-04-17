@@ -450,6 +450,7 @@ header {
   line-height: 75px;
   z-index: 5;
   color: #FFF;
+  font-size: 20pt;
 }
 .items p:nth-of-type(2) {
   text-align: center;
@@ -464,7 +465,7 @@ header {
   border-width: 0.2px;
   z-index: 4;
   margin: 0;
-  font-size: 10px;
+  font-size: 10pt;
 }
 .items p:nth-of-type(3) {
   position: absolute;
@@ -476,7 +477,7 @@ header {
   z-index: 4;
   background-color: #FFF;
   margin: 0;
-  font-size: 10px;
+  font-size: 10pt;
   text-align: left;
   overflow-y: scroll;
 }
