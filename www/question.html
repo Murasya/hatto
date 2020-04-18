@@ -9,6 +9,7 @@
       <p>{{ item.why }}</p>
       <p>{{ item.answer }}</p>
     </div>
+    <ons-icon icon="fa-arrow-down" v-show="qa.num != 1"></ons-icon>
     <div class="writting">
       <a @click="onNumber" :class="numberClass">{{ qa.num }}</a>
       <p>{{ qa.why }}<input v-show="qa.num >= 2" type="text" v-model="qa.question">？</p>
@@ -137,7 +138,7 @@
           },
           finishButtonClick: function() {
             if (this.qa.answer == "") {
-              ons.notification.toast("回答欄が入力されていません");
+              ons.notification.toast("回答欄が入力されていません", {timeout: 1000, animation: "fall"});
               return;
             }
             this.showModal3 = true;

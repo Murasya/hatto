@@ -12,16 +12,16 @@
     </div>
     <textarea v-model="memo" v-if="recode == false"></textarea>
     <div v-else class="memo">{{ memo }}</div>
+    <p style="font-size: 11pt; color: #767676;" v-show="recode==false">分析はうまくいった？</p>
     <select v-model="success" v-if="recode == false">
-      <option disabled value="">分析はうまくいった？</option>
       <option>はい</option>
       <option>いいえ</option>
       <option>どちらともいえない</option>
     </select><br>
-    <span class="success">分析はうまくいった？<ons-icon icon="fa-arrow-right"></ons-icon>{{ success }}</span>
+    <span class="success" v-if="recode == true">分析はうまくいった？<ons-icon icon="fa-arrow-right"></ons-icon>{{ success }}</span>
     <button v-show="recode == false" @click="saveButtonClick">記録する</button><br>
     <button><ons-icon icon="fa-twitter"></ons-icon> Tweet</button>
-    <my-toolbar></my-toolbar>
+    <my-toolbar v-show="recode == true"></my-toolbar>
   </div>
 
   <script>
