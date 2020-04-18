@@ -679,7 +679,7 @@ header {
 }
 #questionVue .explain-que {
   position: absolute;
-  top: 190pt;
+  top: 160pt;
   right: 30pt;
   z-index: 30;
 }
@@ -935,7 +935,7 @@ header {
 }
 .explain-page p {
   color: #ED6A4C;
-  font-size: 20pt;
+  font-size: 20px;
 }
 .explain-page div {
   background-color: rgba(237, 106, 76, 0.27);
@@ -944,17 +944,17 @@ header {
 .explain-page div p:nth-of-type(1) {
   display: inline-block;
   color: #434343;
-  font-size: 14pt;
+  font-size: 14px;
   border-bottom: solid 2pt #FFF;
   margin-top: 25pt;
 }
 .explain-page div p:nth-of-type(2) {
-  font-size: 11pt;
+  font-size: 11px;
   color: #434343;
   line-height: 25pt;
 }
 .explain-page span {
-  font-size: 10pt;
+  font-size: 10px;
 }
 .explain-page hr {
   border-top: solid 2pt #FFF;

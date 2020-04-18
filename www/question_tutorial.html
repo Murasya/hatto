@@ -13,8 +13,8 @@
     <img src="images/チュートリアル_説明3-1.png" class="explain-que" v-show="qa.num == 2" width="122px">
     <div class="writting">
       <a @click="onNumber" :class="numberClass">{{ qa.num }}</a>
-      <p>{{ qa.why }}<input v-show="qa.num >= 2" type="text" v-model="qa.question">？</p>
-      <textarea v-model="qa.answer"></textarea>
+      <p>{{ qa.why }}<input v-show="qa.num >= 2" type="text" v-model="qa.question" :placeholder="placeholder_que">？</p>
+      <textarea v-model="qa.answer" :placeholder="placeholder_ans"></textarea>
     </div>
     <img src="images/チュートリアル_説明2-1.png" class="explain-ans" v-show="qa.num == 1" width="250px">
     <img src="images/チュートリアル_説明2-2.png" class="explain-tag" v-show="qa.num == 1" width="260px">
@@ -151,6 +151,8 @@
               "in",
             ]
           },
+          placeholder_que: "",
+          placeholder_ans: "英語が話せたら留学生と話せるから",
         },
         created: function() {
           var vue = this;
@@ -190,12 +192,15 @@
             }
             this.qa.why = this.qa.why + this.qa.question + "？";
             this.items.push(Object.assign({}, this.qa));
+            this.placeholder_que = this.temp.questions[this.qa.num];
+            this.placeholder_ans = this.temp.answers[this.qa.num];
             this.qa.num++;
             this.qa.why = "なぜ";
             this.qa.question = "";
             this.qa.answer = "";
             this.numberClass = "defo";
             this.qa.tag = "";
+            
             if(this.qa.num == 2) {
               var vue = this;
               setTimeout(function() {vue.show3Modal = true}, 1000);
