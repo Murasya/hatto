@@ -971,17 +971,21 @@ header {
 #register ul {
   background-color: #FFF;
   margin: 0;
-  padding: 46pt 36pt 16pt 50pt;
+  padding: 20pt 36pt 16pt 50pt;
 }
 #register li {
-  font-size: 11pt;
+  font-size: 11px;
+}
+#register li a {
+  color: #ED6A4C;
+  text-decoration: underline;
 }
 #register .form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 0 50pt;
+  padding: 0 50px;
 }
 #register .form div {
   display: flex;
@@ -989,26 +993,24 @@ header {
   padding: 0;
 }
 #register p {
-  font-size: 12pt;
-  margin: 12pt 0 6pt;
+  font-size: 12px;
+  margin: 12px 0 0;
 }
 #register input {
   border-radius: 22pt;
   border: solid 0.8pt #707070;
-  padding: 10pt;
+  padding: 10px;
   width: 100%;
 }
 #register select {
   border-radius: 13pt;
   border: solid 0.8pt #707070;
-  padding: 7pt 0 7pt 10pt;
-  font-size: 11pt;
+  padding: 7px 0 7px 10px;
+  font-size: 11px;
 }
 #register button {
-  color: #FFF;
   border-radius: 5pt;
   border: none;
-  padding: 7pt 40pt;
 }
 #register .btns {
   display: flex;
@@ -1019,16 +1021,28 @@ header {
 }
 #register .send_mail_btn {
   background-color: #ED6A4C;
-  font-size: 14pt;
+  font-size: 14px;
+  padding: 8px 41px 7px 43px;
+  color: #FFF;
 }
 #register hr {
   width: 100%;
-  border: solid 1pt #3B3B3B;
-  margin: 23pt 0;
+  border-top: solid 1pt #3B3B3B;
+  margin: 15px 0;
+}
+#register h3 {
+  font-size: 13px;
 }
 .twitter_register {
   background-color: #4190C6;
   font-size: 11pt;
+  padding: 8px 16px 9px 16px;
+  color: #FFF;
+}
+.google_register {
+  background-color: #FFF;
+  color: black;
+  padding: 8px 16px 9px 16px;
 }
 
 /* ready */

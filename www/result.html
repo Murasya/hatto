@@ -53,6 +53,7 @@
           saveButtonClick: function() {
             if (this.memo == "") {
               ons.notification.toast("感想を書いてください", {timeout: 1000, animation: "fall"});
+              return;
             }
             qAndA.memo = this.memo;
             qAndA.success = this.success;

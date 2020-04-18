@@ -1,7 +1,7 @@
 <ons-page>
   <div id="register" v-cloak>
     <ul>
-      <li>仮登録またはTwitterアカウントで登録を行うことにより、<a>利用規約</a>・<a>プライバシーポリシー</a>に同意したものとみなします。</li>
+      <li>アカウント登録を行うことにより、<a>利用規約</a>・<a>プライバシーポリシー</a>に同意したものとみなします。</li><br>
       <li>メールアドレスおよび連携サービスのDMにアプリ改善のためのアンケート等をお送りする場合がございます。あらかじめご了承ください。</li>
     </ul>
     <div class="form">
@@ -35,7 +35,11 @@
     <div class="btns">
       <button @click="onRegister" class="send_mail_btn">仮登録メールを送信</button>
       <hr>
-      <button class="twitter_register"><ons-icon icon="fa-twitter"></ons-icon> Twitterアカウントで登録</button>
+      <h3>他のアカウントで登録</h3>
+      <div>
+        <button class="twitter_register"><ons-icon icon="fa-twitter"></ons-icon> Twitter</button>
+        <button class="google_register"><ons-icon icon="fa-google" style="color: gray;"></ons-icon> Google</button>
+      </div>
     </div>
   </div>
   <script>
