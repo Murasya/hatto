@@ -38,27 +38,18 @@
       <img class="cartoon" src="images/分析中_キャラ.png">
       <div class="speech">
         <img src="images/吹き出し/分析_吹き出し(comment1).png">
-        <p>そろそろ自分自身のことを<br>考えてみてもいい頃合いだテンよ！<br>
-          <span>なぜ____?をもっと自分に向けて
-          <br>みたら</span>、きっとうまくいくテン。<br>
-          具体的には、「なぜこの環境下で<br>
-          自分はこのテーマに取り組みたい/<br>
-          叶えたいと思っているのか？」<br>
-          とかいいと思うテンね！</p>
       </div>
     </div>
     <div class="overlay1" v-show="showModal2" @click="closeModal">
       <img class="cartoon" src="images/分析中_キャラ2.png">
       <div class="speech">
-        <img src="images/吹き出し/分析_吹き出し(comment2,3).png">
-        <p>お主、なかなかやるテン・・・！<br>その調子で頑張るテン！</p>
+        <img src="images/吹き出し/分析_吹き出し(comment2).png">
       </div>
     </div>
     <div class="overlay1" v-show="showModal3" @click="closeModal">
       <img class="cartoon" src="images/分析中_キャラ3.png">
       <div class="speech">
-        <img src="images/吹き出し/分析_吹き出し(comment2,3).png">
-        <p>お疲れ様テン！<br>キミの頑張りを記録に残しておくテン。</p>
+        <img src="images/吹き出し/分析_吹き出し(comment3).png">
       </div>
     </div>
   </div>
@@ -118,6 +109,7 @@
             }
             if (this.outCount == 3) {
               this.showModal1 = true;
+              this.outCount = 4;
             }
             if (this.qa.num == 6) {
               this.showModal2 = true;
@@ -137,18 +129,24 @@
             console.log(qAndA);
           },
           finishButtonClick: function() {
-            if (this.qa.answer == "") {
+            if (this.qa.answer == "" && this.qa.num == 5) {
               ons.notification.toast("回答欄が入力されていません", {timeout: 1000, animation: "fall"});
               return;
             }
+            if(this.qa.answer != "" && this.qa.tag == "") {
+              ons.notification.toast("内と外が決まっていません", {timeout: 1000, animation: "fall"});
+              return;
+            }
             this.showModal3 = true;
-            this.qa.why = this.qa.why + this.qa.question + "？";
-            this.items.push(Object.assign({}, this.qa));
-            qAndA.questions.push(this.qa.why);
-            qAndA.answers.push(this.qa.answer);
-            qAndA.tags.push(this.qa.tag);
-            updateData(qAndA);
-            console.log(qAndA)
+            if(this.qa.answer != "") {
+              this.qa.why = this.qa.why + this.qa.question + "？";
+              this.items.push(Object.assign({}, this.qa));
+              qAndA.questions.push(this.qa.why);
+              qAndA.answers.push(this.qa.answer);
+              qAndA.tags.push(this.qa.tag);
+              updateData(qAndA);
+            }
+            console.log(qAndA);
             myNavigator.pushPage('result.html',{
               data: {
                 qAndA: qAndA

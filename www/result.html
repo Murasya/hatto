@@ -6,7 +6,7 @@
       <span v-for="n in category">{{ n }}  </span>
     </span>
     <div v-for="index in answers.length-1" class="items">
-      <p :class='tags[index] == "" ? defoClass : (tags[index] == "out" ? lightClass : blueClass)'>{{ index }}</p>
+      <p :class='tags[index-1] == "" ? defoClass : (tags[index-1] == "out" ? lightClass : blueClass)'>{{ index }}</p>
       <p>{{ questions[index] }}</p>
       <p>{{ answers[index] }}</p>
     </div>

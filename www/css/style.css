@@ -337,31 +337,8 @@ header {
   top: 0;
   left: 0;
 }
-#analyze .speech span {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #FFFFFF;
-  font-size: 14pt;
-  margin: 0;
-  padding: 0;
-  text-align: left;
-}
-#analyze .speech p {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #FFFFFF;
-  font-size: 12pt;
-  margin: 0;
-  padding: 0;
-  text-align: left;
-  width: 199pt;
-}
 #analyze .speech img {
-  width: 252pt;
+  width: 252px;
 }
 #analyze select {
   width: 25%;
@@ -395,7 +372,7 @@ header {
 }
 #analyze .exp {
   position: absolute;
-  top: 350pt;
+  top: 320pt;
   right: 20pt;
 }
 #analyze .help_button {
@@ -659,24 +636,13 @@ header {
 }
 .overlay1 .speech {
   position: relative;
-  top: 160pt;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 150px;
 }
 .overlay1 .speech img {
-  width: 80%;
-  position: relative;
-  display: block;
-  top: 0;
-  margin: 0 auto;
-}
-.overlay1 .speech p {
-  position: absolute;
-  color: rgba(237, 106, 76, 1);
-  font-size: 12px;
-  text-align: left;
-  top: 30%;
-  left: 20%;
-  margin: 0 auto;
-  width: 100%;
+  width: 252px;
 }
 #questionVue ons-icon {
   width: 100%;
@@ -881,12 +847,6 @@ header {
   height: 70pt;
   margin: 0;
 }
-.speech-box p {
-  position: absolute;
-  z-index: 30;
-  font-size: 11pt;
-  margin: 21pt 21pt 21pt 37pt;
-}
 .speech-box img {
   position: absolute;
   width: 160pt;
@@ -929,43 +889,18 @@ header {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background-color: #B9B9B9;
   background-image: url('../images/機能紹介_サインイン_サインアップ_背景.png');
   background-size: cover;
-  text-align: center;
 }
-.explain-page img.icon {
+.explain-page img.back {
   margin-top: 40pt;
-  height: 35pt;
-}
-.explain-page p {
-  color: #ED6A4C;
-  font-size: 20px;
-}
-.explain-page div {
-  background-color: rgba(237, 106, 76, 0.27);
   width: 100%;
 }
-.explain-page div p:nth-of-type(1) {
-  display: inline-block;
-  color: #434343;
-  font-size: 14px;
-  border-bottom: solid 2pt #FFF;
-  margin-top: 25pt;
-}
-.explain-page div p:nth-of-type(2) {
-  font-size: 11px;
-  color: #434343;
-  line-height: 25pt;
-}
-.explain-page span {
-  font-size: 10px;
-}
-.explain-page hr {
-  border-top: solid 2pt #FFF;
-  width: 80%;
+.explain-page a {
+  margin-top: 10pt;
 }
 
 /* register */
