@@ -38,7 +38,7 @@
       <h3>他のアカウントで登録</h3>
       <div>
         <button class="twitter_register"><ons-icon icon="fa-twitter"></ons-icon> Twitter</button>
-        <button class="google_register"><ons-icon icon="fa-google" style="color: gray;"></ons-icon> Google</button>
+        <button class="google_register" @click="google_regi"><ons-icon icon="fa-google" style="color: gray;"></ons-icon> Google</button>
       </div>
     </div>
   </div>
@@ -88,6 +88,10 @@
           },
           get_days: function() {
             this.days_max = new Date(this.year, this.month, 0).getDate();
+          },
+          google_regi: function() {
+            var log = signInWithGoogle();
+            console.log(log);
           }
         }
       });
