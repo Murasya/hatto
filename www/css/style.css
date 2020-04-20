@@ -29,16 +29,16 @@ html {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  height: 64pt;
+  height: 64px;
   align-items: center;
 }
 .toolbar div {
   display: flex;
   flex-direction: column;
-  width: 60pt;
+  width: 60px;
 }
 .toolbar span {
-  font-size: 9pt;
+  font-size: 9px;
   color: #585858;
 }
 
@@ -310,7 +310,7 @@ header {
 }
 
 #start img, #resume img {
-  width: 191pt;
+  width: 191px;
 }
 #start p, #resume p {
   font-size: 31pt;
@@ -357,18 +357,15 @@ header {
   border-radius: 0pt;
   background-color: transparent;
   width: 70%;
-  margin-top: 40pt;
+  margin-top: 40px;
 }
 #analyze button {
-  position: relative;
-  top: 0;
-  left: 0;
   border-radius: 8pt;
   border: none;
-  height: 30pt;
+  height: 30px;
   background-color: #A6A7A7;
   color: #FFFFFF;
-  margin-top: 25pt;
+  margin-top: 25px;
 }
 #analyze .exp {
   position: absolute;
@@ -378,6 +375,7 @@ header {
 #analyze .help_button {
   align-self: flex-start;
   margin-left: 45pt;
+  margin-bottom: 64px;
 }
 
 /* question */
@@ -496,6 +494,7 @@ header {
   left: 0;
   width: 100%;
   height: 25pt;
+  line-height: 25pt;
   border-color: #707070;
   border-width: 0.2pt;
   z-index: 4;
@@ -507,6 +506,7 @@ header {
   background: none;
   width: 60%;
   margin: 0 5pt;
+  font-size: 10pt;
 }
 #questionVue .writting textarea {
   position: absolute;
@@ -521,33 +521,25 @@ header {
 }
 #questionVue .buttons {
   position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
   bottom: 80pt;
   left: 0;
   width: 100%;
 }
-#questionVue .buttons a:nth-of-type(1) {
-  position: relative;
-  left: 45pt;
-  bottom: 0pt;
-  z-index: 30;
+#questionVue .buttons div:nth-of-type(1) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
-#questionVue .buttons a:nth-of-type(2) {
-  position: absolute;
-  left: 45pt;
-  bottom: 40pt;
-  z-index: 30;
-}
-#questionVue .buttons a:nth-of-type(3) {
-  position: absolute;
-  bottom: 0;
-  right: 35pt;
-  z-index: 30;
-}
-#questionVue .buttons a:nth-of-type(4) {
-  position: absolute;
-  bottom: 0;
-  right: 90pt;
-  z-index: 30;
+#questionVue .buttons div:nth-of-type(2) {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
 }
 #questionVue .overlay {
   z-index: 99;

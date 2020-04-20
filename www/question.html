@@ -16,10 +16,14 @@
       <textarea v-model="qa.answer"></textarea>
     </div>
     <div class="buttons">
-      <a @click="interruptionButtonClick"><img src="./images/各種ボタン/break_ボタン.png" alt="中断ボタン" width="30px"></a>
-      <a @click="helpButtonClick"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" width="30px"></a>
-      <a v-show="qa.num >= 5" @click="finishButtonClick"><img src="./images/各種ボタン/finish_ボタン.png" alt="finishボタン" width="70px"></a>
-      <a @click="nextButtonClick"><img src="./images/各種ボタン/next_ボタン.png" alt="Nextボタン"  width="70px"></a>  
+      <div>
+        <a @click="helpButtonClick"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" width="30px"></a>
+        <a @click="interruptionButtonClick"><img src="./images/各種ボタン/break_ボタン.png" alt="中断ボタン" width="30px"></a>
+      </div>
+      <div>
+        <a v-show="qa.num >= 5" @click="finishButtonClick"><img src="./images/各種ボタン/finish_ボタン.png" alt="finishボタン" height="70px"></a>
+        <a @click="nextButtonClick"><img src="./images/各種ボタン/next_ボタン.png" alt="Nextボタン"  height="70px"></a>  
+      </div>
     </div>
     <div class="overlay saving" v-show="showSavingModal" @click="closeModal">
       <p>分析を中断しますか？</p>
