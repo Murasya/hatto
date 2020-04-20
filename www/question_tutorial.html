@@ -36,10 +36,8 @@
       <button @click="closeModal">いいえ</button>
     </div>
     <div class="overlay-help" v-show="showHelpModal" @click="closeModal">
-      <div class="iframe-wrap">
-        <iframe src="help.html" frameboader="0"></iframe>
-      </div>
-      <a @click="closeModal">×</a>
+      <help-modal></help-modal>
+      <a @click="closeModal" class="close">×</a>
     </div>
     <div class="overlay1" v-show="show1Modal" @click="closeModal">
       <img src="images/チュートリアル_ウインク_キャラ.png" class="cartoon">
