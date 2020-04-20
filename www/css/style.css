@@ -4,7 +4,6 @@ html {
 .content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   text-align: center;
 }
 
@@ -139,7 +138,7 @@ header {
   justify-content: space-between;
   border-left: solid 1pt #4B4B4B;
   text-align: left;
-  margin-left: 30pt;
+  margin-left: 20pt;
 }
 .acd-check:checked + .acd-label + .acd-content {
   height: 80pt;
@@ -181,7 +180,8 @@ header {
 
 .logo {
   margin-bottom: 10%;
-  max-width: 50%;
+  width: 50%;
+  margin-top: 50pt;
 }
 
 #notSignIn .img-button {
@@ -189,29 +189,15 @@ header {
   margin-top: 10pt;
   margin-left: 150pt;
 }
+#isSignIn {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
 
 #isSignIn p {
   color: #7B7B7B;
-}
-
-#logout {
-  margin-right: 10%;
-  font-size: 13pt;
-  font-family: "Futura-CondensedExtraBold", Futura, sans-serif;
-  font-stretch: condensed;
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-#index #analyze, #showRecode {
-  margin-bottom: 2%;
-  margin-right: 10%;
-  font-size: 14pt;
-  font-family: "Futura-CondensedExtraBold", Futura, sans-serif;
-  font-stretch: condensed;
-  font-weight: bold;
-  color: #DE4D2B;
-  text-decoration: underline;
+  margin: 0;
 }
 
 /* account */
@@ -801,7 +787,7 @@ header {
   position: relative;
   display: block;
   width: 90%;
-  margin: 12pt auto 0;
+  margin: 12px auto 0;
 }
 .data span {
   position: relative;
