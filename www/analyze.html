@@ -69,7 +69,6 @@
             "10年後",
             "その他",
           ],
-          isPushed: false,
         },
         methods: {
           nextButtonClick: function() {
@@ -87,31 +86,31 @@
               ons.notification.toast('カテゴリを1～3つ選択してください', {timeout: 2000, animation: "fall"});
               return;
             }
+            if (this.existsSameValue(this.category)) {
+              ons.notification.toast('カテゴリに同じ値が選択されています', {timeout: 2000, animation: "fall"});
+              return;
+            }
             qAndA.questions.push("取り組みたいこと/叶えたいこと");
             qAndA.answers.push(this.theme);
             qAndA.uid = firebase.auth().currentUser.uid;
             qAndA.category = this.category;
             qAndA.id = setNewData(qAndA);
+            localStorage.setItem("tutorial", "true");
             document.querySelector('#myNavigator').pushPage('start.html', {
               data: {
                 qAndA: qAndA
               }
             });
           },
-          getSelect: function() {
-            var count = this.category.length;
-            console.log(count);
-            if(count >= 3) {
-              this.isPushed = true;
-            } else {
-              this.isPushed = false;
-            }
-          },
           helpButtonClick: function() {
             this.showHelpModal = true;
           },
           closeModal: function() {
             this.showHelpModal = false;
+          },
+          existsSameValue: function(a) {
+            var s = new Set(a);
+            return s.size != a.length;
           }
         }
       });

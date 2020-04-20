@@ -629,7 +629,7 @@ header {
 }
 #questionVue .explain-que {
   position: absolute;
-  top: 160pt;
+  top: 150pt;
   right: 30pt;
   z-index: 30;
 }
