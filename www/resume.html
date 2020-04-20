@@ -10,7 +10,7 @@
       setTimeout(startQuestion, 800)
     }
     function startQuestion() {
-      myNavigator.pushPage('question.html', {
+      myNavigator.replacePage('question.html', {
         data: {
           qAndA: myNavigator.topPage.data.qAndA
         }

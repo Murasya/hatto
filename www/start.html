@@ -12,9 +12,9 @@
     }
     function startQuestion() {
       if(localStorage.getItem('tutorial') != "true") {
-        myNavigator.pushPage('question_tutorial.html');
+        myNavigator.replacePage('question_tutorial.html');
       } else {
-        myNavigator.pushPage('question.html', {
+        myNavigator.replacePage('question.html', {
           data: {
             qAndA: myNavigator.topPage.data.qAndA
           }
