@@ -85,8 +85,8 @@
     
     <script>
       ons.getScriptPage().onInit = function() {
-        //initApp();
-        //sBannar();
+        initApp();
+        sBanner();
         var vm_i = new Vue({
           el: '#index',
           data: {
@@ -98,11 +98,11 @@
           },
           methods: {
             loginButtonClick: function () {
-              //hBannar();
+              hBanner();
               document.getElementById("myNavigator").pushPage('account.html', {data: {title: 'アカウント'}});
             },
             signUpButtonClick: function () {
-              //hBannar();
+              hBanner();
               document.getElementById("myNavigator").pushPage('register.html', {data: {title: 'アカウント'}});
             },
             logoutButtonClick: function () {
@@ -113,6 +113,7 @@
               this.menuFlag = !this.menuFlag;
             },
             onDataButton: function(data) {
+              hBanner();
               if (data.complete) {
                 document.getElementById("myNavigator").pushPage('result.html', {
                   data: {
@@ -130,14 +131,14 @@
             },
             goTutorial: function() {
               localStorage.setItem('tutorial', false);
-              //hBannar();
+              hBanner();
               document.getElementById("myNavigator").pushPage('explain.html');
             },
             goAnalyze: function() {
               document.getElementById("myNavigator").resetToPage('analyze.html');
             },
             goFeedback: function() {
-              //hBannar();
+              hBanner();
               document.getElementById("myNavigator").pushPage('feedback.html');
             }
           },
