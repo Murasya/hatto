@@ -8,7 +8,8 @@
         "cordova-plugin-splashscreen": "5.0.2",
         "cordova-plugin-whitelist": "1.3.3",
         "monaca-plugin-monaca-core": "3.3.0",
-        "nodemailer": "^6.4.6"
+        "nodemailer": "^6.4.6",
+        "cordova-plugin-x-socialsharing": "file:res/custom_plugins/cordova-plugin-x-socialsharing"
     },
     "scripts": {
         "monaca:preview": "npm run dev",
@@ -23,7 +24,8 @@
             "cordova-plugin-admobpro": {
                 "ADMOB_ANDROID_APP_ID": "ca-app-pub-8657757436017103~1121360773",
                 "ADMOB_IOS_APP_ID": "ca-app-pub-8657757436017103~8650036392"
-            }
+            },
+            "cordova-plugin-x-socialsharing": {}
         }
     },
     "devDependencies": {

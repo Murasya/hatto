@@ -133,10 +133,10 @@
         },
         methods: {
           interruptionButtonClick: function() {
-            //this.showSavingModal = true;
+            ons.notification.toast('チュートリアルでは途中セーブできません', {timeout: 1000, animation: "fall"});
           },
           helpButtonClick: function() {
-            this.showHelpModal = true;
+            ons.notification.toast('チュートリアルではヘルプを表示できません', {timeout: 1000, animation: "fall"});
           },
           nextButtonClick: function() {
             if(this.qa.num == 1) {
@@ -225,11 +225,6 @@
             }
           },
           savingButton: function() {
-            // if(this.qa.answer != "") {
-            //   this.qa.why = this.qa.why + this.qa.question + "？";
-            //   this.items.push(Object.assign({}, this.qa));
-            // }
-            // myNavigator.resetToPage('index.html');
           },
           onNumber: function() {
             if(this.numberClass == "defo") {

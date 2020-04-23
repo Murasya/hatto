@@ -87,7 +87,7 @@
             ons.notification.toast('「勉強」と「スキルアップ」のカテゴリを選んで下さい', {timeout: 2000, animation: "fall"});
           },
           helpButtonClick: function() {
-            this.showHelpModal = true;
+            ons.notification.toast('チュートリアルではヘルプを表示できません', {timeout: 1000, animation: "fall"});
           },
           closeModal: function() {
             this.showHelpModal = false;

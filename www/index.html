@@ -21,7 +21,7 @@
   <!-- Vue.js-->
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <!-- admob -->
-  <script src="../res/custom_plugins/cordova-plugin-admobpro/test/admob_simple.js"></script>
+  
   <script src="js/app.js"></script>
 </head>
 <body>
@@ -49,8 +49,8 @@
             <input type="checkbox" id="acd-check1" class="acd-check">
             <label for="acd-check1" class="acd-label">OPTIONS </label>
             <div class="acd-content">
-              <a>利用規約</a>
-              <a>プライバシー<br>ポリシー</a>
+              <a href="https://noteappm.wixsite.com/policies">利用規約</a>
+              <a href="https://noteappm.wixsite.com/policies">プライバシー<br>ポリシー</a>
               <a @click="goFeedback">フィードバック</a>
               <a @click="goTutorial">チュートリアル</a>
             </div>
@@ -85,6 +85,8 @@
     
     <script>
       ons.getScriptPage().onInit = function() {
+        //initApp();
+        //sBannar();
         var vm_i = new Vue({
           el: '#index',
           data: {
@@ -96,9 +98,11 @@
           },
           methods: {
             loginButtonClick: function () {
+              //hBannar();
               document.getElementById("myNavigator").pushPage('account.html', {data: {title: 'アカウント'}});
             },
             signUpButtonClick: function () {
+              //hBannar();
               document.getElementById("myNavigator").pushPage('register.html', {data: {title: 'アカウント'}});
             },
             logoutButtonClick: function () {
@@ -126,12 +130,14 @@
             },
             goTutorial: function() {
               localStorage.setItem('tutorial', false);
+              //hBannar();
               document.getElementById("myNavigator").pushPage('explain.html');
             },
             goAnalyze: function() {
               document.getElementById("myNavigator").resetToPage('analyze.html');
             },
             goFeedback: function() {
+              //hBannar();
               document.getElementById("myNavigator").pushPage('feedback.html');
             }
           },

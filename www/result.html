@@ -20,7 +20,8 @@
     </select><br>
     <span class="success" v-if="recode == true">分析はうまくいった？<ons-icon icon="fa-arrow-right"></ons-icon>{{ success }}</span>
     <button v-show="recode == false" @click="saveButtonClick">記録する</button><br>
-    <button><ons-icon icon="fa-twitter"></ons-icon> Tweet</button>
+    <a @click="onTweet" href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" :data-text="tweet.text" data-url="http://toten.html.xdomain.jp/" data-lang="en" data-show-count="false"><ons-icon icon="fa-twitter"></ons-icon> Tweet</a>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <my-toolbar v-show="recode == true"></my-toolbar>
   </div>
 
@@ -48,6 +49,9 @@
           defoClass: "defo",
           lightClass: "lightBlue",
           blueClass: "blue",
+          tweet: {
+            text: "",
+          }
         },
         methods: {
           saveButtonClick: function() {
@@ -65,6 +69,23 @@
             qAndA.complete = true;
             updateData(qAndA);
             myNavigator.resetToPage('index.html');
+          },
+          onTweet: function() {
+            if (this.memo == "") {
+              ons.notification.toast("感想を書いてください", {timeout: 1000, animation: "fall"});
+              return;
+            }
+            if (this.success == "") {
+              ons.notification.toast("分析が成功したか選んでください", {timeout: 1000, animation: "fall"});
+              return;
+            }
+            qAndA.memo = this.memo;
+            qAndA.success = this.success;
+            qAndA.category = this.category;
+            qAndA.complete = true;
+            updateData(qAndA);
+            this.tweet.text = "<" + this.theme + ">" + "を分析しました!\n\nスタート：" + this.answers[1] + "\n↓\nゴール：" + this.answers[this.answers.length-1]
+                              + "\n\n#とーてん ";
           },
         }
       });

@@ -5,13 +5,13 @@ if( /(android)/i.test(navigator.userAgent) ) {
   admobid = { // for Android
     banner: 'ca-app-pub-8657757436017103/9164014047',
     interstitial: 'ca-app-pub-8657757436017103/7896320985',
-    rewardvideo: 'ca-app-pub-3940256099942544/5224354917',
+    rewardvideo: '',
   };
 } else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
   admobid = { // for iOS
     banner: 'ca-app-pub-8657757436017103/4710791389',
-    interstitial: 'ca-app-pub-8657757436017103/7896320985',
-    rewardvideo: 'ca-app-pub-3940256099942544/1712485313',
+    interstitial: 'ca-app-pub-8657757436017103/8342914632',
+    rewardvideo: '',
   };
 } else {
   admobid = { // for Windows Phone, deprecated
@@ -23,7 +23,9 @@ if( /(android)/i.test(navigator.userAgent) ) {
 
 function initApp() {
   if (! AdMob ) { alert( 'admob plugin not ready' ); return; }
+  else { console.log("admob OK"); }
 
+  console.log("admob ready");
   // this will create a banner on startup
   AdMob.createBanner( {
     adId: admobid.banner,
@@ -48,8 +50,9 @@ function initApp() {
   });
 }
 
-if(( /(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent) )) {
-    document.addEventListener('deviceready', initApp, false);
-} else {
-    initApp();
-}
+// if(( /(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent) )) {
+//     document.addEventListener('deviceready', initApp, false);
+// } else {
+//     initApp();
+// }
+initApp();
