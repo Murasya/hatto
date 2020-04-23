@@ -8,7 +8,7 @@
       <p>{{ questions[index] }}</p>
       <p>{{ answers[index] }}</p>
     </div>
-    <textarea v-model="memo" placeholder="メモ"></textarea>
+    <textarea v-model="memo" readonly></textarea>
     <p style="font-size: 11pt; color: #767676;">分析はうまくいった？</p>
     <select v-model="success">
       <option value="はい">はい</option>

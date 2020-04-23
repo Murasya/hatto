@@ -3,7 +3,7 @@
   <div id="resultVue" v-cloak>
     <p class="theme">{{ theme }}</p>
     <span class="category">
-      <span v-for="n in category">{{ n }}  </span>
+      <span v-for="n in category">{{ n }}&emsp;</span>
     </span>
     <div v-for="index in answers.length-1" class="items">
       <p :class='tags[index-1] == "" ? defoClass : (tags[index-1] == "out" ? lightClass : blueClass)'>{{ index }}</p>
@@ -12,7 +12,7 @@
     </div>
     <textarea v-model="memo" v-if="recode == false"></textarea>
     <div v-else class="memo">{{ memo }}</div>
-    <p style="font-size: 11pt; color: #767676;" v-show="recode==false">分析はうまくいった？</p>
+    <p style="font-size: 11pt; color: #767676; margin-top: 30px;" v-show="recode==false">分析はうまくいった？</p>
     <select v-model="success" v-if="recode == false">
       <option>はい</option>
       <option>いいえ</option>
@@ -53,6 +53,10 @@
           saveButtonClick: function() {
             if (this.memo == "") {
               ons.notification.toast("感想を書いてください", {timeout: 1000, animation: "fall"});
+              return;
+            }
+            if (this.success == "") {
+              ons.notification.toast("分析が成功したか選んでください", {timeout: 1000, animation: "fall"});
               return;
             }
             qAndA.memo = this.memo;

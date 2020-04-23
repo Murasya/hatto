@@ -3,14 +3,14 @@ var admobid = {};
 // TODO: replace the following ad units with your own
 if( /(android)/i.test(navigator.userAgent) ) {
   admobid = { // for Android
-    banner: 'ca-app-pub-3940256099942544/6300978111',
-    interstitial: 'ca-app-pub-3940256099942544/1033173712',
+    banner: 'ca-app-pub-8657757436017103/9164014047',
+    interstitial: 'ca-app-pub-8657757436017103/7896320985',
     rewardvideo: 'ca-app-pub-3940256099942544/5224354917',
   };
 } else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
   admobid = { // for iOS
-    banner: 'ca-app-pub-3940256099942544/2934735716',
-    interstitial: 'ca-app-pub-3940256099942544/4411468910',
+    banner: 'ca-app-pub-8657757436017103/4710791389',
+    interstitial: 'ca-app-pub-8657757436017103/7896320985',
     rewardvideo: 'ca-app-pub-3940256099942544/1712485313',
   };
 } else {
@@ -31,7 +31,13 @@ function initApp() {
     isTesting: true, // TODO: remove this line when release
     overlap: false,
     offsetTopBar: false,
-    bgColor: 'black'
+    bgColor: 'black',
+    success: function() {
+      alert('success to create banner');
+    },
+    error: function() {
+      alert('failed to create banner');
+    }
   } );
 
   // this will load a full screen ad on startup
