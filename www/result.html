@@ -1,6 +1,6 @@
 <ons-page>
   <div class="background" style="background-color: #E8F6FD;"></div>
-  <div id="resultVue" v-cloak>
+  <div id="resultVue" class="resultVue" v-cloak>
     <p class="theme">{{ theme }}</p>
     <span class="category">
       <span v-for="n in category">{{ n }}&emsp;</span>
@@ -70,6 +70,7 @@
             qAndA.complete = true;
             updateData(qAndA);
             myNavigator.resetToPage('index.html');
+            sInt();
           },
           onTweet: function() {
             if (this.memo == "") {

@@ -49,8 +49,8 @@
             <input type="checkbox" id="acd-check1" class="acd-check">
             <label for="acd-check1" class="acd-label">OPTIONS </label>
             <div class="acd-content">
-              <a href="https://noteappm.wixsite.com/policies">利用規約</a>
-              <a href="https://noteappm.wixsite.com/policies">プライバシー<br>ポリシー</a>
+              <a @click="urlClick">利用規約</a>
+              <a @click="urlClick">プライバシー<br>ポリシー</a>
               <a @click="goFeedback">フィードバック</a>
               <a @click="goTutorial">チュートリアル</a>
             </div>
@@ -85,7 +85,6 @@
     
     <script>
       ons.getScriptPage().onInit = function() {
-        initApp();
         sBanner();
         var vm_i = new Vue({
           el: '#index',
@@ -140,6 +139,10 @@
             goFeedback: function() {
               hBanner();
               document.getElementById("myNavigator").pushPage('feedback.html');
+            },
+            urlClick: function() {
+              window.open = cordova.InAppBrowser.open;
+              window.open("https://noteappm.wixsite.com/policies", "_system", "location=yes");
             }
           },
         });

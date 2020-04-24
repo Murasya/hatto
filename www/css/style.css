@@ -29,7 +29,7 @@ html {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  height: 64px;
+  height: 60px;
   align-items: center;
 }
 .toolbar div {
@@ -140,6 +140,7 @@ header {
   border-left: solid 1pt #4B4B4B;
   text-align: left;
   margin-left: 20pt;
+  margin-bottom: 15px;
 }
 .acd-content a {
   text-decoration: none;
@@ -185,8 +186,8 @@ header {
 
 .logo {
   margin-bottom: 10%;
-  width: 50%;
-  margin-top: 50pt;
+  width: 40%;
+  margin-top: 50px;
 }
 #notSignIn .img-button {
   width: 75pt;
@@ -355,7 +356,7 @@ header {
 }
 #analyze .exp {
   position: absolute;
-  top: 320pt;
+  top: 310pt;
   right: 20pt;
 }
 #analyze .help_button {
@@ -371,16 +372,17 @@ header {
   box-sizing: border-box;
 }
 #questionVue .theme {
-  height: 65pt;
+  height: 65px;
   background-color: #E0836E;
   box-shadow: 0 3pt 6pt rgba(0, 0, 0, 0.29);
   color: #FFF;
   font-size: 12pt;
-  margin-bottom: 25pt;
+  margin-bottom: 25px;
+  overflow: auto;
 }
 #questionVue .theme p {
   font-size: 12pt;
-  padding-top: 38.5pt;
+  padding-top: 38.5px;
   padding-left: 14pt;
   margin: 0;
 }
@@ -453,7 +455,6 @@ header {
   height: 75pt;
   width: 100%;
   margin-top: 25pt;
-  margin-bottom: 100px;
   box-shadow: 0 1pt 6pt rgba(0, 0, 0, 0.29);
 }
 #questionVue .writting a {
@@ -514,6 +515,7 @@ header {
   bottom: 30pt;
   left: 0;
   width: 100%;
+  margin-top: 100px;
 }
 #questionVue .buttons div:nth-of-type(1) {
   display: flex;
@@ -648,14 +650,14 @@ header {
 }
 
 /* result.html */
-#resultVue {
+.resultVue {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-bottom: 100px;
 }
-#resultVue .category{
+.resultVue .category{
   display: inline-block;
   border: solid 0.23pt rgba(166, 167, 167, 1);
   background-color: #FFF;
@@ -665,14 +667,14 @@ header {
   align-self: flex-start;
   margin: 0 0 20pt 28pt;
 }
-#resultVue .theme {
+.resultVue .theme {
   margin-top: 50pt;
   margin-left: 28pt;
   font-size: 17pt;
   color: #DE4D2B;
   align-self: flex-start;
 }
-#resultVue select {
+.resultVue select {
   display: inline-block;
   color: #A6A7A7;
   border-radius: 1.45pt;
@@ -681,12 +683,12 @@ header {
   padding: 10pt;
   text-align: left;
 }
-#resultVue .explain-tweet {
+.resultVue .explain-tweet {
   position: relative;
-  top: -90pt;
+  top: -30pt;
   left: 80pt;
 }
-#resultVue textarea {
+.resultVue textarea {
   width: 75%;
   height: 180pt;
   border-left: solid 1.5pt #DE4D2B;
@@ -698,12 +700,12 @@ header {
   font-size: 11pt;
   resize: none;
 }
-#resultVue .explain-suc {
+.resultVue .explain-suc {
   position: relative;
   top: -30pt;
   left: 80pt;
 }
-#resultVue button:nth-of-type(1) {
+.resultVue button:nth-of-type(1) {
   width: 94pt;
   height: 22pt;
   border-radius: 8pt;
@@ -712,7 +714,7 @@ header {
   box-shadow: 0 0 6pt rgba(0, 0, 0, 0.29);
   border: none;
 }
-#resultVue .twitter-share-button {
+.resultVue .twitter-share-button {
   width: 75pt;
   height: 27pt;
   background-color: #4190C6;
@@ -725,7 +727,7 @@ header {
   margin-top: 10pt;
   margin-bottom: 68pt;
 }
-#resultVue .memo {
+.resultVue .memo {
   border-top: none;
   border-right: none;
   border-bottom: solid 1.5pt #DE4D2B;
@@ -737,7 +739,7 @@ header {
   width: 80%;
   word-wrap: break-word;
 }
-#resultVue .success {
+.resultVue .success {
   border: solid 0.36pt #A6A7A7;
   border-radius: 2.27pt;
   padding: 12pt 14pt 15pt;
@@ -788,27 +790,27 @@ header {
   position: relative;
   top: 0;
   left: 0;
-  font-size: 10pt;
+  font-size: 10px;
   color: #626262;
   margin: 0;
-  padding: 5pt 21pt;
+  padding: 5px 21px;
   background-color: #E8F6FD;
-  border-radius: 5pt;
+  border-radius: 5px;
 }
 .data p {
   position: relative;
-  top: -3pt;
-  font-size: 12pt;
+  top: -3px;
+  font-size: 12px;
   margin: 0;
-  padding: 12pt 0 18pt 21pt;
+  padding: 12px 0 18px 21px;
   background-color: #E8F6FD;
-  border-radius: 5pt;
+  border-radius: 5px;
 
 }
 .data hr {
   position: relative;
-  bottom: 17pt;
-  margin: 0 21pt;
+  bottom: 17px;
+  margin: 0 21px;
 }
 
 /* help */
