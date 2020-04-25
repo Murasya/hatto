@@ -1,6 +1,7 @@
 <ons-page>
   <div class="background" style="background-color: #E8F6FD;"></div>
   <div id="questionVue" v-cloak>
+    <button @click="showSkipModal = true" class="skip">SKIP</button>
     <div class="theme">
       <p>{{ theme }}</p>
     </div>
@@ -69,6 +70,7 @@
         <img src="images/吹き出し/チュートリアル_吹き出し(modal5).png">
       </div>
     </div>
+    <skip-modal v-if="showSkipModal" @close="showSkipModal = false"></skip-modal>
   </div>
   
   <script>
@@ -123,6 +125,7 @@
           },
           placeholder_que: "",
           placeholder_ans: "英語が話せたら留学生と話せるから",
+          showSkipModal: false,
         },
         created: function() {
           var vue = this;

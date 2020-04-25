@@ -21,7 +21,7 @@
           <option v-for="n in categories" :value="n">{{ n }}</option>
         </select>
       </div>
-      <button @click="nextButtonClick">これを分析！</button>
+      <button @click="nextButtonClick" class="go_question">これを分析！</button>
       <a @click="helpButtonClick" class="help_button"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" width="30px"></a>
       <div class="overlay-help" v-show="showHelpModal">
         <help-modal></help-modal>

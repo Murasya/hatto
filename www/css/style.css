@@ -353,9 +353,11 @@ header {
   border-radius: 8pt;
   border: none;
   height: 30px;
-  background-color: #A6A7A7;
-  color: #FFFFFF;
+}
+#analyze .go_question {
   margin-top: 25px;
+  background-color: rgba(237, 106, 76, 1);
+  color: #FFF;
 }
 #analyze .exp {
   position: absolute;
@@ -367,12 +369,27 @@ header {
   margin-left: 45pt;
   margin-bottom: 64px;
 }
+#analyze .skip {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
 
 /* question */
 #questionVue {
   position: relative;
   height: 100vh;
   box-sizing: border-box;
+}
+#questionVue .skip {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border-radius: 8pt;
+  border: none;
+  height: 30px;
+  background-color: rgba(219, 219, 219, 1);
+  color: rgba(106, 106, 106, 1);
 }
 #questionVue .theme {
   height: 65px;
@@ -1201,12 +1218,25 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 100;
 }
 .skip_modal h1 {
   color: #FFF;
   border-bottom: solid 2px #FFF;
   font-size: 18px;
   padding: 7px;
+}
+.skip_modal button {
+  width: 85px;
+  height: 36px;
+  border-radius: 8pt;
+  border: none;
+  font-size: 14pt;
+  margin: 26pt 10px 0;
+}
+.skip_modal .yes {
+  background-color: rgba(224, 131, 110, 1);
+  color: #FFF;
 }
 .skip_modal .no {
   background-color: #FFF;
