@@ -758,6 +758,7 @@ header {
   margin-top: 50px;
   width: 80%;
   word-wrap: break-word;
+  overflow: scroll;
 }
 .resultVue .success {
   border: solid 0.36pt #A6A7A7;
@@ -846,6 +847,7 @@ header {
   position: absolute;
   width: 160pt;
   z-index: 20;
+  left: 100px;
 }
 #help {
   background-color: #FCE8E3;
