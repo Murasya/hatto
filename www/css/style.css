@@ -1,6 +1,9 @@
 html {
   font-family: 'vdl-v7gothic', sans-serif;
 }
+button:focus {
+  outline: 0;
+}
 .content {
   display: flex;
   flex-direction: column;
@@ -988,15 +991,22 @@ header {
   margin: 0;
 }
 #readyVue button {
-  width: 85pt;
-  height: 36pt;
-  background-color: #ED6A4C;
+  width: 85px;
+  height: 36px;
   border-radius: 8pt;
   border: none;
-  color: #FFF;
   font-size: 14pt;
-  margin-top: 26pt;
+  margin: 26pt 10px 0;
 }
+#readyVue .yes {
+  background-color: rgba(224, 131, 110, 1);
+  color: #FFF;
+}
+#readyVue .skip {
+  background-color: rgba(131, 131, 131, 1);
+  color: #FFF;
+}
+
 
 /* finish_tutorial */
 #finish_tutorial {
@@ -1178,4 +1188,32 @@ header {
   font-size: 11pt;
   color: black;
   margin-bottom: 30pt;
+}
+
+.skip_modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(86, 119, 123, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.skip_modal h1 {
+  color: #FFF;
+  border-bottom: solid 2px #FFF;
+  font-size: 18px;
+  padding: 7px;
+}
+.skip_modal .no {
+  background-color: #FFF;
+  color: black;
+}
+.skip_modal span {
+  color: #FFF;
+  margin: 20px;
+  font-size: 12px;
 }

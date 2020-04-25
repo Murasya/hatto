@@ -11,7 +11,7 @@
       setTimeout(startQuestion, 800);
     }
     function startQuestion() {
-      if(localStorage.getItem('tutorial') != "true") {
+      if(localStorage.getItem('tutorial_finished') != "true") {
         myNavigator.replacePage('question_tutorial.html');
       } else {
         myNavigator.replacePage('question.html', {

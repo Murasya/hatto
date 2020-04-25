@@ -94,7 +94,7 @@
             qAndA.uid = firebase.auth().currentUser.uid;
             qAndA.category = this.category;
             qAndA.id = setNewData(qAndA);
-            localStorage.setItem("tutorial", "true");
+            localStorage.setItem("tutorial_finished", "true");
             hBanner();
             document.querySelector('#myNavigator').replacePage('start.html', {
               data: {
