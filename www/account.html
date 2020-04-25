@@ -1,5 +1,6 @@
 <ons-page id="account">
   <div id="signIn">
+    <a @click="document.getElementById('myNavigator').popPage()" style="align-self: flex-start; margin-left: 30px;"><ons-icon icon="fa-chevron-left"></ons-icon> キャンセル</a>
     <p>SIGN IN</p>
     <div>
       <input type="email" id="email" v-model="email" placeholder="メールアドレス">
