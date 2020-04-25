@@ -1,0 +1,16 @@
+<ons-page>
+  <div id="check_tutorial">
+    <p>チュートリアルはホーム画面の<br>OPTIONSからいつでも確認できます。</p>
+    <button @click="goIndex">OK</button>
+  </div>
+  <script>
+    new Vue({
+      el: '#check_tutorial',
+      methods: {
+        goIndex: function() {
+          document.getElementById('myNavigator').resetToPage('index.html');
+        }
+      }
+    })
+  </script>
+</ons-page>

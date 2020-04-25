@@ -1247,3 +1247,31 @@ header {
   margin: 20px;
   font-size: 12px;
 }
+
+#check_tutorial {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgba(232, 246, 253, 1);
+}
+#check_tutorial p {
+  background-color: #FFF;
+  font-size: 14px;
+  color: rgb(72, 72, 72);
+  text-align: center;
+  padding: 30px;
+  line-height: 30px;
+  width: 100%;
+  box-sizing: border-box;
+}
+#check_tutorial button {
+  background-color: rgb(237, 106, 76);
+  color: #FFF;
+  border: none;
+  width: 85px;
+  height: 36px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
