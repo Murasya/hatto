@@ -32,10 +32,6 @@
         <button @click="closeModal">いいえ</button>
       </div>
     </div>
-    <div class="overlay-help" v-show="showHelpModal" @click="closeModal">
-      <help-modal></help-modal>
-      <a @click="closeModal" class="close">×</a>
-    </div>
     <div class="overlay1" v-show="showModal1" @click="closeModal">
       <img class="cartoon" src="images/分析中_キャラ.png">
       <div class="speech">
@@ -48,13 +44,13 @@
         <img src="images/吹き出し/分析_吹き出し(comment2).png">
       </div>
     </div>
-    <div class="overlay1" v-show="showModal3" @click="showModal3 = false">
+    <div class="overlay2" v-show="showModal3" @click="showModal3 = false">
       <img class="cartoon" src="images/分析中_キャラ3.png">
-      <a @click="showModal3 = false"><img src="images/各種ボタン/help-back_ボタン.png" width="77px"></a>
       <div class="speech">
-        <img src="images/吹き出し/分析_吹き出し(comment3).png">
+        <a @click="showModal3 = false"><img src="images/各種ボタン/help-back_ボタン.png" width="77px"></a>
+        <img src="images/吹き出し/分析_吹き出し(comment3).png" width="252px">
+        <button @click="closeModal3">記録する</button>
       </div>
-      <button @click="closeModal3">記録する</button>
     </div>
   </div>
   
@@ -94,7 +90,6 @@
             tag: "",
           },
           showSavingModal: false,
-          showHelpModal: false,
           showModal1: false,
           showModal2: false,
           showModal3: false,
@@ -107,7 +102,7 @@
             this.showSavingModal = true;
           },
           helpButtonClick: function() {
-            this.showHelpModal = true;
+            document.getElementById('myNavigator').pushPage('help.html');
           },
           nextButtonClick: function() {
             if(this.qa.answer == "") {

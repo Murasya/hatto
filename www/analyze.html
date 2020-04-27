@@ -23,10 +23,6 @@
       </div>
       <button @click="nextButtonClick" class="go_question">これを分析！</button>
       <a @click="helpButtonClick" class="help_button"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" width="30px"></a>
-      <div class="overlay-help" v-show="showHelpModal">
-        <help-modal></help-modal>
-        <a @click="closeModal" class="close">×</a>
-      </div>
       <my-toolbar></my-toolbar>
     </div>
   </div>
@@ -45,7 +41,6 @@
             "",
             "",
           ],
-          showHelpModal: false,
           categories: [
             "夢",
             "欲しいもの",
@@ -103,7 +98,7 @@
             });
           },
           helpButtonClick: function() {
-            this.showHelpModal = true;
+            document.getElementById('myNavigator').pushPage('help.html');
           },
           closeModal: function() {
             this.showHelpModal = false;
