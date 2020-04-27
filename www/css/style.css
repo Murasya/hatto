@@ -532,10 +532,10 @@ header {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  bottom: 30pt;
+  bottom: 0;
   left: 0;
+  margin-bottom: 30px;
   width: 100%;
-  margin-top: 100px;
 }
 #questionVue .buttons div:nth-of-type(1) {
   display: flex;
@@ -637,7 +637,7 @@ header {
 }
 #questionVue .explain-que {
   position: absolute;
-  top: 150pt;
+  top: 145pt;
   right: 30pt;
   z-index: 30;
 }
@@ -753,7 +753,7 @@ header {
   border-bottom: solid 1.5pt #DE4D2B;
   border-left: solid 1.5pt #DE4D2B;
   background: none;
-  font-size: 11pt;
+  font-size: 11px;
   padding: 0 0 11pt 6pt;
   margin-top: 50px;
   width: 80%;
