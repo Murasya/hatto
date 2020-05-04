@@ -72,7 +72,7 @@
         methods: {
           onRegister: function() {
             var day = new Date(this.year, this.month-1, this.day);
-            var user = new User(this.email, this.sex, day, this.occupation);
+            var user = new User(this.uid, this.email, day, this.sex, this.occupation);
             setNewUser(user);
             firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
               .then(function() {
