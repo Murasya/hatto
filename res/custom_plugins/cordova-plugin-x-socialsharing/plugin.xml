@@ -50,6 +50,9 @@
     <config-file target ="*-Info.plist" parent="NSPhotoLibraryUsageDescription">
       <string>$PHOTO_LIBRARY_USAGE_DESCRIPTION</string>
     </config-file>
+    <config-file target ="*-Info.plist" parent="NSBluetoothAlwaysUsageDescription">
+      <string>This app requires bluetooth access to function properly.</string>
+    </config-file>
 
     <header-file src="src/ios/NSString+SSURLEncoding.h"/>
     <source-file src="src/ios/NSString+SSURLEncoding.m"/>
