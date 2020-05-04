@@ -80,25 +80,30 @@ function setNewData(qAndA) {
 }
 
 function getQuestionAndAnswer(limit = 100) {
-  var uid = firebase.auth().currentUser;
+  var user = firebase.auth().currentUser;
   var array = [];
-  db.collection("questionAndAnswer").where("uid", "==", uid).where("complete", "==", true).orderBy("timestamp", "desc").limit(limit).get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      var qAndA = new QAndA(
-        doc.data().questions,
-        doc.data().answers,
-        doc.data().tags,
-        doc.data().uid,
-        doc.data().public,
-        doc.data().memo,
-        doc.data().timestamp,
-        doc.data().complete,
-        doc.data().category,
-        doc.data().success,
-        doc.id,
-      );
-      array.push(qAndA);
-    });
+  db.collection("questionAndAnswer")
+    .where("uid", "==", user.uid)
+    .where("complete", "==", true)
+    .orderBy("timestamp", "desc")
+    .limit(limit)
+    .get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        var qAndA = new QAndA(
+          doc.data().questions,
+          doc.data().answers,
+          doc.data().tags,
+          doc.data().uid,
+          doc.data().public,
+          doc.data().memo,
+          doc.data().timestamp,
+          doc.data().complete,
+          doc.data().category,
+          doc.data().success,
+          doc.id,
+        );
+        array.push(qAndA);
+      });
   });
   return array;
 }
@@ -121,25 +126,30 @@ function updateData(qAndA) {
 }
 
 function getIncomplete() {
-  var uid = firebase.auth().currentUser;
+  var user = firebase.auth().currentUser;
   var array = [];
-  db.collection("questionAndAnswer").where("uid", "==", uid).where("complete", "==", false).orderBy("timestamp", "desc").get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      var qAndA = new QAndA(
-        doc.data().questions,
-        doc.data().answers,
-        doc.data().tags,
-        doc.data().uid,
-        doc.data().public,
-        doc.data().memo,
-        doc.data().timestamp,
-        doc.data().complete,
-        doc.data().category,
-        doc.data().success,
-        doc.id,
-      );
-      array.push(qAndA);
-    });
+  db.collection("questionAndAnswer")
+    .where("uid", "==", user.uid)
+    .where("complete", "==", false)
+    .orderBy("timestamp", "desc")
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        var qAndA = new QAndA(
+          doc.data().questions,
+          doc.data().answers,
+          doc.data().tags,
+          doc.data().uid,
+          doc.data().public,
+          doc.data().memo,
+          doc.data().timestamp,
+          doc.data().complete,
+          doc.data().category,
+          doc.data().success,
+          doc.id,
+        );
+        array.push(qAndA);
+      });
   });
   return array;
 }
@@ -169,3 +179,21 @@ function setNewUser(user) {
     console.log('Error adding document: ', error);
   });
 }
+
+Vue.component("skip-modal", {
+  template: `
+    <div class="skip_modal" @click="$emit('close')">
+      <h1>本当にスキップしますか？</h1>
+      <span>このアプリについて理解するため、<br>チュートリアルの実施を推奨しています。</span>
+      <div>
+        <button class="yes" @click="goNext">はい</button>
+        <button class="no" @click="$emit('close')">いいえ</button>
+      </div>
+    </div>
+  `,
+  methods: {
+    goNext: function() {
+      document.getElementById("myNavigator").pushPage("check_tutorial.html");
+    }
+  }
+});
