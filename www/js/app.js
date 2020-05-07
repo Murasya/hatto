@@ -22,7 +22,7 @@ function QAndA(
   uid="",
   public=false,
   memo="",
-  timestamp=new Date(),
+  timestamp=firebase.firestore.FieldValue.serverTimestamp(),
   complete=false,
   category=[],
   success="",
@@ -57,7 +57,6 @@ function User(
 
 function setNewData(qAndA) {
   var id = "";
-
   db.collection("questionAndAnswer").add({
     questions: qAndA.questions,
     answers: qAndA.answers,
@@ -65,7 +64,7 @@ function setNewData(qAndA) {
     uid: qAndA.uid,
     public: qAndA.public,
     memo: qAndA.memo,
-    timestamp: qAndA.timestamp,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     complete: qAndA.complete,
     category: qAndA.category,
     success: qAndA.success
@@ -96,7 +95,7 @@ function getQuestionAndAnswer(limit = 100) {
           doc.data().uid,
           doc.data().public,
           doc.data().memo,
-          doc.data().timestamp,
+          doc.data().timestamp.toDate(),
           doc.data().complete,
           doc.data().category,
           doc.data().success,
@@ -116,7 +115,7 @@ function updateData(qAndA) {
     uid: qAndA.uid,
     public: qAndA.public,
     memo: qAndA.memo,
-    timestamp: qAndA.timestamp,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     complete: qAndA.complete,
     category: qAndA.category,
     success: qAndA.success
@@ -142,7 +141,7 @@ function getIncomplete() {
           doc.data().uid,
           doc.data().public,
           doc.data().memo,
-          doc.data().timestamp,
+          doc.data().timestamp.toDate(),
           doc.data().complete,
           doc.data().category,
           doc.data().success,
@@ -152,6 +151,14 @@ function getIncomplete() {
       });
   });
   return array;
+}
+
+function deleteData(id) {
+  db.collection("questionAndAnswer").doc(id).delete().then(function() {
+    console.log("Document successfully deleted!");
+  }).catch(function(error) {
+    console.log("Error removing document: ", error);
+  });
 }
 
 function createFeedback(text) {
@@ -203,15 +210,15 @@ Vue.component("my-toolbar", {
     <div class="toolbar_wrapper">
       <div class="toolbar">
         <div @click="goAnalyze">
-          <img src="images/タブバー_新アイコン/analysis_アイコン.png"></img>
+          <img src="images/タブバー_新アイコン/analysis_アイコン.png" height="30px"></img>
           <span>分析</span>
         </div>
         <div @click="goHome">
-          <img src="images/タブバー_新アイコン/home_アイコン.png"></img>
+          <img src="images/タブバー_新アイコン/home_アイコン.png" height="30px"></img>
           <span>ホーム</span>
         </div>
         <div @click="goArchive">
-          <img src="images/タブバー_新アイコン/archives_アイコン.png"></img>
+          <img src="images/タブバー_新アイコン/archives_アイコン.png" height="30px"></img>
           <span>アーカイブ</span>
         </div>
       </div>
@@ -235,20 +242,71 @@ Vue.component("my-toolbar", {
 var admobid = {};
 if( /(android)/i.test(navigator.userAgent) ) {
     admobid = { // for Android
-        banner: 'ca-app-pub-3940256099942544/6300978111',
-        interstitial: 'ca-app-pub-3940256099942544/1033173712',
-        rewardvideo: 'ca-app-pub-3940256099942544/5224354917',
+        banner: 'ca-app-pub-8657757436017103/9164014047',
+        interstitial: 'ca-app-pub-8657757436017103/7896320985',
+        rewardvideo: '',
     };
 } else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
     admobid = { // for iOS
-        banner: 'ca-app-pub-3940256099942544/2934735716',
-        interstitial: 'ca-app-pub-3940256099942544/4411468910',
-        rewardvideo: 'ca-app-pub-3940256099942544/1712485313',
+        banner: 'ca-app-pub-8657757436017103/4710791389',
+        interstitial: 'ca-app-pub-8657757436017103/8342914632',
+        rewardvideo: '',
     };
 } else {
     admobid = { // for Windows Phone
-        banner: 'ca-app-pub-6869992474017983/8878394753',
-        interstitial: 'ca-app-pub-6869992474017983/1355127956',
+        banner: '',
+        interstitial: '',
         rewardvideo: '',
     };
+}
+
+function initialization() {
+  if(!AdMob) return;
+
+  // 初期化
+  AdMob.getAdSettings(
+      function(info){
+        console.log('adId: ' + info.adId + '\n' + 'adTrackingEnabled: ' + info.adTrackingEnabled);
+      }, 
+      function(){
+        console.log('failed to get user ad settings');
+      }
+  );
+
+  // オプションの設定
+  AdMob.setOptions({
+      //adId: admobid.banner, // admobのID
+      position: AdMob.AD_POSITION.BOTTOM_CENTER, // 動画が出る位置
+      isTesting: false, // テストするときはtrue
+      bgColor: 'black', // 背景色
+      // autoShow: true // 自動再生
+  });
+
+  $(document).on('onAdFailLoad', function(e){
+      // 広告表示に失敗した時の処理
+      if(typeof e.originalEvent !== 'undefined') e = e.originalEvent;
+      var data = e.detail || e.data || e;
+      alert('error: ' + data.reason );  
+  });
+
+  AdMob.createBanner({
+    adId: admobid.banner,
+    position: AdMob.AD_POSITION.TOP_CENTER,
+    autoShow: false
+  });
+  AdMob.prepareInterstitial({
+    adId: admobid.interstitial,
+    autoShow: false,
+  });
+}
+initialization();
+
+function sBanner() {
+  if(AdMob) AdMob.showBanner(AdMob.AD_POSITION.TOP_CENTER);
+}
+function hBanner() {
+  if(AdMob) AdMob.hideBanner();
+}
+function sInt() {
+  if(AdMob) AdMob.showInterstitial();
 }

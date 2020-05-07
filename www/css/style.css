@@ -39,12 +39,15 @@ button:focus {
   display: flex;
   flex-direction: column;
   width: 60px;
+  text-align: center;
 }
 .toolbar span {
   font-size: 9px;
   color: #585858;
 }
-
+.toolbar img {
+  margin: 0 auto;
+}
 header {
   background-color: rgba(255, 255, 255, 1.0);
   position: fixed;
