@@ -8,11 +8,14 @@
         "cordova-plugin-inappbrowser": "3.2.0",
         "cordova-plugin-splashscreen": "5.0.3",
         "cordova-plugin-whitelist": "1.3.3",
-        "cordova-plugin-wkwebview-engine": "1.2.1",
+        "cordova-plugin-wkwebview-engine": "file:res/custom_plugins/cordova-plugin-wkwebview-engine",
         "cordova-plugin-x-socialsharing": "file:res/custom_plugins/cordova-plugin-x-socialsharing",
+        "json2csv": "^5.0.1",
         "monaca-plugin-monaca-core": "3.3.0",
         "nodemailer": "^6.4.6",
-        "nw": "^0.26.6"
+        "nw": "^0.26.6",
+        "vue": "^2.6.11",
+        "cordova-plugin-wkwebview-file-xhr": "file:res/custom_plugins/cordova-plugin-wkwebview-file-xhr"
     },
     "scripts": {
         "monaca:preview": "npm run dev",
@@ -30,7 +33,8 @@
             "cordova-plugin-x-socialsharing": {},
             "cordova-plugin-splashscreen": {},
             "cordova-plugin-inappbrowser": {},
-            "cordova-plugin-wkwebview-engine": {}
+            "cordova-plugin-wkwebview-engine": {},
+            "cordova-plugin-wkwebview-file-xhr": {}
         }
     },
     "devDependencies": {
