@@ -28,7 +28,6 @@ exports.sendMail = functions.https.onCall((data, context) => {
 
 admin.initializeApp();
 exports.qandaList = functions.https.onRequest((request, response) => {
-    const json2csv = require("json2csv").parse;
     const db = admin.firestore();
     const ordersRef = db.collection('questionAndAnswer');
     return ordersRef.get().then((querySnapshot) => {
