@@ -30,21 +30,41 @@ admin.initializeApp();
 exports.qandaList = functions.https.onRequest((request, response) => {
     const db = admin.firestore();
     const ordersRef = db.collection('questionAndAnswer');
-    return ordersRef.get().then((querySnapshot) => {
-        const orders = [];
-        querySnapshot.forEach(doc => {
-            const order = doc.data();
-            orders.push(order);
+    const type = request.query.type;
+    if(type === "json") {
+        return ordersRef.get().then((querySnapshot) => {
+            const orders = [];
+            querySnapshot.forEach(doc => {
+                const order = doc.data();
+                orders.push(order);
+            });
+            response.setHeader(
+                "Content-disposition",
+                "attachment; filename=qanda.json"
+            );
+            response.set("Content-Type", "application/json");
+            response.status(200).send(orders);
+            return ""
+        }).catch((err) => {
+            response.status(200).send("エラー発生：" + err);
+            return Promise.resolve();
         });
-        response.setHeader(
-            "Content-disposition",
-            "attachment; filename=qanda.json"
-        );
-        response.set("Content-Type", "application/json");
-        response.status(200).send(orders);
-        return ""
-    }).catch((err) => {
-        response.status(200).send("エラー発生：" + err);
-        return Promise.resolve();
-    });
+    } else if(type === "csv") {
+        return ordersRef.get().then((querySnapshot) => {
+            var csv;
+            querySnapshot.forEach(doc => {
+                csv += doc.data().email + ",";
+            });
+            response.setHeader(
+                "Content-disposition",
+                "attachment; filename=qanda.csv"
+            );
+            response.set("Content-Type", "text/csv");
+            response.status(200).send(csv);
+            return ""
+        }).catch((err) => {
+            response.status(200).send("エラー発生：" + err);
+            return Promise.resolve();
+        });
+    }
 })

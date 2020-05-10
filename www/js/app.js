@@ -239,6 +239,7 @@ Vue.component("my-toolbar", {
 
 
 // admob
+/*
 var admobid = {};
 if( /(android)/i.test(navigator.userAgent) ) {
     admobid = { // for Android
@@ -310,3 +311,4 @@ function hBanner() {
 function sInt() {
   if(AdMob) AdMob.showInterstitial();
 }
+*/

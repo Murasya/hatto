@@ -17,7 +17,7 @@
 
   <script>
     ons.getScriptPage().onInit = function() {
-      sBanner();
+      //sBanner();
       var vm = new Vue({
         el: '#myRecodeVue',
         data: {
@@ -60,7 +60,7 @@
             this.arr = getIncomplete();
           },
           onDataButton: function(data) {
-            hBanner();
+            //hBanner();
             if (data.complete) {
               document.getElementById("myNavigator").pushPage('result.html', {
                 data: {
