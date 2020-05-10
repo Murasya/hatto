@@ -13,7 +13,9 @@
         "nodemailer": "^6.4.6",
         "nw": "^0.26.6",
         "vue": "^2.6.11",
-        "cordova-plugin-wkwebview-file-xhr": "file:res/custom_plugins/cordova-plugin-wkwebview-file-xhr"
+        "cordova-plugin-wkwebview-file-xhr": "file:res/custom_plugins/cordova-plugin-wkwebview-file-xhr",
+        "cordova-admob-sdk": "file:res/custom_plugins/cordova-admob-sdk",
+        "cordova-plugin-admob-free": "0.27.0"
     },
     "scripts": {
         "monaca:preview": "npm run dev",
@@ -27,7 +29,11 @@
             "cordova-plugin-x-socialsharing": {},
             "cordova-plugin-splashscreen": {},
             "cordova-plugin-wkwebview-engine": {},
-            "cordova-plugin-wkwebview-file-xhr": {}
+            "cordova-plugin-wkwebview-file-xhr": {},
+            "cordova-admob-sdk": {},
+            "cordova-plugin-admob-free": {
+                "ADMOB_APP_ID": "ca-app-pub-8657757436017103~1121360773"
+            }
         }
     },
     "devDependencies": {

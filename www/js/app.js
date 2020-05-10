@@ -239,7 +239,6 @@ Vue.component("my-toolbar", {
 
 
 // admob
-/*
 var admobid = {};
 if( /(android)/i.test(navigator.userAgent) ) {
     admobid = { // for Android
@@ -262,53 +261,53 @@ if( /(android)/i.test(navigator.userAgent) ) {
 }
 
 function initialization() {
-  if(!AdMob) return;
+  if(typeof admob === 'undefined') {
+    return ;
+  }
 
-  // 初期化
-  AdMob.getAdSettings(
-      function(info){
-        console.log('adId: ' + info.adId + '\n' + 'adTrackingEnabled: ' + info.adTrackingEnabled);
-      }, 
-      function(){
-        console.log('failed to get user ad settings');
-      }
-  );
-
-  // オプションの設定
-  AdMob.setOptions({
-      //adId: admobid.banner, // admobのID
-      position: AdMob.AD_POSITION.BOTTOM_CENTER, // 動画が出る位置
-      isTesting: false, // テストするときはtrue
-      bgColor: 'black', // 背景色
-      // autoShow: true // 自動再生
-  });
-
-  $(document).on('onAdFailLoad', function(e){
-      // 広告表示に失敗した時の処理
-      if(typeof e.originalEvent !== 'undefined') e = e.originalEvent;
-      var data = e.detail || e.data || e;
-      alert('error: ' + data.reason );  
-  });
-
-  AdMob.createBanner({
-    adId: admobid.banner,
-    position: AdMob.AD_POSITION.TOP_CENTER,
-    autoShow: false
-  });
-  AdMob.prepareInterstitial({
-    adId: admobid.interstitial,
+  admob.banner.config({
+    id: admobid.banner,
+    bannerAtTop: true,
+    isTesting: true,
     autoShow: false,
   });
+  admob.banner.prepare();
+
+  admob.interstitial.config({
+    id: admobid.interstitial,
+    isTesting: true,
+    autoShow: false,
+  });
+  admob.interstitial.prepare();
+  document.addEventListener('admob.banner.events.LOAD_FAIL', function(event) {
+    console.log("LOAD_FAIL banner", event)
+  })
+
+  document.addEventListener('admob.interstitial.events.LOAD_FAIL', function(event) {
+    console.log("LOAD_FAIL interstitial", event)
+  })
+
+  document.addEventListener('admob.interstitial.events.LOAD', function(event) {
+    console.log("LOAD", event)
+  })
+
+  document.addEventListener('admob.interstitial.events.CLOSE', function(event) {
+    console.log("CLOSE", event)
+
+    admob.interstitial.prepare()
+  })
 }
 initialization();
 
 function sBanner() {
-  if(AdMob) AdMob.showBanner(AdMob.AD_POSITION.TOP_CENTER);
+  if(typeof admob === 'undefined') return;
+  admob.banner.show();
 }
 function hBanner() {
-  if(AdMob) AdMob.hideBanner();
+  if(typeof admob === 'undefined') return;
+  admob.banner.hide();
 }
 function sInt() {
-  if(AdMob) AdMob.showInterstitial();
+  if(typeof admob === 'undefined') return;
+  admob.interstitial.show();
 }
-*/

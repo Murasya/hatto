@@ -29,7 +29,7 @@
   
   <script>
     ons.getScriptPage().onInit = function () {
-      //sBanner();
+      sBanner();
       var qAndA = new QAndA();
       var vm_a = new Vue({
         el: '#analyzeVue',
@@ -90,7 +90,7 @@
             qAndA.category = this.category;
             qAndA.id = setNewData(qAndA);
             localStorage.setItem("tutorial_finished", "true");
-            //hBanner();
+            hBanner();
             document.querySelector('#myNavigator').replacePage('start.html', {
               data: {
                 qAndA: qAndA
