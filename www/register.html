@@ -73,9 +73,9 @@
           onRegister: function() {
             var day = new Date(this.year, this.month-1, this.day);
             var user = new User(this.uid, this.email, day, this.sex, this.occupation);
-            setNewUser(user);
             firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
               .then(function() {
+                setNewUser(user);
                 document.querySelector('#myNavigator').resetToPage("index.html");
                 firebase.auth().currentUser.sendEmailVerification().then(function() {
                   ons.notification.toast('確認メールを送りました', {timeout: 1000, animation: 'fall'});

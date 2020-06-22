@@ -27,7 +27,7 @@
                 ons.notification.toast('ログイン成功', { timeout: 1000, animation: 'fall'});
                 document.querySelector('#myNavigator').popPage();
               }).catch(function(error) {
-                alert(error.message);
+                ons.notification.toast(error.message, { timeout: 1000, animation: 'fall'});
               });
           },
           onTwitterAccount: function() {

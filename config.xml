@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" id="io.github.Murasya.toten" version="2.1.13">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" id="io.github.Murasya.toten" version="2.2.0">
   <name>とーてん</name>
   <description>Made with Monaca (http://monaca.mobi)</description>
   <author/>
@@ -60,16 +60,16 @@
     <feature name="CDVWKWebViewEngine">
       <param name="ios-package" value="CDVWKWebViewEngine"/>
     </feature>
-    <config-file platform="ios" parent="CFBundleLocalizations" target="*-Info.plist">
-      <array>
-        <string>ja</string>
-      </array>
-    </config-file>
     <config-file target="*-Info.plist" parent="GADApplicationIdentifier">
       <string>ca-app-pub-8657757436017103~8650036392</string>
     </config-file>
     <config-file parent="GADIsAdManagerApp" platform="ios" target="*-Info.plist">
-        <true />
+      <true/>
+    </config-file>
+    <config-file platform="ios" parent="CFBundleLocalizations" target="*-Info.plist">
+      <array>
+        <string>ja</string>
+      </array>
     </config-file>
   </platform>
   <platform name="android">
@@ -89,17 +89,17 @@
   </platform>
   <preference name="WindowsStorePublisherName" value="My Name"/>
   <preference name="WindowsStoreIdentityName" value="93832eef-259d-6a4b-2790-45dcc541776d"/>
-  <preference name="KeepRunning" value="true"/>
-  <preference name="monaca:AndroidIsPackageNameSeparate" value="false"/>
-  <preference name="Orientation" value="portrait"/>
-  <preference name="SplashScreenDelay" value="1000"/>
-  <preference name="Fullscreen" value="false"/>
-  <preference name="DisallowOverscroll" value="true"/>
   <preference name="ios-XCBuildConfiguration-TARGETED_DEVICE_FAMILY" value="1,2"/>
   <preference name="AutoHideSplashScreen" value="true"/>
   <preference name="FadeSplashScreen" value="true"/>
   <preference name="ShowSplashScreenSpinner" value="false"/>
-  <access origin="*"/>
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="EnableViewportScale" value="false"/>
+  <access origin="*"/>
+  <preference name="KeepRunning" value="true"/>
+  <preference name="monaca:AndroidIsPackageNameSeparate" value="false"/>
+  <preference name="DisallowOverscroll" value="true"/>
+  <preference name="Orientation" value="portrait"/>
+  <preference name="SplashScreenDelay" value="1000"/>
+  <preference name="Fullscreen" value="false"/>
 </widget>

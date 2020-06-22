@@ -4,17 +4,18 @@
     "displayName": "Monaca Template Minimum",
     "dependencies": {
         "cordova-custom-config": "5.1.0",
+        "cordova-plugin-admob-free": "file:res/custom_plugins/cordova-plugin-admob-free",
         "cordova-plugin-splashscreen": "5.0.3",
         "cordova-plugin-whitelist": "1.3.3",
         "cordova-plugin-wkwebview-engine": "1.2.1",
+        "cordova-plugin-wkwebview-file-xhr": "file:res/custom_plugins/cordova-plugin-wkwebview-file-xhr",
         "cordova-plugin-x-socialsharing": "file:res/custom_plugins/cordova-plugin-x-socialsharing",
+        "encoding-japanese": "^1.0.30",
         "json2csv": "^5.0.1",
         "monaca-plugin-monaca-core": "3.3.0",
         "nodemailer": "^6.4.6",
         "nw": "^0.26.6",
-        "vue": "^2.6.11",
-        "cordova-plugin-wkwebview-file-xhr": "file:res/custom_plugins/cordova-plugin-wkwebview-file-xhr",
-        "cordova-plugin-admob-free": "file:res/custom_plugins/cordova-plugin-admob-free"
+        "vue": "^2.6.11"
     },
     "scripts": {
         "monaca:preview": "npm run dev",
@@ -29,7 +30,9 @@
             "cordova-plugin-splashscreen": {},
             "cordova-plugin-wkwebview-engine": {},
             "cordova-plugin-wkwebview-file-xhr": {},
-            "cordova-plugin-admob-free": {}
+            "cordova-plugin-admob-free": {
+                "ADMOB_APP_ID": "ca-app-pub-8657757436017103~1121360773"
+            }
         }
     },
     "devDependencies": {

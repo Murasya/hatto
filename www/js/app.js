@@ -81,6 +81,7 @@ function setNewData(qAndA) {
 function getQuestionAndAnswer(limit = 100) {
   var user = firebase.auth().currentUser;
   var array = [];
+  console.log("startQandA");
   db.collection("questionAndAnswer")
     .where("uid", "==", user.uid)
     .where("complete", "==", true)
@@ -104,6 +105,7 @@ function getQuestionAndAnswer(limit = 100) {
         array.push(qAndA);
       });
   });
+  console.log(array);
   return array;
 }
 
@@ -262,20 +264,21 @@ if( /(android)/i.test(navigator.userAgent) ) {
 
 function initialization() {
   if(typeof admob === 'undefined') {
+    console.log("admob undefined");
     return ;
   }
 
   admob.banner.config({
     id: admobid.banner,
     bannerAtTop: true,
-    isTesting: true,
+    isTesting: false,
     autoShow: false,
   });
   admob.banner.prepare();
 
   admob.interstitial.config({
     id: admobid.interstitial,
-    isTesting: true,
+    isTesting: false,
     autoShow: false,
   });
   admob.interstitial.prepare();

@@ -84,14 +84,17 @@
     <script>
       ons.getScriptPage().onInit = function() {
         sBanner();
-        var vm_i = new Vue({
+        var vue = new Vue({
           el: '#index',
           data: {
-            currentUser: null,
+            currentUser: firebase.auth().currentUser,
             recent: [],
             menuFlag: false,
             tutorialFinish: localStorage.getItem('tutorial_finished'),
-            loading: false,
+            loading: true,
+          },
+          created: function() {
+            console.log("created");
           },
           methods: {
             loginButtonClick: function () {
@@ -138,19 +141,19 @@
               document.getElementById("myNavigator").pushPage('feedback.html');
             },
             urlClick: function() {
-              window.open("https://noteappm.wixsite.com/policies", "_system", "location=no,usewkwebview=yes");
+              // window.open("https://noteappm.wixsite.com/policies", "_system", "location=no,usewkwebview=yes");
             }
           },
         });
-        firebase.auth().onAuthStateChanged(function(user) {
-          if (user) {
-            console.log(user.uid);
-            vm_i.recent = getQuestionAndAnswer(2);
+        firebase.auth().onAuthStateChanged(user => {
+          if(user) {
+            vue.recent = getQuestionAndAnswer(2);
+            vue.currentUser = user.uid;
+            console.log(vue.currentUser);
+            vue.loading = true;
           } else {
-            console.log("not LogedIn");
+            vue.currentUser = null;
           }
-          vm_i.currentUser = user;
-          vm_i.loading = true;
         });
       }
     </script>
